@@ -40,5 +40,5 @@ function popupSVG(svg) {
 }
 
 function historyBgSVG(svg) {
-  document.querySelector(".bg-container").innerHTML = svg;
+  document.querySelector("#page1 > .bg-container").innerHTML = svg;
 }
