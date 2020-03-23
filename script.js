@@ -15,10 +15,11 @@ async function getJson() {
   globalJson = await jsonData.json();
   getSvg("svg/lightbulb.svg", lightBulbSVG);
   getSvg("svg/popup.svg", popupSVG);
-  // getSvg(svg1, placeSvg1);
-  // getSvg(svg2, placeSvg2);
-  // getSvg(svg3, placeSvg3);
-  // getSvg(svg4, placeSvg4);
+  // getSvg(svg0, placeSvg0);
+  // historie  getSvg(svg1, placeSvg1);
+  // døgnrytme getSvg(svg2, placeSvg2);
+  // husholdning getSvg(svg3, placeSvg3);
+  // arkitektur getSvg(svg4, placeSvg4);
 }
 
 async function getSvg(filename, callback) {
