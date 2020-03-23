@@ -1,5 +1,12 @@
 [
   {
-    "pageID": "frontpage"
+    "pageID": "frontpage",
+    "svg1": ""
+  },
+
+  {
+    "pageID": "page1",
+    "popup1": "Lorem ipsum",
+    "popup2": "lorem ipsum "
   }
 ]
