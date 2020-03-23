@@ -1,0 +1,21 @@
+{
+  "name": "animation_project",
+  "version": "1.0.0",
+  "description": "",
+  "main": "script.js",
+  "dependencies": {
+    "@babel/polyfill": "^7.8.7",
+    "gsap": "^3.2.6",
+    "parcel-bundler": "^1.12.4",
+    "parcel-plugin-static-files-copy": "^2.3.1"
+  },
+  "devDependencies": {
+    "sass": "^1.26.3"
+  },
+  "scripts": {
+    "start": "parcel *.html --open"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
+}
