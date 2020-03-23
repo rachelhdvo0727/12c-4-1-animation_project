@@ -1,5 +1,5 @@
 require("@babel/polyfill");
-import { gsap } from "gsap";
+// import { gsap } from "gsap";
 
 document.addEventListener("DOMContentLoaded", start);
 
@@ -13,11 +13,12 @@ function start() {
 async function getJson() {
   let jsonData = await fetch("data.json");
   globalJson = await jsonData.json();
-  test();
-  getSvg(svg1, placeSvg1);
-  getSvg(svg2, placeSvg2);
-  getSvg(svg3, placeSvg3);
-  getSvg(svg4, placeSvg4);
+  getSvg("svg/lightbulb.svg", lightBulbSVG);
+  getSvg("svg/popup.svg", popupSVG);
+  // getSvg(svg1, placeSvg1);
+  // getSvg(svg2, placeSvg2);
+  // getSvg(svg3, placeSvg3);
+  // getSvg(svg4, placeSvg4);
 }
 
 async function getSvg(filename, callback) {
@@ -26,6 +27,10 @@ async function getSvg(filename, callback) {
   callback(mySvgData);
 }
 
-function test() {
-  document.querySelector("h1").textContent = globalJson[0].pageID;
+function lightBulbSVG(svg) {
+  document.querySelector("#lightbulb").innerHTML = svg;
+}
+
+function popupSVG(svg) {
+  document.querySelector("#popup").innerHTML = svg;
 }
