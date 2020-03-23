@@ -8,5 +8,12 @@
     "pageID": "page1",
     "popup1": "Lorem ipsum",
     "popup2": "lorem ipsum "
+  },
+
+  {
+    "pageID": "Household",
+    "popup1": "Over time, the invention of the light bulb eventually led to electric wires being installed in every household. The ability to use electricity for other purposes than light led manufacturers to develop a large range of electric appliances for the home.",
+    "popup2": "Washing machines, dryers and electric irons made laundry time a lot easier and less time consuming. Electric vacuum cleaners made cleaning the floors and furniture a lot easier. The standard of cleanliness rose and it led to fewer households needing domestic servants. ",
+    "popup3": "Electric appliances were also introduced to the kitchen helping to better cooking. Before electricity people used ice boxes and home ice deliveries to keep their food cold, but now this was made a lot easier with electric refrigerators. Bread toasters, tea kettles and waffle irons etc. were among other things also introduced."
   }
 ]

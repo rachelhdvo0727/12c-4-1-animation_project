@@ -1,5 +1,6 @@
 require("@babel/polyfill");
 // import { gsap } from "gsap";
+import { placeSvg3 } from "./household";
 
 document.addEventListener("DOMContentLoaded", start);
 
@@ -18,7 +19,7 @@ async function getJson() {
   // getSvg(svg0, placeSvg0);
   // historie  getSvg(svg1, placeSvg1);
   // døgnrytme getSvg(svg2, placeSvg2);
-  // husholdning getSvg(svg3, placeSvg3);
+  getSvg("svg/household.svg", placeSvg3);
   // arkitektur getSvg(svg4, placeSvg4);
 }
 
