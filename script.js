@@ -1,5 +1,6 @@
 require("@babel/polyfill");
-// import { gsap } from "gsap";
+import { gsap } from "gsap";
+import { historyGlobalSVGs } from "./history";
 
 document.addEventListener("DOMContentLoaded", start);
 
@@ -40,5 +41,6 @@ function popupSVG(svg) {
 }
 
 function historyBgSVG(svg) {
-  document.querySelector("#page1 > .bg-container").innerHTML = svg;
+  document.querySelector("#page1 > #history-bg").innerHTML = svg;
+  historyGlobalSVGs();
 }
