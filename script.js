@@ -55,5 +55,5 @@ function monsterSVG(svg){
 }
 
 function firstlampSVG(svg){
-  document.querySelector("#firstlamp-hide").innerHTML = svg;
+  document.querySelector("#firstlight-hide").innerHTML = svg;
 }
