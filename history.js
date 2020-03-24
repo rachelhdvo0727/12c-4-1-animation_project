@@ -33,8 +33,9 @@ export function historyGlobalSVGs() {
 
   function edison() {
     let figure = document.createElementNS("http://www.w3.org/2000/svg", "use");
+    figure.setAttributeNS('http://www.w3.org/1999/xlink','xlink:href','svg/edison-ny.svg#edison');
 
-    figure.setAttribute("href", "#edison");
+    // figure.setAttribute("xlink:href", "#edison");
 
     figure.setAttribute("x", "1800px");
     figure.setAttribute("y", "1000px");
@@ -42,5 +43,6 @@ export function historyGlobalSVGs() {
     figure.setAttribute("width", "230px");
 
     document.querySelector("#history-svg-bg").appendChild(figure);
+    console.log(figure);
   }
 }

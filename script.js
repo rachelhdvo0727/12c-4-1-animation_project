@@ -35,7 +35,6 @@ async function getSvg(filename, callback) {
 }
 
 function lightBulbSVG(svg) {
-  console.log(svg);
   document.querySelector("#lightbulb").innerHTML = svg;
 }
 
