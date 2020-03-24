@@ -4,6 +4,7 @@ export function historyGlobalSVGs() {
   popUpLight();
   edisonSvg();
   demonSvg();
+  firstlampSvg();
 
   function popUpWindow() {
     let popup = document.createElementNS("http://www.w3.org/2000/svg", "use");
@@ -56,11 +57,27 @@ export function historyGlobalSVGs() {
       "svg/uhyre-ny.svg#demon"
     );
 
-    demon.setAttributeNS(null, "x", "150px");
-    demon.setAttributeNS(null, "y", "1400px");
+    demon.setAttributeNS(null, "x", "1500px");
+    demon.setAttributeNS(null, "y", "800px");
     demon.setAttributeNS(null, "height", "500px");
     demon.setAttributeNS(null, "width", "500px");
 
     document.querySelector("#history-svg-bg").appendChild(demon);
+  }
+
+  function firstlampSvg() {
+    let lamp = document.createElementNS("http://www.w3.org/2000/svg", "use");
+    lamp.setAttributeNS(
+      "http://www.w3.org/1999/xlink",
+      "xlink:href",
+      "svg/paere-ny.svg#firstlamp"
+    );
+
+    lamp.setAttributeNS(null, "x", "1500px");
+    lamp.setAttributeNS(null, "y", "800px");
+    lamp.setAttributeNS(null, "height", "500px");
+    lamp.setAttributeNS(null, "width", "500px");
+
+    document.querySelector("#history-svg-bg").appendChild(lamp);
   }
 }

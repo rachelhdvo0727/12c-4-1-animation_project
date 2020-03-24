@@ -51,5 +51,9 @@ function edisonSVG(svg) {
   document.querySelector("#edison-hide").innerHTML = svg;
 }
 function monsterSVG(svg){
-  document.querySelector("#demon").innerHTML = svg;
+  document.querySelector("#demon-hide").innerHTML = svg;
+}
+
+function firstlampSVG(svg){
+  document.querySelector("#firstlamp-hide").innerHTML = svg;
 }
