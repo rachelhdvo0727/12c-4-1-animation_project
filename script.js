@@ -1,6 +1,6 @@
 require("@babel/polyfill");
-// import { gsap } from "gsap";
-
+import { gsap } from "gsap";
+import { frontpage } from "./frontpage";
 document.addEventListener("DOMContentLoaded", start);
 
 let globalJson;
@@ -15,7 +15,7 @@ async function getJson() {
   globalJson = await jsonData.json();
   getSvg("svg/lightbulb.svg", lightBulbSVG);
   getSvg("svg/popup.svg", popupSVG);
-  // getSvg(svg0, placeSvg0);
+  frontpage();
   // historie  getSvg(svg1, placeSvg1);
   // døgnrytme getSvg(svg2, placeSvg2);
   // husholdning getSvg(svg3, placeSvg3);

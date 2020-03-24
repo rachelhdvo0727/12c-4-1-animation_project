@@ -1,0 +1,81 @@
+@use 'partials/vars';
+html,
+body {
+  margin: 0;
+  padding: 0;
+  position: relative;
+}
+#popup,
+#lightbulb,
+#globalSVG {
+  display: none;
+}
+
+#frontpage {
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: vars.$bg-color;
+}
+#mainlightBulb {
+  height: 25vw;
+  margin: 0 auto;
+}
+
+// #arrows {
+//   height: 100vh;
+//   width: 100vw;
+//   position: relative;
+//   top: 0;
+//   left: 0;
+// }
+
+.arrow {
+  // display: grid;
+  width: 6vw;
+  height: 3.62vw;
+  background-size: contain;
+  margin: 0;
+  padding: 0;
+}
+
+#arrowsContainer {
+  height: 100vh;
+  width: 100vw;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+#arrow1 {
+  margin: 0 auto;
+  transform: translateY(1vh);
+}
+
+#arrow2 {
+  transform: translateX(94vw) translateY(40vh) rotate(90deg);
+}
+
+#arrow3 {
+  transform: translateY(70vh) rotate(180deg);
+  margin: 0 auto;
+}
+#arrow4 {
+  transform: rotate(-90deg);
+}
+
+// #arrow2 {
+//   position: absolute;
+//   // transform: translateX(100%) translateY(50vw) scale(0.3) rotate(90deg);
+//   // transform-origin: top left;
+//   top: 50%;
+// }
+
+// #arrow3 {
+//   transform: translateX(50%) translateY(100%) scale(0.3) rotate(180deg);
+// }
+
+// #arrowWrapper {
+//   display: flex;
+// }

@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 755 456">
+  <defs>
+    <style>
+      .arrowline {
+        fill: none;
+        stroke: #333a4d;
+        stroke-miterlimit: 10;
+        stroke-width: 100px;
+      }
+    </style>
+  </defs>
+  <title>arrow</title>
+  <g id="arrow" data-name="Layer 2">
+    <line class="arrowline" x1="37" y1="416" x2="412" y2="40"/>
+    <line class="arrowline" x1="719" y1="419" x2="344" y2="43"/>
+  </g>
+</svg>
