@@ -39,10 +39,9 @@ export function historyGlobalSVGs() {
 
     figure.setAttribute("x", "1800px");
     figure.setAttribute("y", "1000px");
-    figure.setAttribute("height", "230px");
-    figure.setAttribute("width", "230px");
+    figure.setAttribute("height", "500px");
+    figure.setAttribute("width", "7");
 
     document.querySelector("#history-svg-bg").appendChild(figure);
-    console.log(figure);
   }
 }
