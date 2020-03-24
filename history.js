@@ -2,7 +2,7 @@
 export function historyGlobalSVGs() {
   popUpWindow();
   popUpLight();
-  demonSVG();
+  edison();
 
   function popUpWindow() {
     let popup = document.createElementNS("http://www.w3.org/2000/svg", "use");
@@ -15,6 +15,7 @@ export function historyGlobalSVGs() {
 
     document.querySelector("#history-svg-bg").appendChild(popup);
   }
+
   function popUpLight() {
     let lightbulb = document.createElementNS(
       "http://www.w3.org/2000/svg",
@@ -29,15 +30,17 @@ export function historyGlobalSVGs() {
 
     document.querySelector("#history-svg-bg").appendChild(lightbulb);
   }
-  function demonSVG() {
-    let demon = document.createElementNS("http://www.w3.org/2000/svg", "use");
-    demon.setAttribute("href", "#demon-svg");
 
-    demon.setAttribute("x", "1800px");
-    demon.setAttribute("y", "700px");
-    demon.setAttribute("height", "130px");
-    demon.setAttribute("width", "130px");
+  function edison() {
+    let figure = document.createElementNS("http://www.w3.org/2000/svg", "use");
 
-    document.querySelector("#history-svg-bg").appendChild(demon);
+    figure.setAttribute("href", "#edison");
+
+    figure.setAttribute("x", "1800px");
+    figure.setAttribute("y", "1000px");
+    figure.setAttribute("height", "230px");
+    figure.setAttribute("width", "230px");
+
+    document.querySelector("#history-svg-bg").appendChild(figure);
   }
 }
