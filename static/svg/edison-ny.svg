@@ -15,6 +15,7 @@
 .edison-cls-12{clip-path:url(#clip-path);}
 .edison-cls-13{fill:#ed6b20;}
 .edison-cls-14{clip-path:url(#clip-path-2);}
+#linjer{visibility: visible;}
 </style>
 
 <clipPath id="clip-path">

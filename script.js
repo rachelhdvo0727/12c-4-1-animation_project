@@ -22,6 +22,7 @@ async function getJson() {
   // historie
   getSvg("svg/history-bg.svg", historyBgSVG);
   getSvg("svg/edison-ny.svg", edisonSVG);
+  getSvg("svg/uhyre-ny.svg", monsterSVG);
 
   // døgnrytme getSvg(svg2, placeSvg2);
   // husholdning getSvg(svg3, placeSvg3);
@@ -48,4 +49,7 @@ function historyBgSVG(svg) {
 }
 function edisonSVG(svg) {
   document.querySelector("#edison-hide").innerHTML = svg;
+}
+function monsterSVG(svg){
+  document.querySelector("#demon").innerHTML = svg;
 }
