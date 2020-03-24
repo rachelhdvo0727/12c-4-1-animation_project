@@ -39,10 +39,10 @@ export function historyGlobalSVGs() {
       "svg/edison-ny.svg#edison"
     );
 
-    figure.setAttribute("x", "1800px");
-    figure.setAttribute("y", "1000px");
-    figure.setAttribute("height", "500px");
-    figure.setAttribute("width", "700px");
+    figure.setAttributeNS(null, "x", "150px");
+    figure.setAttributeNS(null, "y", "1400px");
+    figure.setAttributeNS(null, "height", "500px");
+    figure.setAttributeNS(null, "width", "500px");
 
     document.querySelector("#history-svg-bg").appendChild(figure);
   }
