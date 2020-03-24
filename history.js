@@ -1,21 +1,28 @@
 "use strict";
 export function historyGlobalSVGs() {
-  popUpWindow();
-  popUpLight();
+  //popUpWindow();
+  createlightbulbs();
   edisonSvg();
   demonSvg();
   firstlampSvg();
 
-  function popUpWindow() {
-    let popup = document.createElementNS("http://www.w3.org/2000/svg", "use");
-    popup.setAttribute("href", "#globalPopUp");
+  // function popUpWindow() {
+  //   let popup = document.createElementNS("http://www.w3.org/2000/svg", "use");
+  //   popup.setAttribute("href", "#globalPopUp");
 
-    popup.setAttribute("x", "1845px");
-    popup.setAttribute("y", "100px");
-    popup.setAttribute("height", "500px");
-    popup.setAttribute("width", "700px");
+  //   popup.setAttribute("x", "1845px");
+  //   popup.setAttribute("y", "100px");
+  //   popup.setAttribute("height", "500px");
+  //   popup.setAttribute("width", "700px");
 
-    document.querySelector("#history-svg-bg").appendChild(popup);
+  //   document.querySelector("#history-svg-bg").appendChild(popup);
+
+  // }
+  function createlightbulbs() {
+    for (let i = 0; i < 4; i++) {
+      popUpLight();
+    }
+    positioning();
   }
 
   function popUpLight() {
@@ -25,12 +32,44 @@ export function historyGlobalSVGs() {
     );
     lightbulb.setAttribute("href", "#globalLightBulb");
 
-    lightbulb.setAttribute("x", "1800px");
-    lightbulb.setAttribute("y", "400px");
     lightbulb.setAttribute("height", "130px");
     lightbulb.setAttribute("width", "130px");
 
     document.querySelector("#history-svg-bg").appendChild(lightbulb);
+  }
+
+  function positioning() {
+    //ilds pære
+    document
+      .querySelector("#history-svg-bg > use:nth-child(4)")
+      .setAttribute("x", "1800px");
+    document
+      .querySelector("#history-svg-bg > use:nth-child(4)")
+      .setAttribute("y", "400px");
+
+    //edisons pære
+    document
+      .querySelector("#history-svg-bg > use:nth-child(5)")
+      .setAttribute("x", "480px");
+    document
+      .querySelector("#history-svg-bg > use:nth-child(5)")
+      .setAttribute("y", "1400px");
+
+    //uhyres pære
+    document
+      .querySelector("#history-svg-bg > use:nth-child(6)")
+      .setAttribute("x", "850px");
+    document
+      .querySelector("#history-svg-bg > use:nth-child(6)")
+      .setAttribute("y", "700px");
+      
+    //firstlamps pære
+    document
+      .querySelector("#history-svg-bg > use:nth-child(7)")
+      .setAttribute("x", "2050px");
+    document
+      .querySelector("#history-svg-bg > use:nth-child(7)")
+      .setAttribute("y", "1000px");
   }
 
   function edisonSvg() {
