@@ -1,7 +1,7 @@
 <svg id="globalLightBulb" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 790 1290">
   <defs>
     <style>
-      .lightbulb-cls-1, .cls-5 {
+      .lightbulb-cls-1, .lightbulb-cls-5 {
         fill: #494a4c;
       }
 
