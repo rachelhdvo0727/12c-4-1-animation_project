@@ -23,6 +23,7 @@ export function historyGlobalSVGs() {
       popUpLight();
     }
     positioning();
+    clickLightBulb();
   }
 
   function popUpLight() {
@@ -62,7 +63,7 @@ export function historyGlobalSVGs() {
     document
       .querySelector("#history-svg-bg > use:nth-child(6)")
       .setAttribute("y", "700px");
-      
+
     //firstlamps pære
     document
       .querySelector("#history-svg-bg > use:nth-child(7)")
@@ -118,5 +119,18 @@ export function historyGlobalSVGs() {
     lamp.setAttributeNS(null, "width", "500px");
 
     document.querySelector("#history-svg-bg").appendChild(lamp);
+  }
+
+  function clickLightBulb() {
+    console.log("clickLightBulb");
+
+    document.querySelectorAll(
+      "#history-svg-bg > use:nth-child(4) > .lightbulb-cls2, #history-svg-bg > use:nth-child(5) > .lightbulb-cls2, #history-svg-bg > use:nth-child(6) > .lightbulb-cls2, #history-svg-bg > use:nth-child(7) > .lightbulb-cls2"
+    ).lightbulb -
+      cls2.forEach(light => {
+        light.addEventListener("click", function() {
+          light.style.fill = "yellow";
+        });
+      });
   }
 }
