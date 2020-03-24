@@ -47,5 +47,5 @@ function historyBgSVG(svg) {
   historyGlobalSVGs();
 }
 function edisonSVG(svg) {
-  document.querySelector("#edison").innerHTML = svg;
+  document.querySelector("#edison-hide").innerHTML = svg;
 }

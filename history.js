@@ -39,13 +39,11 @@ export function historyGlobalSVGs() {
       "svg/edison-ny.svg#edison"
     );
 
-    // figure.setAttribute("xlink:href", "#edison");
-
     figure.setAttribute("x", "1800px");
     figure.setAttribute("y", "1000px");
     figure.setAttribute("height", "500px");
     figure.setAttribute("width", "700px");
-    console.log("hello onedrive");
+
     document.querySelector("#history-svg-bg").appendChild(figure);
   }
 }
