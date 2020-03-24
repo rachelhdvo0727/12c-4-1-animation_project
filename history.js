@@ -57,8 +57,8 @@ export function historyGlobalSVGs() {
       "svg/uhyre-ny.svg#demon"
     );
 
-    demon.setAttributeNS(null, "x", "1500px");
-    demon.setAttributeNS(null, "y", "800px");
+    demon.setAttributeNS(null, "x", "500px");
+    demon.setAttributeNS(null, "y", "600px");
     demon.setAttributeNS(null, "height", "500px");
     demon.setAttributeNS(null, "width", "500px");
 
@@ -73,8 +73,8 @@ export function historyGlobalSVGs() {
       "svg/paere-ny.svg#firstlamp"
     );
 
-    lamp.setAttributeNS(null, "x", "1500px");
-    lamp.setAttributeNS(null, "y", "800px");
+    lamp.setAttributeNS(null, "x", "1700px");
+    lamp.setAttributeNS(null, "y", "1000px");
     lamp.setAttributeNS(null, "height", "500px");
     lamp.setAttributeNS(null, "width", "500px");
 
