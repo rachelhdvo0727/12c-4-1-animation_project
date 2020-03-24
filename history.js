@@ -20,6 +20,7 @@ export function historyGlobalSVGs() {
   // }
   function createlightbulbs() {
     for (let i = 0; i < 4; i++) {
+      console.log("createlightbulbs");
       popUpLight();
     }
     positioning();
@@ -123,13 +124,15 @@ export function historyGlobalSVGs() {
 
   function clickLightBulb() {
     console.log("clickLightBulb");
-
-    document.querySelectorAll(
-      "#history-svg-bg > use:nth-child(4) > .lightbulb-cls2, #history-svg-bg > use:nth-child(5) > .lightbulb-cls2, #history-svg-bg > use:nth-child(6) > .lightbulb-cls2, #history-svg-bg > use:nth-child(7) > .lightbulb-cls2"
-    ).lightbulb -
-      cls2.forEach(light => {
+    document
+      .querySelectorAll(
+        "use:nth-child(4), use:nth-child(5), use:nth-child(6), use:nth-child(7)"
+      )
+      .forEach(light => {
+        console.log("events");
         light.addEventListener("click", function() {
-          light.style.fill = "yellow";
+          console.log("clicked");
+          light.setAttribute("class", "clone");
         });
       });
   }
