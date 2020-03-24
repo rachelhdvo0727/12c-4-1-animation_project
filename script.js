@@ -14,12 +14,14 @@ function start() {
 async function getJson() {
   let jsonData = await fetch("data.json");
   globalJson = await jsonData.json();
+
   getSvg("svg/lightbulb.svg", lightBulbSVG);
   getSvg("svg/popup.svg", popupSVG);
   // getSvg(svg0, placeSvg0);
 
   // historie
   getSvg("svg/history-bg.svg", historyBgSVG);
+  getSvg("svg/edison-ny.svg", edisonSVG);
 
   // døgnrytme getSvg(svg2, placeSvg2);
   // husholdning getSvg(svg3, placeSvg3);
@@ -33,6 +35,7 @@ async function getSvg(filename, callback) {
 }
 
 function lightBulbSVG(svg) {
+  console.log(svg);
   document.querySelector("#lightbulb").innerHTML = svg;
 }
 
@@ -43,4 +46,7 @@ function popupSVG(svg) {
 function historyBgSVG(svg) {
   document.querySelector("#page1 > #history-bg").innerHTML = svg;
   historyGlobalSVGs();
+}
+function edisonSVG(svg) {
+  document.querySelector("#edison").innerHTML = svg;
 }
