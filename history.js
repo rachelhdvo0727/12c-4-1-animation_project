@@ -40,7 +40,7 @@ export function historyGlobalSVGs() {
     figure.setAttribute("x", "1800px");
     figure.setAttribute("y", "1000px");
     figure.setAttribute("height", "500px");
-    figure.setAttribute("width", "7");
+    figure.setAttribute("width", "700px");
 
     document.querySelector("#history-svg-bg").appendChild(figure);
   }
