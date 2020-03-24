@@ -1,0 +1,60 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  overscroll-behavior: none;
+}
+
+#page3 {
+  position: relative;
+}
+
+#page3_background {
+  width: 100vw;
+  height: 100vh;
+  border: black;
+}
+
+#page3_lightbulb1,
+#page3_lightbulb2,
+#page3_lightbulb3 {
+  width: 100px;
+  height: 150px;
+  position: absolute;
+  top: 10vh;
+  cursor: pointer;
+}
+
+#page3_lightbulb2 {
+  left: 30vw;
+}
+
+#page3_lightbulb2 .cls-2 {
+  fill: rosybrown;
+}
+
+#page3_lightbulb3 {
+  left: 60vw;
+}
+
+#page3_popup1,
+#page3_popup2,
+#page3_popup3 {
+  width: 400px;
+  position: absolute;
+  top: 30vh;
+}
+
+#page3_popup2 {
+  left: 30vw;
+}
+#page3_popup3 {
+  left: 60vw;
+}
+
+.hide {
+  display: none;
+}
