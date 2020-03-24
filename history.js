@@ -33,7 +33,11 @@ export function historyGlobalSVGs() {
 
   function edison() {
     let figure = document.createElementNS("http://www.w3.org/2000/svg", "use");
-    figure.setAttributeNS('http://www.w3.org/1999/xlink','xlink:href','svg/edison-ny.svg#edison');
+    figure.setAttributeNS(
+      "http://www.w3.org/1999/xlink",
+      "xlink:href",
+      "svg/edison-ny.svg#edison"
+    );
 
     // figure.setAttribute("xlink:href", "#edison");
 
@@ -41,7 +45,7 @@ export function historyGlobalSVGs() {
     figure.setAttribute("y", "1000px");
     figure.setAttribute("height", "500px");
     figure.setAttribute("width", "700px");
-
+    console.log("hello onedrive");
     document.querySelector("#history-svg-bg").appendChild(figure);
   }
 }
