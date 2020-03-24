@@ -1,4 +1,6 @@
 "use strict";
+//TODO: show modal
+//TODO: get text for modal
 export function historyGlobalSVGs() {
   //popUpWindow();
   createlightbulbs();
