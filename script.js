@@ -1,6 +1,6 @@
 require("@babel/polyfill");
 // import { gsap } from "gsap";
-import { placeSvg3 } from "./household";
+import { page3 } from "./household";
 
 document.addEventListener("DOMContentLoaded", start);
 
@@ -19,14 +19,14 @@ async function getJson() {
   // getSvg(svg0, placeSvg0);
   // historie  getSvg(svg1, placeSvg1);
   // døgnrytme getSvg(svg2, placeSvg2);
-  getSvg("svg/household.svg", placeSvg3);
+  getSvg("svg/household.svg", page3, globalJson);
   // arkitektur getSvg(svg4, placeSvg4);
 }
 
-async function getSvg(filename, callback) {
+async function getSvg(filename, callback, jsonData) {
   let response = await fetch(filename);
   let mySvgData = await response.text();
-  callback(mySvgData);
+  callback(mySvgData, jsonData);
 }
 
 function lightBulbSVG(svg) {
