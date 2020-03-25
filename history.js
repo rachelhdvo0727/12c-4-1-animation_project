@@ -4,33 +4,20 @@
 import { sendData } from "./script";
 
 export function historyGlobalSVGs() {
-  popUpWindow();
-  createlightbulbs();
+  createModalsandLights();
   edisonSvg();
   demonSvg();
   firstlampSvg();
-  showModalsText();
 
-  function popUpWindow() {
-    let popup = document.createElementNS("http://www.w3.org/2000/svg", "use");
-    popup.setAttribute("href", "#globalPopUp");
-
-    popup.setAttribute("x", "1845px");
-    popup.setAttribute("y", "100px");
-    popup.setAttribute("height", "500px");
-    popup.setAttribute("width", "700px");
-
-    document.querySelector("#history-svg-bg").appendChild(popup);
-  }
-  function createlightbulbs() {
+  function createModalsandLights() {
     for (let i = 0; i < 4; i++) {
-      console.log("createlightbulbs");
+      console.log("create Modals and Lights");
+      popUpWindow();
       popUpLight();
     }
-    positioning();
+    placeModalsandLights();
     clickLightBulb();
   }
-
   function popUpLight() {
     let lightbulb = document.createElementNS(
       "http://www.w3.org/2000/svg",
@@ -44,38 +31,138 @@ export function historyGlobalSVGs() {
     document.querySelector("#history-svg-bg").appendChild(lightbulb);
   }
 
-  function positioning() {
-    //ilds pære
+  function popUpWindow() {
+    let popup = document.createElementNS("http://www.w3.org/2000/svg", "use");
+    popup.setAttribute("href", "#globalPopUp");
+
+    popup.setAttribute("height", "500px");
+    popup.setAttribute("width", "700px");
+    //popup.classList.add("hide");
+
+    document.querySelector("#history-svg-bg").appendChild(popup);
+  }
+
+  function placeModalsandLights() {
+    console.log("placing modals and lights");
+    //all lights
+    //fire
+    document
+      .querySelector("#history-svg-bg>use:nth-child(5)")
+      .setAttribute("x", "1910px");
     document
       .querySelector("#history-svg-bg > use:nth-child(5)")
-      .setAttribute("x", "1800px");
-    document
-      .querySelector("#history-svg-bg > use:nth-child(5)")
-      .setAttribute("y", "400px");
-
-    //edisons pære
-    document
-      .querySelector("#history-svg-bg > use:nth-child(6)")
-      .setAttribute("x", "480px");
-    document
-      .querySelector("#history-svg-bg > use:nth-child(6)")
-      .setAttribute("y", "1400px");
-
-    //uhyres pære
+      .setAttribute("y", "450px");
+    //edison
     document
       .querySelector("#history-svg-bg > use:nth-child(7)")
-      .setAttribute("x", "850px");
+      .setAttribute("x", "568px");
     document
       .querySelector("#history-svg-bg > use:nth-child(7)")
+      .setAttribute("y", "1650px");
+
+    //monster
+    document
+      .querySelector("#history-svg-bg > use:nth-child(9)")
+      .setAttribute("x", "910px");
+    document
+      .querySelector("#history-svg-bg > use:nth-child(9)")
+      .setAttribute("y", "1045px");
+
+    //the first lamp
+    document
+      .querySelector("#history-svg-bg > use:nth-child(11)")
+      .setAttribute("x", "2120px");
+    document
+      .querySelector("#history-svg-bg > use:nth-child(11)")
+      .setAttribute("y", "1350px");
+
+    //all modals
+    document
+      .querySelector("#history-svg-bg > use:nth-child(4)")
+      .setAttribute("x", "1945px");
+    document
+      .querySelector("#history-svg-bg > use:nth-child(4)")
+      .setAttribute("y", "100px");
+    document
+      .querySelector("#history-svg-bg > use:nth-child(6)")
+      .setAttribute("x", "600px");
+    document
+      .querySelector("#history-svg-bg > use:nth-child(6)")
+      .setAttribute("y", "1300px");
+    document
+      .querySelector("#history-svg-bg > use:nth-child(8)")
+      .setAttribute("x", "950px");
+    document
+      .querySelector("#history-svg-bg > use:nth-child(8)")
       .setAttribute("y", "700px");
 
-    //firstlamps pære
+    //the first lamp
     document
-      .querySelector("#history-svg-bg > use:nth-child(8)")
-      .setAttribute("x", "2050px");
+      .querySelector("#history-svg-bg > use:nth-child(10)")
+      .setAttribute("x", "2150px");
     document
-      .querySelector("#history-svg-bg > use:nth-child(8)")
+      .querySelector("#history-svg-bg > use:nth-child(10)")
       .setAttribute("y", "1000px");
+  }
+
+  function clickLightBulb() {
+    console.log("clickLightBulb");
+    document
+      .querySelectorAll(
+        "use:nth-child(5), use:nth-child(7), use:nth-child(9), use:nth-child(11)"
+      )
+      .forEach(light => {
+        console.log("events");
+        light.addEventListener("click", function() {
+          showModals();
+          console.log("clicked");
+          light.classList.toggle("clone");
+        });
+      });
+  }
+
+  function showModals() {
+    document
+      .querySelectorAll(
+        "use:nth-child(5), use:nth-child(7), use:nth-child(9), use:nth-child(11)"
+      )
+      .forEach(elm => {
+        console.log("toggle");
+        elm.classList.toggle("hide");
+      });
+  }
+  function showModalsText() {
+    console.log("showModalsText");
+
+    //save data fra script.js
+    let data = sendData();
+    console.log(data);
+
+    //create a <text> in svg
+    let textSvg = document.createElementNS(
+      "http://www.w3.org/2000/svg",
+      "text"
+    );
+
+    textSvg.setAttribute("transform", "translate(88.6 111.65)");
+    textSvg.setAttribute("text-anchor", "start");
+    textSvg.classList.add("theText");
+
+    document.querySelector("#globalPopUp > #Layer_2").appendChild(textSvg);
+
+    //append text in svg
+    data.forEach(text => {
+      textSvg.innerHTML = `${text.popup1}`;
+    });
+    d3plus
+      .textwrap()
+      .container(d3.select(".theText"))
+      .draw();
+    d3plus
+      .textwrap()
+      .container(d3.select(".theText"))
+      .resize(true)
+      .draw();
   }
 
   function edisonSvg() {
@@ -124,51 +211,5 @@ export function historyGlobalSVGs() {
     lamp.setAttributeNS(null, "width", "500px");
 
     document.querySelector("#history-svg-bg").appendChild(lamp);
-  }
-
-  function clickLightBulb() {
-    console.log("clickLightBulb");
-    document
-      .querySelectorAll(
-        "use:nth-child(5), use:nth-child(6), use:nth-child(7), use:nth-child(8)"
-      )
-      .forEach(light => {
-        console.log("events");
-        light.addEventListener("click", function() {
-          console.log("clicked");
-          light.classList.toggle("clone");
-        });
-      });
-  }
-
-  function showModalsText() {
-    console.log("showModalsText");
-    //save data fra script.js
-    let data = sendData();
-    console.log(data);
-
-    //create a <text> in svg
-    let textSvg = document.createElementNS(
-      "http://www.w3.org/2000/svg",
-      "text"
-    );
-    textSvg.setAttribute("transform", "translate(88.6 111.65)");
-    textSvg.classList.add("theText");
-
-    document.querySelector("#globalPopUp > #Layer_2").appendChild(textSvg);
-
-    //append text in svg
-    data.forEach(text => {
-      textSvg.innerHTML = `${text.popup1}`;
-    });
-    d3plus
-      .textwrap()
-      .container(d3.select(".theText"))
-      .draw();
-    d3plus
-      .textwrap()
-      .container(d3.select(".theText"))
-      .resize(true)
-      .draw();
   }
 }
