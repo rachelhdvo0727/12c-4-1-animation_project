@@ -22,15 +22,16 @@ export function page3(svg, jsonData) {
   // ANIMATIONER
 
   // vaskemaskinen
+
   let trumle = gsap.to("#trumle", { rotation: 360, duration: 2, repeat: -1, transformOrigin: "50% 50%", ease: "linear" });
   let vaske = gsap.to("#vaskemaskine", { y: 2, x: 2, duration: 0.3, repeat: -1 });
   trumle.pause();
   vaske.pause();
 
   // stovsuger
-  let stovsugerAnimation = gsap.timeline({ repeat: 0, duration: 4 });
-  stovsugerAnimation.to("#stovsuger", { x: 100, duration: 2 });
-  stovsugerAnimation.to("#stovsuger", { x: 0, duration: 2 });
+  let stovsugerAnimation = gsap.timeline({ repeat: -1, duration: 2 });
+  stovsugerAnimation.to("#stovsuger", { duration: 1, x: 100 });
+  stovsugerAnimation.to("#stovsuger", { duration: 1, x: 0 });
   stovsugerAnimation.pause();
 
   //koleskab
