@@ -18,7 +18,6 @@ export function historyGlobalSVGs() {
   //   popup.setAttribute("width", "700px");
 
   //   document.querySelector("#history-svg-bg").appendChild(popup);
-
   // }
   function createlightbulbs() {
     for (let i = 0; i < 4; i++) {
@@ -126,6 +125,7 @@ export function historyGlobalSVGs() {
 
   function clickLightBulb() {
     console.log("clickLightBulb");
+
     document
       .querySelectorAll(
         "use:nth-child(4), use:nth-child(5), use:nth-child(6), use:nth-child(7)"
@@ -134,7 +134,7 @@ export function historyGlobalSVGs() {
         console.log("events");
         light.addEventListener("click", function() {
           console.log("clicked");
-          light.setAttribute("class", "clone");
+          light.classList.toggle("clone");
         });
       });
   }
