@@ -125,7 +125,6 @@ export function historyGlobalSVGs() {
 
   function clickLightBulb() {
     console.log("clickLightBulb");
-
     document
       .querySelectorAll(
         "use:nth-child(4), use:nth-child(5), use:nth-child(6), use:nth-child(7)"
