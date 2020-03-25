@@ -1,12 +1,15 @@
 "use strict";
 //TODO: show modal
 //TODO: get text for modal
+import { sendData } from "./script";
+
 export function historyGlobalSVGs() {
   popUpWindow();
   createlightbulbs();
   edisonSvg();
   demonSvg();
   firstlampSvg();
+  showModalsText();
 
   function popUpWindow() {
     let popup = document.createElementNS("http://www.w3.org/2000/svg", "use");
@@ -136,5 +139,29 @@ export function historyGlobalSVGs() {
           light.classList.toggle("clone");
         });
       });
+  }
+
+  function showModalsText() {
+    console.log("showModalsText");
+    //save data fra script.js
+    let data = sendData();
+    console.log(data);
+
+    //create a <text> in svg
+    let textSvg = document.createElementNS(
+      "http://www.w3.org/2000/svg",
+      "tspan"
+    );
+    // textSvg.setAttribute("transform", "translate(88.6 111.65)");
+    //textSvg.classList.add("theText");
+
+    document
+      .querySelector("#globalPopUp > #Layer_2 > #theText")
+      .appendChild(textSvg);
+
+    //append text in svg
+    data.forEach(text => {
+      textSvg.innerHTML = `${text.popup1}`;
+    });
   }
 }

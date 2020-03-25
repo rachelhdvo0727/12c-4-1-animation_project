@@ -24,12 +24,15 @@ async function getJson() {
   getSvg("svg/edison-ny.svg", edisonSVG);
   getSvg("svg/uhyre-ny.svg", monsterSVG);
   getSvg("svg/paere-ny.svg", firstlampSVG);
+  sendData();
 
   // døgnrytme getSvg(svg2, placeSvg2);
   // husholdning getSvg(svg3, placeSvg3);
   // arkitektur getSvg(svg4, placeSvg4);
 }
-
+export function sendData() {
+  return globalJson;
+}
 async function getSvg(filename, callback) {
   let response = await fetch(filename);
   let mySvgData = await response.text();
@@ -48,6 +51,7 @@ function historyBgSVG(svg) {
   document.querySelector("#page1 > #history-bg").innerHTML = svg;
   historyGlobalSVGs();
 }
+
 function edisonSVG(svg) {
   document.querySelector("#edison-hide").innerHTML = svg;
 }
