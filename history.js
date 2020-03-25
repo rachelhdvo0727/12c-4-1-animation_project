@@ -1,7 +1,6 @@
 "use strict";
-//TODO: show modal
-//TODO: get text for modal
 import { sendData } from "./script";
+import { gsap } from "gsap";
 
 export function historyGlobalSVGs() {
   //save data fra script.js
@@ -125,7 +124,6 @@ export function historyGlobalSVGs() {
 
   function clickLightBulb() {
     console.log("clickLightBulb");
-
     createTexttags();
     document
       .querySelectorAll(
@@ -140,7 +138,6 @@ export function historyGlobalSVGs() {
             selected[0].firesPopup.classList.toggle("hide");
             document.querySelector("#globalPopUp > g > text").innerHTML =
               data[1].popup1;
-            wrapSVGsText();
           } else if (light === selected[1].edisonsLightbulb) {
             selected[1].edisonsPopup.classList.toggle("hide");
             document.querySelector("#globalPopUp > g > text").innerHTML =
@@ -171,6 +168,7 @@ export function historyGlobalSVGs() {
       .resize(true)
       .draw();
   }
+
   function edisonSvg() {
     let figure = document.createElementNS("http://www.w3.org/2000/svg", "use");
     figure.setAttributeNS(
@@ -218,4 +216,22 @@ export function historyGlobalSVGs() {
 
     document.querySelector("#history-svg-bg").appendChild(lamp);
   }
+}
+export function animations() {
+  const lamp = document.querySelector("#history-svg-bg > use:nth-child(14)");
+
+  gsap.to(lamp, {
+    filter: "drop-shadow(15px 15px 50px #f2d94a)",
+    duration: 2,
+    repeat: -1,
+    yoyo: true
+  });
+
+  // const edisonsLight = document.querySelector(".edison-cls-7:nth-child(77)");
+
+  // gsap.to(edisonsLight, {
+  //   opacity: 0,
+  //   duration: 0.5,
+  //   repeat: -1
+  // });
 }
