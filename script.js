@@ -1,5 +1,5 @@
 require("@babel/polyfill");
-// import { gsap } from "gsap";
+import { gsap } from "gsap";
 import { page3 } from "./household";
 
 document.addEventListener("DOMContentLoaded", start);
