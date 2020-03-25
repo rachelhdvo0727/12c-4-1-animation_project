@@ -2,23 +2,23 @@
 //TODO: show modal
 //TODO: get text for modal
 export function historyGlobalSVGs() {
-  //popUpWindow();
+  popUpWindow();
   createlightbulbs();
   edisonSvg();
   demonSvg();
   firstlampSvg();
 
-  // function popUpWindow() {
-  //   let popup = document.createElementNS("http://www.w3.org/2000/svg", "use");
-  //   popup.setAttribute("href", "#globalPopUp");
+  function popUpWindow() {
+    let popup = document.createElementNS("http://www.w3.org/2000/svg", "use");
+    popup.setAttribute("href", "#globalPopUp");
 
-  //   popup.setAttribute("x", "1845px");
-  //   popup.setAttribute("y", "100px");
-  //   popup.setAttribute("height", "500px");
-  //   popup.setAttribute("width", "700px");
+    popup.setAttribute("x", "1845px");
+    popup.setAttribute("y", "100px");
+    popup.setAttribute("height", "500px");
+    popup.setAttribute("width", "700px");
 
-  //   document.querySelector("#history-svg-bg").appendChild(popup);
-  // }
+    document.querySelector("#history-svg-bg").appendChild(popup);
+  }
   function createlightbulbs() {
     for (let i = 0; i < 4; i++) {
       console.log("createlightbulbs");
@@ -44,34 +44,34 @@ export function historyGlobalSVGs() {
   function positioning() {
     //ilds pære
     document
-      .querySelector("#history-svg-bg > use:nth-child(4)")
+      .querySelector("#history-svg-bg > use:nth-child(5)")
       .setAttribute("x", "1800px");
     document
-      .querySelector("#history-svg-bg > use:nth-child(4)")
+      .querySelector("#history-svg-bg > use:nth-child(5)")
       .setAttribute("y", "400px");
 
     //edisons pære
     document
-      .querySelector("#history-svg-bg > use:nth-child(5)")
+      .querySelector("#history-svg-bg > use:nth-child(6)")
       .setAttribute("x", "480px");
     document
-      .querySelector("#history-svg-bg > use:nth-child(5)")
+      .querySelector("#history-svg-bg > use:nth-child(6)")
       .setAttribute("y", "1400px");
 
     //uhyres pære
     document
-      .querySelector("#history-svg-bg > use:nth-child(6)")
+      .querySelector("#history-svg-bg > use:nth-child(7)")
       .setAttribute("x", "850px");
     document
-      .querySelector("#history-svg-bg > use:nth-child(6)")
+      .querySelector("#history-svg-bg > use:nth-child(7)")
       .setAttribute("y", "700px");
 
     //firstlamps pære
     document
-      .querySelector("#history-svg-bg > use:nth-child(7)")
+      .querySelector("#history-svg-bg > use:nth-child(8)")
       .setAttribute("x", "2050px");
     document
-      .querySelector("#history-svg-bg > use:nth-child(7)")
+      .querySelector("#history-svg-bg > use:nth-child(8)")
       .setAttribute("y", "1000px");
   }
 
@@ -127,7 +127,7 @@ export function historyGlobalSVGs() {
     console.log("clickLightBulb");
     document
       .querySelectorAll(
-        "use:nth-child(4), use:nth-child(5), use:nth-child(6), use:nth-child(7)"
+        "use:nth-child(5), use:nth-child(6), use:nth-child(7), use:nth-child(8)"
       )
       .forEach(light => {
         console.log("events");
