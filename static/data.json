@@ -8,5 +8,9 @@
     "pageID": "page1",
     "popup1": "Lorem ipsum",
     "popup2": "lorem ipsum "
+  },
+  {
+    "pageID": "architecture",
+    "popup1": "Use of the new technology effected building architecture as daylight became only a supplemental source of light. Electricity for lights, elevators, and pumps allowed architects to design skyscrapers of unprecedented height. The windowless building was also an architectural design option by the 1930s."
   }
 ]
