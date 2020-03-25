@@ -10,6 +10,7 @@ export function page3(svg, jsonData) {
 
     for (let i = 0; i < 3; i++) {
       createLightbulbs();
+      createPopups();
     }
 
     setPositions();
@@ -24,66 +25,98 @@ export function page3(svg, jsonData) {
     document.querySelector("#page3_background").appendChild(lightbulb);
   }
 
+  function createPopups() {
+    let popup = document.createElementNS("http://www.w3.org/2000/svg", "use");
+    popup.setAttribute("href", "#globalPopUp");
+    popup.setAttribute("height", "5000px");
+    popup.setAttribute("width", "5000px");
+    document.querySelector("#page3_background").appendChild(popup);
+  }
+
   function setPositions() {
     //pære 1
-    document.querySelector("#page3_background > use:nth-child(2)").setAttribute("x", "1000px");
+    document.querySelector("#page3_background > use:nth-child(2)").setAttribute("x", "6000px");
     document.querySelector("#page3_background > use:nth-child(2)").setAttribute("y", "500px");
     console.log("her");
 
-    //pære 2
-    document.querySelector("#page3_background > use:nth-child(3)").setAttribute("x", "3000px");
-    document.querySelector("#page3_background > use:nth-child(3)").setAttribute("y", "500px");
+    //popup 1
+    document.querySelector("#page3_background > use:nth-child(3)").setAttribute("x", "4000px");
+    document.querySelector("#page3_background > use:nth-child(3)").setAttribute("y", "1000px");
+    document.querySelector("#page3_background > use:nth-child(3)").classList.add("hide");
     console.log("her nu");
 
+    //pære 2
+    document.querySelector("#page3_background > use:nth-child(4)").setAttribute("x", "4000px");
+    document.querySelector("#page3_background > use:nth-child(4)").setAttribute("y", "5500px");
+    console.log("her nu nu");
+
+    //popup 2
+    document.querySelector("#page3_background > use:nth-child(5)").setAttribute("x", "4000px");
+    document.querySelector("#page3_background > use:nth-child(5)").setAttribute("y", "1000px");
+    document.querySelector("#page3_background > use:nth-child(5)").classList.add("hide");
+    console.log("her nu nu");
+
     //pære 3
-    document.querySelector("#page3_background > use:nth-child(4)").setAttribute("x", "5000px");
-    document.querySelector("#page3_background > use:nth-child(4)").setAttribute("y", "500px");
+    document.querySelector("#page3_background > use:nth-child(6)").setAttribute("x", "11800px");
+    document.querySelector("#page3_background > use:nth-child(6)").setAttribute("y", "4000px");
+    console.log("her nu nu");
+
+    // popup3
+    document.querySelector("#page3_background > use:nth-child(7)").setAttribute("x", "4000px");
+    document.querySelector("#page3_background > use:nth-child(7)").setAttribute("y", "1000px");
+    document.querySelector("#page3_background > use:nth-child(7)").classList.add("hide");
     console.log("her nu nu");
   }
 
   function clickLightBulbs() {
-    document.querySelectorAll("use:nth-child(2), use:nth-child(3), use:nth-child(4)").forEach(light => {
+    document.querySelectorAll("use:nth-child(2), use:nth-child(4), use:nth-child(6)").forEach(light => {
+      let scaling = gsap.timeline({ repeat: -1 });
+      scaling.to(light, { scale: 1.03, duration: 1 });
+      scaling.to(light, { scale: 1, duration: 1 });
+
       light.addEventListener("click", function() {
         light.classList.toggle("light");
         console.log(light);
-        let nummer1 = document.querySelector("use:nth-child(2)");
-        console.log(nummer1);
 
-        if (light == nummer1) {
+        let light1 = document.querySelector("use:nth-child(2)");
+        let light2 = document.querySelector("use:nth-child(4)");
+        let light3 = document.querySelector("use:nth-child(6)");
+
+        if (light == light1) {
+          document.querySelector("#page3_background > use:nth-child(3)").classList.toggle("hide");
+          document.querySelector("#globalPopUp > g > text").textContent = jsonData[2].popup1;
+
           gsap.to("#trumle", { rotation: 360, duration: 2, repeat: 10, transformOrigin: "50% 50%" });
+          console.log(jsonData[2].popup1);
         }
+
+        if (light == light2) {
+          document.querySelector("#page3_background > use:nth-child(5)").classList.toggle("hide");
+          document.querySelector("#globalPopUp > g > text").textContent = jsonData[2].popup2;
+        }
+
+        if (light == light3) {
+          document.querySelector("#page3_background > use:nth-child(7)").classList.toggle("hide");
+          document.querySelector("#globalPopUp > g > text").textContent = jsonData[2].popup3;
+        }
+
+        d3plus
+          .textwrap()
+          .container(d3.select("#globalPopUp > g > text"))
+          .draw();
+
+        d3plus
+          .textwrap()
+          .container(d3.select("#globalPopUp > g > text"))
+          .resize(true)
+          .draw();
       });
     });
   }
 
-  function showPopUp1() {
-    document.querySelector("#page3_popup1").classList.toggle("hide");
-    console.log(jsonData);
-    console.log(jsonData[2]);
-    console.log(jsonData[2].popup1);
-
-    // animationer
-    document.querySelector("#trumle").classList.remove("hide");
-    gsap.to("#trumle", { rotation: 360, duration: 2, repeat: 10, transformOrigin: "50% 50%" });
-    gsap.to("#vaskemaskine", { y: 2, x: 2, duration: 0.3, repeat: 30 });
-    gsap.to("#stovsuger", { x: 100, duration: 2 });
-
-    // forsøg på at sætte tekst i modal
-    // document.querySelector("#globalPopup").textContent = jsonData[2].popup1;
-    let t = document.createElementNS("http://www.w3.org/2000/svg", "text");
-    t.textContent = jsonData[2].popup1;
-    t.setAttribute("class", "text");
-    console.log(t);
-    let global = document.querySelector("#globalPopup");
-    console.log(global);
-    document.querySelector("#globalPopup").appendChild(t);
-  }
-
-  function showPopUp2() {
-    document.querySelector("#page3_popup2").classList.toggle("hide");
-  }
-
-  function showPopUp3() {
-    document.querySelector("#page3_popup3").classList.toggle("hide");
-  }
+  // animationer
+  document.querySelector("#trumle").classList.remove("hide");
+  gsap.to("#trumle", { rotation: 360, duration: 2, repeat: 10, transformOrigin: "50% 50%" });
+  gsap.to("#vaskemaskine", { y: 2, x: 2, duration: 0.3, repeat: 30 });
+  gsap.to("#stovsuger", { x: 100, duration: 2 });
 }
