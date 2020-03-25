@@ -1,6 +1,8 @@
 import gsap from "gsap";
 
 export function page3(svg, jsonData) {
+  let allClickedLights = [];
+
   placeSvg3(svg);
 
   document.querySelector("#koleskabdor").classList.add("hide");
@@ -16,6 +18,27 @@ export function page3(svg, jsonData) {
     setPositions();
     clickLightBulbs();
   }
+
+  // ANIMATIONER
+
+  // vaskemaskinen
+  let trumle = gsap.to("#trumle", { rotation: 360, duration: 2, repeat: -1, transformOrigin: "50% 50%", ease: "linear" });
+  let vaske = gsap.to("#vaskemaskine", { y: 2, x: 2, duration: 0.3, repeat: -1 });
+  trumle.pause();
+  vaske.pause();
+
+  // stovsuger
+  let stovsugerAnimation = gsap.timeline({ repeat: 0, duration: 4 });
+  stovsugerAnimation.to("#stovsuger", { x: 100, duration: 2 });
+  stovsugerAnimation.to("#stovsuger", { x: 0, duration: 2 });
+  stovsugerAnimation.pause();
+
+  //koleskab
+
+  let koleskabAnimation = gsap.timeline({ repeat: 5, duration: 1 });
+  koleskabAnimation.to("#koleskabdor", { display: "block", duration: 0.5 });
+  koleskabAnimation.to("#koleskabdor", { display: "none", duration: 0.5 });
+  koleskabAnimation.pause();
 
   function createLightbulbs() {
     let lightbulb = document.createElementNS("http://www.w3.org/2000/svg", "use");
@@ -76,7 +99,6 @@ export function page3(svg, jsonData) {
 
       light.addEventListener("click", function() {
         light.classList.toggle("light");
-        console.log(light);
 
         let light1 = document.querySelector("use:nth-child(2)");
         let light2 = document.querySelector("use:nth-child(4)");
@@ -91,16 +113,35 @@ export function page3(svg, jsonData) {
           document.querySelector("#page3_background > use:nth-child(5)").classList.toggle("hide");
           document.querySelector("#globalPopUp > g > text").textContent = jsonData[2].popup2;
 
-          vaskemaskine();
-          stovsuger();
+          if (allClickedLights.indexOf(light2) == -1) {
+            allClickedLights.push(light2);
+            trumle.play();
+            vaske.play();
+            stovsugerAnimation.play();
+          } else {
+            let index = allClickedLights.indexOf(light2);
+            allClickedLights.splice(index, 1);
+            trumle.pause();
+            vaske.pause();
+            stovsugerAnimation.pause();
+          }
         }
 
         if (light == light3) {
           document.querySelector("#page3_background > use:nth-child(7)").classList.toggle("hide");
           document.querySelector("#globalPopUp > g > text").textContent = jsonData[2].popup3;
 
-          koleskab();
+          if (allClickedLights.indexOf(light3) == -1) {
+            allClickedLights.push(light3);
+            koleskabAnimation.play();
+          } else {
+            let index = allClickedLights.indexOf(light3);
+            allClickedLights.splice(index, 1);
+            koleskabAnimation.pause();
+          }
         }
+
+        console.log(allClickedLights);
 
         d3plus
           .textwrap()
@@ -114,22 +155,5 @@ export function page3(svg, jsonData) {
           .draw();
       });
     });
-  }
-
-  function vaskemaskine() {
-    gsap.to("#trumle", { rotation: 360, duration: 2, repeat: 5, transformOrigin: "50% 50%", ease: "linear" });
-    gsap.to("#vaskemaskine", { y: 2, x: 2, duration: 0.3, repeat: 30 });
-  }
-
-  function stovsuger() {
-    let stovsugerAnimation = gsap.timeline({ repeat: 0, duration: 4 });
-    stovsugerAnimation.to("#stovsuger", { x: 100, duration: 2 });
-    stovsugerAnimation.to("#stovsuger", { x: 0, duration: 2 });
-  }
-
-  function koleskab() {
-    let koleskabAnimation = gsap.timeline({ repeat: 5, duration: 1 });
-    koleskabAnimation.to("#koleskabdor", { display: "block", duration: 0.5 });
-    koleskabAnimation.to("#koleskabdor", { display: "none", duration: 0.5 });
   }
 }
