@@ -8,7 +8,9 @@ body {
 #popup,
 #lightbulb,
 #globalSVG {
-  display: none;
+  visibility: hidden;
+  width: 0;
+  height: 0;
 }
 
 #frontpage {
@@ -41,8 +43,8 @@ body {
 }
 
 #arrowsContainer {
-  height: 100vh;
-  width: 100vw;
+  width: 90vw;
+
   position: absolute;
   top: 0;
   left: 0;
@@ -54,7 +56,7 @@ body {
 }
 
 #arrow2 {
-  transform: translateX(94vw) translateY(40vh) rotate(90deg);
+  transform: translateX(10vw) translateY(40vh) rotate(90deg);
 }
 
 #arrow3 {

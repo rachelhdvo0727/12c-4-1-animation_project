@@ -8,5 +8,16 @@
     "pageID": "page1",
     "popup1": "Lorem ipsum",
     "popup2": "lorem ipsum "
+  },
+  {
+    "pageID": "page2",
+    "text": [
+      { "popup": "With the invention of the light bulb longer work hours became possible. This helped spur the industrial advancement as workers could work at night and in dark places." },
+      {
+        "popup": "At home the invention of the light bulb meant that some people got more leisure time in the evening and at night. It also meant that many homes later got electric outlets installed, making it possible to get etc. televisions and electric radios."
+      }
+    ],
+    "popupLink1": { "link1": "https://www.theclassroom.com/the-impact-of-light-bulbs-on-society-13412721.html", "link2": "https://sites.google.com/site/johnjohnindustrialrevolution/light-bulb-1879)" },
+    "popupLink2": { "link1": "https://www.theclassroom.com/differences-between-wealthy-middle-class-poor-industrial-revolution-17180.html" }
   }
 ]
