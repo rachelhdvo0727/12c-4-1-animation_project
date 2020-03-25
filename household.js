@@ -35,7 +35,7 @@ export function page3(svg, jsonData) {
 
   //koleskab
 
-  let koleskabAnimation = gsap.timeline({ repeat: 5, duration: 1 });
+  let koleskabAnimation = gsap.timeline({ repeat: -1, duration: 1 });
   koleskabAnimation.to("#koleskabdor", { display: "block", duration: 0.5 });
   koleskabAnimation.to("#koleskabdor", { display: "none", duration: 0.5 });
   koleskabAnimation.pause();
@@ -105,39 +105,61 @@ export function page3(svg, jsonData) {
         let light3 = document.querySelector("use:nth-child(6)");
 
         if (light == light1) {
-          document.querySelector("#page3_background > use:nth-child(3)").classList.toggle("hide");
-          document.querySelector("#globalPopUp > g > text").textContent = jsonData[2].popup1;
+          if (allClickedLights.indexOf(light1) == -1) {
+            allClickedLights.push(light1);
+
+            document.querySelector("#page3_background > use:nth-child(3)").classList.remove("hide");
+            document.querySelector("#globalPopUp > g > text").textContent = jsonData[2].popup1;
+          } else {
+            let index = allClickedLights.indexOf(light1);
+            allClickedLights.splice(index, 1);
+
+            document.querySelector("#page3_background > use:nth-child(3)").classList.add("hide");
+            document.querySelector("#page3_background > use:nth-child(5)").classList.add("hide");
+            document.querySelector("#page3_background > use:nth-child(7)").classList.add("hide");
+          }
         }
 
         if (light == light2) {
-          document.querySelector("#page3_background > use:nth-child(5)").classList.toggle("hide");
-          document.querySelector("#globalPopUp > g > text").textContent = jsonData[2].popup2;
-
           if (allClickedLights.indexOf(light2) == -1) {
             allClickedLights.push(light2);
+
             trumle.play();
             vaske.play();
             stovsugerAnimation.play();
+
+            document.querySelector("#page3_background > use:nth-child(5)").classList.remove("hide");
+            document.querySelector("#globalPopUp > g > text").textContent = jsonData[2].popup2;
           } else {
             let index = allClickedLights.indexOf(light2);
             allClickedLights.splice(index, 1);
+
             trumle.pause();
             vaske.pause();
             stovsugerAnimation.pause();
+
+            document.querySelector("#page3_background > use:nth-child(5)").classList.add("hide");
+            document.querySelector("#page3_background > use:nth-child(3)").classList.add("hide");
+            document.querySelector("#page3_background > use:nth-child(7)").classList.add("hide");
           }
         }
 
         if (light == light3) {
-          document.querySelector("#page3_background > use:nth-child(7)").classList.toggle("hide");
-          document.querySelector("#globalPopUp > g > text").textContent = jsonData[2].popup3;
-
           if (allClickedLights.indexOf(light3) == -1) {
             allClickedLights.push(light3);
+
             koleskabAnimation.play();
+
+            document.querySelector("#page3_background > use:nth-child(7)").classList.remove("hide");
+            document.querySelector("#globalPopUp > g > text").textContent = jsonData[2].popup3;
           } else {
             let index = allClickedLights.indexOf(light3);
             allClickedLights.splice(index, 1);
             koleskabAnimation.pause();
+
+            document.querySelector("#page3_background > use:nth-child(7)").classList.add("hide");
+            document.querySelector("#page3_background > use:nth-child(3)").classList.add("hide");
+            document.querySelector("#page3_background > use:nth-child(5)").classList.add("hide");
           }
         }
 
