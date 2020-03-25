@@ -58,7 +58,7 @@ export function page3(svg, jsonData) {
 
     //pære 3
     document.querySelector("#page3_background > use:nth-child(6)").setAttribute("x", "11800px");
-    document.querySelector("#page3_background > use:nth-child(6)").setAttribute("y", "4000px");
+    document.querySelector("#page3_background > use:nth-child(6)").setAttribute("y", "3500px");
     console.log("her nu nu");
 
     // popup3
@@ -85,19 +85,21 @@ export function page3(svg, jsonData) {
         if (light == light1) {
           document.querySelector("#page3_background > use:nth-child(3)").classList.toggle("hide");
           document.querySelector("#globalPopUp > g > text").textContent = jsonData[2].popup1;
-
-          gsap.to("#trumle", { rotation: 360, duration: 2, repeat: 10, transformOrigin: "50% 50%" });
-          console.log(jsonData[2].popup1);
         }
 
         if (light == light2) {
           document.querySelector("#page3_background > use:nth-child(5)").classList.toggle("hide");
           document.querySelector("#globalPopUp > g > text").textContent = jsonData[2].popup2;
+
+          vaskemaskine();
+          stovsuger();
         }
 
         if (light == light3) {
           document.querySelector("#page3_background > use:nth-child(7)").classList.toggle("hide");
           document.querySelector("#globalPopUp > g > text").textContent = jsonData[2].popup3;
+
+          koleskab();
         }
 
         d3plus
@@ -114,9 +116,20 @@ export function page3(svg, jsonData) {
     });
   }
 
-  // animationer
-  document.querySelector("#trumle").classList.remove("hide");
-  gsap.to("#trumle", { rotation: 360, duration: 2, repeat: 10, transformOrigin: "50% 50%" });
-  gsap.to("#vaskemaskine", { y: 2, x: 2, duration: 0.3, repeat: 30 });
-  gsap.to("#stovsuger", { x: 100, duration: 2 });
+  function vaskemaskine() {
+    gsap.to("#trumle", { rotation: 360, duration: 2, repeat: 5, transformOrigin: "50% 50%", ease: "linear" });
+    gsap.to("#vaskemaskine", { y: 2, x: 2, duration: 0.3, repeat: 30 });
+  }
+
+  function stovsuger() {
+    let stovsugerAnimation = gsap.timeline({ repeat: 0, duration: 4 });
+    stovsugerAnimation.to("#stovsuger", { x: 100, duration: 2 });
+    stovsugerAnimation.to("#stovsuger", { x: 0, duration: 2 });
+  }
+
+  function koleskab() {
+    let koleskabAnimation = gsap.timeline({ repeat: 5, duration: 1 });
+    koleskabAnimation.to("#koleskabdor", { display: "block", duration: 0.5 });
+    koleskabAnimation.to("#koleskabdor", { display: "none", duration: 0.5 });
+  }
 }
