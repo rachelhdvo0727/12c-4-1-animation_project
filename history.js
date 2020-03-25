@@ -150,18 +150,25 @@ export function historyGlobalSVGs() {
     //create a <text> in svg
     let textSvg = document.createElementNS(
       "http://www.w3.org/2000/svg",
-      "tspan"
+      "text"
     );
     textSvg.setAttribute("transform", "translate(88.6 111.65)");
     textSvg.classList.add("theText");
 
-    document
-      .querySelector("#globalPopUp > #Layer_2 > .theText")
-      .appendChild(textSvg);
+    document.querySelector("#globalPopUp > #Layer_2").appendChild(textSvg);
 
     //append text in svg
     data.forEach(text => {
       textSvg.innerHTML = `${text.popup1}`;
     });
+    d3plus
+      .textwrap()
+      .container(d3.select(".theText"))
+      .draw();
+    d3plus
+      .textwrap()
+      .container(d3.select(".theText"))
+      .resize(true)
+      .draw();
   }
 }
