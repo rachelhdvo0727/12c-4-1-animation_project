@@ -152,11 +152,11 @@ export function historyGlobalSVGs() {
       "http://www.w3.org/2000/svg",
       "tspan"
     );
-    // textSvg.setAttribute("transform", "translate(88.6 111.65)");
-    //textSvg.classList.add("theText");
+    textSvg.setAttribute("transform", "translate(88.6 111.65)");
+    textSvg.classList.add("theText");
 
     document
-      .querySelector("#globalPopUp > #Layer_2 > #theText")
+      .querySelector("#globalPopUp > #Layer_2 > .theText")
       .appendChild(textSvg);
 
     //append text in svg
