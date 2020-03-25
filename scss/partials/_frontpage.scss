@@ -1,4 +1,8 @@
 @use 'partials/vars';
+
+:root {
+  --turn-on: transparent;
+}
 html,
 body {
   margin: 0;
@@ -7,7 +11,8 @@ body {
 }
 #popup,
 #lightbulb,
-#globalSVG {
+#globalSVG,
+#template-arrow {
   visibility: hidden;
   width: 0;
   height: 0;
@@ -21,7 +26,7 @@ body {
   background-color: vars.$bg-color;
 }
 #mainlightBulb {
-  height: 25vw;
+  height: 30vh;
   margin: 0 auto;
 }
 
@@ -33,13 +38,17 @@ body {
 //   left: 0;
 // }
 
+#arrows {
+  height: 100%;
+}
 .arrow {
   // display: grid;
-  width: 6vw;
-  height: 3.62vw;
+  width: 5vw;
+  // height: 3.62vw;
   background-size: contain;
   margin: 0;
   padding: 0;
+  position: absolute;
 }
 
 #arrowsContainer {
@@ -52,18 +61,27 @@ body {
 
 #arrow1 {
   margin: 0 auto;
-  transform: translateY(1vh);
+  left: 50vw - 2.5vw;
+  top: 2vh;
 }
 
 #arrow2 {
-  transform: translateX(10vw) translateY(40vh) rotate(90deg);
+  top: 50vh;
+  left: 100vw - 7vw;
+  // transform: translateX(100vw - 7vw) translateY(50vh) rotate(90deg);
+  transform: rotate(90deg);
 }
 
 #arrow3 {
-  transform: translateY(70vh) rotate(180deg);
+  left: 50vw - 2.5vw;
+  top: 95vh;
+  transform: rotate(180deg);
+  // transform: translateX(50vw) translateY(90vh) rotate(180deg);
   margin: 0 auto;
 }
 #arrow4 {
+  top: 50vh;
+  // transform: translateY(50vh) rotate(-90deg);
   transform: rotate(-90deg);
 }
 

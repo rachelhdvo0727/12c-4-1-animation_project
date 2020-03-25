@@ -17,12 +17,13 @@ async function getJson() {
   globalJson = await jsonData.json();
   getSvg("svg/lightbulb.svg", lightBulbSVG);
   getSvg("svg/dark-themed-lightbulb.svg", lightBulbDarkSVG);
-  getSvg("svg/info_popup.svg", popupSVG);
+  // getSvg("svg/info_popup.svg", popupSVG);
   frontpage();
   // historie  getSvg(svg1, placeSvg1);
   getSvg("svg/sleep_patterns.svg", sleep);
   // husholdning getSvg(svg3, placeSvg3);
   // arkitektur getSvg(svg4, placeSvg4);
+  getSvg("svg/arrow.svg", arrow);
 }
 
 function sleep(svg) {
@@ -44,7 +45,11 @@ function lightBulbDarkSVG(svg) {
   document.querySelector("#lightbulbDark").innerHTML = svg;
 }
 
-function popupSVG(svg) {
-  document.querySelector("#popup").innerHTML = svg;
-  document.querySelector("#template_infobox").innerHTML = svg;
+// function popupSVG(svg) {
+//   document.querySelector("#popup").innerHTML = svg;
+//   document.querySelector("#template_infobox").innerHTML = svg;
+// }
+
+function arrow(svg) {
+  document.querySelector("#template-arrow").innerHTML = svg;
 }

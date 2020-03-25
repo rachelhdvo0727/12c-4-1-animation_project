@@ -2,9 +2,9 @@ require("@babel/polyfill");
 import { gsap } from "gsap";
 export function sleepPatterns(svg, globalJson) {
   placeSleepPattern();
-  document.querySelectorAll(".lightbulbs #globalLightBulb > path.cls-2").forEach(elm => {
-    elm.style.fill = "red";
-  });
+  // document.querySelectorAll(".lightbulbs #globalLightBulb > path.cls-2").forEach(elm => {
+  //   elm.style.fill = "red";
+  // });
 
   // document.querySelectorAll(".popup-cls-1").forEach(elm => {
   //   elm.style.fill = "red";
@@ -81,12 +81,12 @@ export function sleepPatterns(svg, globalJson) {
   function animationFactory(light) {
     console.log("animation");
     if (light.classList.contains("clone")) {
-      gsap.to(".clouds", { duration: 4, x: 300 });
+      gsap.to(".clouds", { duration: 4, x: 1200, y: -300, stagger: 0.1 });
 
       // gsap.to("#sleepPattern > g:nth-child(3) > rect", 5, { fill: "rgb(255, 0, 255)" });
       // document.querySelector("#sleepPattern > path:nth-child(8)").style.fill = "yellow";
     } else {
-      gsap.to(".clouds", { duration: 4, x: 0 });
+      gsap.to(".clouds", { duration: 4, x: 0, y: 0 });
     }
   }
 
