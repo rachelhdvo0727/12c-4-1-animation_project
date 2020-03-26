@@ -1,0 +1,33 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
+:root {
+  --turn-on: transparent;
+}
+
+body {
+  overscroll-behavior: none;
+}
+
+.hide {
+  display: none;
+}
+
+.light {
+  --turn-on: rgb(255, 255, 0);
+}
+
+.open {
+  animation: open 2s infinite ease;
+}
+
+@keyframes open {
+  from {
+    display: none;
+  }
+  to {
+    display: block;
+  }
+}
