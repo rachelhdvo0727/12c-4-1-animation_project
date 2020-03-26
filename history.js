@@ -54,8 +54,8 @@ export function historyGlobalSVGs() {
       "http://www.w3.org/2000/svg",
       "text"
     );
-    textSvg.setAttribute("x", "80px");
-    textSvg.setAttribute("y", "80px");
+    textSvg.setAttribute("x", "100px");
+    textSvg.setAttribute("y", "70px");
     textSvg.setAttribute("transform", "translate(88.6 111.65)");
     textSvg.setAttribute("font-size", "24px");
     textSvg.classList.add("theText");
