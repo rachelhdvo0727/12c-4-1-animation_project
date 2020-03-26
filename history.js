@@ -6,14 +6,146 @@ export function historyGlobalSVGs() {
   //save data fra script.js
   let data = sendData();
   let selected = [];
-  let allClikedLights = [];
 
   createModalsandLights();
   edisonSvg();
   demonSvg();
   firstlampSvg();
-  animateAllLightBulbs();
 
+  //ANIMATIONS TO ALL LIGHT BULBS
+  const allTheLights = [
+    selected[0].firesLightbulb,
+    selected[1].edisonsLightbulb,
+    selected[2].monstersLightbulb,
+    selected[3].firstlampsLightbulb
+  ];
+  let blinking;
+  blinking = gsap.to(allTheLights, {
+    opacity: 0.3,
+    duration: 2,
+    repeat: -1,
+    yoyoEase: true,
+    paused: true
+  });
+  let firelightOn = gsap.to(allTheLights[0], {
+    filter: "drop-shadow(5px 5px 20px #f2d94a)",
+    opacity: 1,
+    duration: 0.5,
+    paused: true
+  });
+  let edisonlightOn = gsap.to(allTheLights[1], {
+    filter: "drop-shadow(5px 5px 20px #f2d94a)",
+    opacity: 1,
+    duration: 0.5,
+    paused: true
+  });
+  let monsterlightOn = gsap.to(allTheLights[2], {
+    filter: "drop-shadow(5px 5px 20px #f2d94a)",
+    opacity: 1,
+    duration: 0.5,
+    paused: true
+  });
+  let firstlamplightOn = gsap.to(allTheLights[3], {
+    filter: "drop-shadow(5px 5px 20px #f2d94a)",
+    opacity: 1,
+    duration: 0.5,
+    paused: true
+  });
+  firelightOn.pause();
+  edisonlightOn.pause();
+  monsterlightOn.pause();
+  firstlamplightOn.pause();
+  blinking.play();
+
+  //ANIMATIONS TO MAIN ELEMENTS
+  const lamp = document.querySelector("#history-svg-bg > use:nth-child(14)");
+  let lampAnimation = gsap.to(lamp, {
+    filter: "drop-shadow(15px 15px 50px #f2d94a)",
+    duration: 2,
+    yoyo: true,
+    paused: true
+  });
+
+  const edison = document.querySelector("#history-svg-bg > use:nth-child(12)");
+  let edisonAnimation = gsap.to(edison, {
+    transform: "translateX(50px)",
+    duration: 1.5,
+    ease: "elastic",
+    paused: true
+  });
+
+  const monster = document.querySelector("#history-svg-bg > use:nth-child(13)");
+  let monsterAnimation = gsap.to(
+    monster,
+    {
+      stagger: {
+        from: "random",
+        ease: "power3.inOut"
+      },
+      y: 50,
+      yoyo: true,
+      repeat: -1,
+      paused: true
+    },
+    "+=1"
+  );
+  lampAnimation.pause();
+  monsterAnimation.pause();
+  edisonAnimation.pause();
+
+  function clickLightBulb() {
+    console.log("clickLightBulb");
+    createTexttags();
+    document
+      .querySelectorAll(
+        "use:nth-child(5), use:nth-child(7), use:nth-child(9), use:nth-child(11)"
+      )
+      .forEach(light => {
+        light.addEventListener("click", function() {
+          console.log("clicked");
+          light.classList.toggle("clone");
+          blinking.pause();
+          lampAnimation.pause();
+          monsterAnimation.pause();
+          edisonAnimation.pause();
+          if (light === selected[0].firesLightbulb) {
+            selected[0].firesPopup.classList.toggle("hide");
+            document.querySelector(
+              "#globalPopUp > #Layer_2 > .theText"
+            ).innerHTML = data[1].popup1;
+            wrapSVGsText();
+            firelightOn.play();
+          }
+          if (light === selected[1].edisonsLightbulb) {
+            selected[1].edisonsPopup.classList.toggle("hide");
+            document.querySelector(
+              "#globalPopUp > #Layer_2 > .theText"
+            ).innerHTML = data[1].popup3;
+            wrapSVGsText();
+            edisonlightOn.play();
+            edisonAnimation.play();
+          }
+          if (light === selected[2].monstersLightbulb) {
+            selected[2].monstersPopup.classList.toggle("hide");
+            document.querySelector(
+              "#globalPopUp > #Layer_2 > .theText"
+            ).innerHTML = data[1].popup2;
+            wrapSVGsText();
+            monsterlightOn.play();
+            monsterAnimation.play();
+          }
+          if (light === selected[3].firstlampsLightbulb) {
+            selected[3].firstlampsPopup.classList.toggle("hide");
+            document.querySelector(
+              "#globalPopUp > #Layer_2 > .theText"
+            ).innerHTML = data[1].popup4;
+            wrapSVGsText();
+            firstlamplightOn.play();
+            lampAnimation.play();
+          }
+        });
+      });
+  }
   function createModalsandLights() {
     for (let i = 0; i < 4; i++) {
       console.log("create Modals and Lights");
@@ -54,8 +186,8 @@ export function historyGlobalSVGs() {
       "http://www.w3.org/2000/svg",
       "text"
     );
-    textSvg.setAttribute("x", "80px");
-    textSvg.setAttribute("y", "100px");
+    textSvg.setAttribute("x", "100px");
+    textSvg.setAttribute("y", "70px");
     textSvg.setAttribute("transform", "translate(88.6 111.65)");
     textSvg.setAttribute("font-size", "24px");
     textSvg.classList.add("theText");
@@ -71,7 +203,7 @@ export function historyGlobalSVGs() {
           "#history-svg-bg > use:nth-child(4)"
         ),
         firesLightbulb: document.querySelector(
-          "#history-svg-bg>use:nth-child(5)"
+          "#history-svg-bg> use:nth-child(5)"
         )
       },
       {
@@ -123,135 +255,6 @@ export function historyGlobalSVGs() {
     selected[3].firstlampsLightbulb.setAttribute("y", "1350px");
     selected[3].firstlampsPopup.setAttribute("x", "1940px");
     selected[3].firstlampsPopup.setAttribute("y", "1000px");
-  }
-
-  function clickLightBulb() {
-    console.log("clickLightBulb");
-    createTexttags();
-    document
-      .querySelectorAll(
-        "use:nth-child(5), use:nth-child(7), use:nth-child(9), use:nth-child(11)"
-      )
-      .forEach(light => {
-        light.addEventListener("click", function() {
-          console.log("clicked");
-          light.classList.add("clone");
-
-          if (light === selected[0].firesLightbulb) {
-            if (allClikedLights.indexOf(selected[0].firesLightbulb) == -1) {
-              allClikedLights.push(selected[0].firesLightbulb);
-              selected[0].firesPopup.classList.toggle("hide");
-
-              document.querySelector("#globalPopUp > g > text").innerHTML =
-                data[1].popup1;
-              wrapSVGsText();
-            } else {
-              let i = allClikedLights.indexOf(selected[0].firesLightbulb);
-              allClikedLights.splice(i, 1);
-
-              selected[1].edisonsPopup.classList.add("hide");
-              selected[2].monstersPopup.classList.add("hide");
-              selected[3].firstlampsPopup.classList.add("hide");
-            }
-          }
-
-          if (light === selected[1].edisonsLightbulb) {
-            if (allClikedLights.indexOf(selected[1].edisonsLightbulb) == -1) {
-              allClikedLights.push(selected[1].edisonsLightbulb);
-
-              selected[1].edisonsPopup.classList.toggle("hide");
-              document.querySelector("#globalPopUp > g > text").innerHTML =
-                data[1].popup3;
-              wrapSVGsText();
-              animateEdison();
-            } else {
-              let i = allClikedLights.indexOf(selected[1].firesLightbulb);
-              allClikedLights.splice(i, 1);
-
-              selected[0].firesPopup.classList.add("hide");
-              selected[2].monstersPopup.classList.add("hide");
-              selected[3].firstlampsPopup.classList.add("hide");
-            }
-          }
-
-          if (light === selected[2].monstersLightbulb) {
-            if (allClikedLights.indexOf(selected[2].monstersLightbulb) == -1) {
-              allClikedLights.push(selected[2].monstersLightbulb);
-
-              selected[2].monstersPopup.classList.toggle("hide");
-              document.querySelector("#globalPopUp > g > text").innerHTML =
-                data[1].popup2;
-              wrapSVGsText();
-              animateMonster();
-            } else {
-              let i = allClikedLights.indexOf(selected[2].firesLightbulb);
-              allClikedLights.splice(i, 1);
-
-              selected[0].firesPopup.classList.add("hide");
-              selected[1].edisonsPopup.classList.add("hide");
-              selected[3].firstlampsPopup.classList.add("hide");
-            }
-          }
-          if (light === selected[3].firstlampsLightbulb) {
-            if (
-              allClikedLights.indexOf(selected[3].firstlampsLightbulb) == -1
-            ) {
-              allClikedLights.push(selected[3].firstlampsLightbulb);
-
-              selected[3].firstlampsPopup.classList.toggle("hide");
-              document.querySelector("#globalPopUp > g > text").innerHTML =
-                data[1].popup4;
-              wrapSVGsText();
-              animateFirstLamp();
-            } else {
-              let i = allClikedLights.indexOf(selected[3].firesLightbulb);
-              allClikedLights.splice(i, 1);
-
-              selected[0].firesPopup.classList.add("hide");
-              selected[1].edisonsPopup.classList.add("hide");
-              selected[2].monstersPopup.classList.add("hide");
-            }
-          }
-        });
-      });
-  }
-  function animateFirstLamp() {
-    const lamp = document.querySelector("#history-svg-bg > use:nth-child(14)");
-    gsap.to(lamp, {
-      filter: "drop-shadow(15px 15px 50px #f2d94a)",
-      duration: 2,
-      yoyo: true
-    });
-  }
-
-  function animateEdison() {
-    const edison = document.querySelector(
-      "#history-svg-bg > use:nth-child(12)"
-    );
-    gsap.to(edison, {
-      transform: "translateX(50px)",
-      duration: 1.5,
-      ease: "elastic"
-    });
-  }
-
-  function animateMonster() {
-    const monster = document.querySelector(
-      "#history-svg-bg > use:nth-child(13)"
-    );
-    gsap.to(
-      monster,
-      {
-        stagger: {
-          from: "random",
-          ease: "power3.inOut"
-        },
-        y: 50,
-        yoyo: true,
-        repeat: -1
-      },
-      "+=1"
-    );
   }
   function wrapSVGsText() {
     d3plus
@@ -311,22 +314,5 @@ export function historyGlobalSVGs() {
     lamp.setAttributeNS(null, "width", "500px");
 
     document.querySelector("#history-svg-bg").appendChild(lamp);
-  }
-  function animateAllLightBulbs() {
-    const allTheLights = [
-      selected[0].firesLightbulb,
-      selected[1].edisonsLightbulb,
-      selected[2].monstersLightbulb,
-      selected[3].firstlampsLightbulb
-    ];
-    let blinking;
-    blinking = gsap.to(allTheLights, {
-      opacity: 0.3,
-      duration: 2,
-      repeat: -1,
-      yoyoEase: true,
-      paused: true
-    });
-    blinking.play();
   }
 }
