@@ -195,8 +195,8 @@ export function historyGlobalSVGs() {
     let popup = document.createElementNS("http://www.w3.org/2000/svg", "use");
     popup.setAttribute("href", "#globalPopUp");
 
-    popup.setAttribute("height", "500px");
-    popup.setAttribute("width", "700px");
+    popup.setAttribute("height", "0");
+    popup.setAttribute("width", "0");
     popup.classList.add("hide");
 
     document.querySelector("#history-svg-bg").appendChild(popup);
@@ -210,8 +210,6 @@ export function historyGlobalSVGs() {
     );
     textSvg.setAttribute("x", "100px");
     textSvg.setAttribute("y", "70px");
-    textSvg.setAttribute("transform", "translate(88.6 111.65)");
-    textSvg.setAttribute("font-size", "24px");
     textSvg.classList.add("theText");
 
     document.querySelector("#globalPopUp > #Layer_2").appendChild(textSvg);
@@ -255,28 +253,36 @@ export function historyGlobalSVGs() {
     ];
 
     //fire
-    selected[0].firesLightbulb.setAttribute("x", "1910px");
-    selected[0].firesLightbulb.setAttribute("y", "450px");
+    selected[0].firesLightbulb.setAttribute("x", "1900px");
+    selected[0].firesLightbulb.setAttribute("y", "160px");
     selected[0].firesPopup.setAttribute("x", "1945px");
-    selected[0].firesPopup.setAttribute("y", "100px");
+    selected[0].firesPopup.setAttribute("y", "20px");
+    selected[0].firesPopup.setAttribute("height", "700px");
+    selected[0].firesPopup.setAttribute("width", "650px");
 
     //edison
     selected[1].edisonsLightbulb.setAttribute("x", "568px");
-    selected[1].edisonsLightbulb.setAttribute("y", "1650px");
+    selected[1].edisonsLightbulb.setAttribute("y", "1810px");
     selected[1].edisonsPopup.setAttribute("x", "600px");
     selected[1].edisonsPopup.setAttribute("y", "1300px");
+    selected[1].edisonsPopup.setAttribute("height", "700px");
+    selected[1].edisonsPopup.setAttribute("width", "950px");
 
     //monster
-    selected[2].monstersLightbulb.setAttribute("x", "910px");
-    selected[2].monstersLightbulb.setAttribute("y", "1045px");
-    selected[2].monstersPopup.setAttribute("x", "950px");
-    selected[2].monstersPopup.setAttribute("y", "700px");
+    selected[2].monstersLightbulb.setAttribute("x", "750px");
+    selected[2].monstersLightbulb.setAttribute("y", "900px");
+    selected[2].monstersPopup.setAttribute("x", "800px");
+    selected[2].monstersPopup.setAttribute("y", "380px");
+    selected[2].monstersPopup.setAttribute("height", "700px");
+    selected[2].monstersPopup.setAttribute("width", "950px");
 
     //the first lamp
     selected[3].firstlampsLightbulb.setAttribute("x", "1900px");
-    selected[3].firstlampsLightbulb.setAttribute("y", "1350px");
+    selected[3].firstlampsLightbulb.setAttribute("y", "1450px");
     selected[3].firstlampsPopup.setAttribute("x", "1940px");
     selected[3].firstlampsPopup.setAttribute("y", "1000px");
+    selected[3].firstlampsPopup.setAttribute("height", "700px");
+    selected[3].firstlampsPopup.setAttribute("width", "750px");
   }
   function wrapSVGsText() {
     d3plus
@@ -312,8 +318,8 @@ export function historyGlobalSVGs() {
       "svg/uhyre-ny.svg#demon"
     );
 
-    demon.setAttributeNS(null, "x", "500px");
-    demon.setAttributeNS(null, "y", "600px");
+    demon.setAttributeNS(null, "x", "300px");
+    demon.setAttributeNS(null, "y", "400px");
     demon.setAttributeNS(null, "height", "500px");
     demon.setAttributeNS(null, "width", "500px");
 
