@@ -72,13 +72,13 @@ export function frontpage() {
 
   function arrowAnimation() {
     console.log("animation fired");
-    gsap.to("#arrow1", {
-      duration: 1,
-      y: "10px",
-      ease: "circ.out",
-      repeat: -1,
-      yoyo: true
-    });
+    // gsap.to("#arrow1", {
+    //   duration: 1,
+    //   y: "10px",
+    //   ease: "circ.out",
+    //   repeat: -1,
+    //   yoyo: true
+    // });
     gsap.to("#arrow3", {
       duration: 1,
       y: "-10px",
@@ -86,20 +86,20 @@ export function frontpage() {
       repeat: -1,
       yoyo: true
     });
-    gsap.to("#arrow2", {
-      duration: 1,
-      x: "10px",
-      ease: "sine.out",
-      repeat: -1,
-      yoyo: true
-    });
-    gsap.to("#arrow4", {
-      duration: 1,
-      x: "-10px",
-      ease: "sine.out",
-      repeat: -1,
-      yoyo: true
-    });
+    // gsap.to("#arrow2", {
+    //   duration: 1,
+    //   x: "10px",
+    //   ease: "sine.out",
+    //   repeat: -1,
+    //   yoyo: true
+    // });
+    // gsap.to("#arrow4", {
+    //   duration: 1,
+    //   x: "-10px",
+    //   ease: "sine.out",
+    //   repeat: -1,
+    //   yoyo: true
+    // });
   }
 
   async function getSvg(filename, callback) {

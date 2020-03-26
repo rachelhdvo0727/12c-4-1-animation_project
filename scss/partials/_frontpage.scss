@@ -60,12 +60,14 @@ body {
 }
 
 #arrow1 {
+  display: none;
   margin: 0 auto;
   left: 50vw - 2.5vw;
   top: 2vh;
 }
 
 #arrow2 {
+  display: none;
   top: 50vh;
   left: 100vw - 7vw;
   // transform: translateX(100vw - 7vw) translateY(50vh) rotate(90deg);
@@ -80,6 +82,7 @@ body {
   margin: 0 auto;
 }
 #arrow4 {
+  display: none;
   top: 50vh;
   // transform: translateY(50vh) rotate(-90deg);
   transform: rotate(-90deg);
