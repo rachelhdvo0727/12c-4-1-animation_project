@@ -177,7 +177,8 @@ export function historyGlobalSVGs() {
     );
     gsap.to(edison, {
       transform: "translateX(50px)",
-      duration: 1.5
+      duration: 1.5,
+      ease: "elastic"
     });
   }
 
