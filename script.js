@@ -3,7 +3,7 @@ import { gsap } from "gsap";
 import { frontpage } from "./frontpage";
 import { historyGlobalSVGs } from "./history";
 import { page3 } from "./household";
-
+import { page4 } from "./archi";
 import { sleepPatterns } from "./sleep_patterns";
 document.addEventListener("DOMContentLoaded", start);
 
@@ -34,11 +34,9 @@ async function getJson() {
   getSvg("svg/uhyre-ny.svg", monsterSVG);
   getSvg("svg/paere-ny.svg", firstlampSVG);
   sendData();
-
-  // døgnrytme getSvg(svg2, placeSvg2);
   getSvg("svg/household.svg", page3, globalJson);
-  // arkitektur getSvg(svg4, placeSvg4);
   getSvg("svg/arrow.svg", arrow);
+  getSvg("svg/archi.svg", page4, globalJson);
 }
 
 function sleep(svg) {
