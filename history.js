@@ -184,8 +184,8 @@ export function historyGlobalSVGs() {
     );
     lightbulb.setAttribute("href", "#globalLightBulb");
 
-    lightbulb.setAttribute("height", "130px");
-    lightbulb.setAttribute("width", "130px");
+    lightbulb.setAttribute("height", "150px");
+    lightbulb.setAttribute("width", "150px");
     lightbulb.style.fill = "none";
 
     document.querySelector("#history-svg-bg").appendChild(lightbulb);
@@ -264,9 +264,9 @@ export function historyGlobalSVGs() {
     selected[1].edisonsLightbulb.setAttribute("x", "568px");
     selected[1].edisonsLightbulb.setAttribute("y", "1810px");
     selected[1].edisonsPopup.setAttribute("x", "600px");
-    selected[1].edisonsPopup.setAttribute("y", "1300px");
+    selected[1].edisonsPopup.setAttribute("y", "1350px");
     selected[1].edisonsPopup.setAttribute("height", "700px");
-    selected[1].edisonsPopup.setAttribute("width", "950px");
+    selected[1].edisonsPopup.setAttribute("width", "750px");
 
     //monster
     selected[2].monstersLightbulb.setAttribute("x", "750px");
@@ -278,10 +278,10 @@ export function historyGlobalSVGs() {
 
     //the first lamp
     selected[3].firstlampsLightbulb.setAttribute("x", "1900px");
-    selected[3].firstlampsLightbulb.setAttribute("y", "1450px");
+    selected[3].firstlampsLightbulb.setAttribute("y", "1490px");
     selected[3].firstlampsPopup.setAttribute("x", "1940px");
     selected[3].firstlampsPopup.setAttribute("y", "1000px");
-    selected[3].firstlampsPopup.setAttribute("height", "700px");
+    selected[3].firstlampsPopup.setAttribute("height", "790px");
     selected[3].firstlampsPopup.setAttribute("width", "750px");
   }
   function wrapSVGsText() {

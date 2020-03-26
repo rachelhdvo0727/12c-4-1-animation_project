@@ -12,7 +12,7 @@ export function page3(svg, jsonData) {
 
   document.querySelector("#hh_popup1").textContent = jsonData[3].popup1;
   document.querySelector("#hh_popup2").textContent = jsonData[3].popup2;
-  document.querySelector("#hh_popup3").textContent = jsonData[3].popup2;
+  document.querySelector("#hh_popup3").textContent = jsonData[3].popup3;
 
   function placeSvg3(svg) {
     document.querySelector("#page3_background").innerHTML = svg;

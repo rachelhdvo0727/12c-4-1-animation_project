@@ -16,7 +16,7 @@ body {
 }
 
 .light {
-  --turn-on: rgb(255, 255, 0);
+  --turn-on: #f2d94a;
 }
 
 .open {
@@ -99,6 +99,8 @@ body {
   border-radius: 30px;
   z-index: 1000;
   padding: 20px;
+  font-size: 1em;
+  font-family: MyriadPro-Regular, Myriad Pro;
   position: absolute;
 }
 
