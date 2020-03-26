@@ -279,6 +279,7 @@ export function historyGlobalSVGs() {
     figure.setAttributeNS(null, "width", "500px");
 
     document.querySelector("#history-svg-bg").appendChild(figure);
+    console.log(figure);
   }
 
   function demonSvg() {
