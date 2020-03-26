@@ -43,6 +43,8 @@ export function page4(svg, jsonData) {
   elevatorAnimation.to("#elevator", { y: 0, duration: 3 });
   elevatorAnimation.to("#elevator #light", { fill: "none", duration: 0.8, ease: "easeIn" });
 
+  let skyscaperAnimation = gsap.to(".archi-cls-2", { fill: "yellow", stagger: 0.2, duration: 5, paused: true });
+
   function clickLightbulb() {
     let lightbulb = document.querySelector("#lightBulb");
     let popup = document.querySelector("#archi-popup");
@@ -55,12 +57,14 @@ export function page4(svg, jsonData) {
       if (clicked == false) {
         clicked = true;
         elevatorAnimation.play();
+        skyscaperAnimation.play();
         lightbulb.classList.add("light");
         popup.classList.remove("hide");
         document.querySelector("#archi-popup").textContent = jsonData[4].popup1;
       } else {
         clicked = false;
         elevatorAnimation.pause();
+        skyscaperAnimation.pause();
         lightbulb.classList.remove("light");
         popup.classList.add("hide");
       }
