@@ -275,12 +275,11 @@ export function historyGlobalSVGs() {
       "xlink:href",
       "svg/edison-ny.svg#edison"
     );
-    figure.setAttributeNS("http://www.w3.org/1999/xlink", "x", "150px");
-    figure.setAttributeNS("http://www.w3.org/1999/xlink", "y", "1400px");
-    figure.setAttributeNS("http://www.w3.org/1999/xlink", "height", "500px");
-    figure.setAttributeNS("http://www.w3.org/1999/xlink", "width", "500px");
+    figure.setAttributeNS(null, "x", "150px");
+    figure.setAttributeNS(null, "y", "1400px");
+    figure.setAttributeNS(null, "height", "500px");
+    figure.setAttributeNS(null, "width", "500px");
     document.querySelector("#history-svg-bg").appendChild(figure);
-    console.log(figure);
   }
 
   function demonSvg() {
