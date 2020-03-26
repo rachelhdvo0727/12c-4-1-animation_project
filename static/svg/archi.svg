@@ -5,7 +5,7 @@
         fill: #3a8990;
       }
 
-      .archi-cls-12, .archi-cls-2 {
+      .archi-cls-12, .archi-cls-2, .archi-cls-ba {
         fill: #e2d7c4;
       }
 
@@ -64,7 +64,7 @@
   </defs>
   <title>archi</title>
   <g id="baggrund">
-    <rect class="archi-cls-2" width="2732" height="2048"/>
+    <rect class="archi-cls-ba" width="2732" height="2048"/>
   </g>
   <g id="elevator">
     <g>
