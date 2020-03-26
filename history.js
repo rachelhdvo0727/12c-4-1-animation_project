@@ -51,11 +51,12 @@ export function historyGlobalSVGs() {
     duration: 0.5,
     paused: true
   });
+
+  blinking.play();
   firelightOn.pause();
   edisonlightOn.pause();
   monsterlightOn.pause();
   firstlamplightOn.pause();
-  blinking.play();
 
   //ANIMATIONS TO MAIN ELEMENTS
   const lamp = document.querySelector("#history-svg-bg > use:nth-child(14)");
@@ -104,44 +105,65 @@ export function historyGlobalSVGs() {
         light.addEventListener("click", function() {
           console.log("clicked");
           light.classList.toggle("clone");
-          blinking.pause();
-          lampAnimation.pause();
-          monsterAnimation.pause();
-          edisonAnimation.pause();
-          if (light === selected[0].firesLightbulb) {
-            selected[0].firesPopup.classList.toggle("hide");
+
+          if (light.classList.contains("clone")) {
+            blinking.pause();
+            if (light === selected[0].firesLightbulb) {
+              selected[0].firesPopup.classList.toggle("hide");
+              document.querySelector(
+                "#globalPopUp > #Layer_2 > .theText"
+              ).innerHTML = data[1].popup1;
+              wrapSVGsText();
+              firelightOn.play();
+            }
+
+            if (light === selected[1].edisonsLightbulb) {
+              selected[1].edisonsPopup.classList.toggle("hide");
+              document.querySelector(
+                "#globalPopUp > #Layer_2 > .theText"
+              ).innerHTML = data[1].popup3;
+              wrapSVGsText();
+              edisonlightOn.play();
+              edisonAnimation.play();
+            }
+
+            if (light === selected[2].monstersLightbulb) {
+              selected[2].monstersPopup.classList.toggle("hide");
+              document.querySelector(
+                "#globalPopUp > #Layer_2 > .theText"
+              ).innerHTML = data[1].popup2;
+              wrapSVGsText();
+              monsterlightOn.play();
+              monsterAnimation.play();
+            }
+
+            if (light === selected[3].firstlampsLightbulb) {
+              selected[3].firstlampsPopup.classList.toggle("hide");
+              document.querySelector(
+                "#globalPopUp > #Layer_2 > .theText"
+              ).innerHTML = data[1].popup4;
+              wrapSVGsText();
+              firstlamplightOn.play();
+              lampAnimation.play();
+            }
+          } else {
             document.querySelector(
               "#globalPopUp > #Layer_2 > .theText"
-            ).innerHTML = data[1].popup1;
-            wrapSVGsText();
-            firelightOn.play();
-          }
-          if (light === selected[1].edisonsLightbulb) {
-            selected[1].edisonsPopup.classList.toggle("hide");
-            document.querySelector(
-              "#globalPopUp > #Layer_2 > .theText"
-            ).innerHTML = data[1].popup3;
-            wrapSVGsText();
-            edisonlightOn.play();
-            edisonAnimation.play();
-          }
-          if (light === selected[2].monstersLightbulb) {
-            selected[2].monstersPopup.classList.toggle("hide");
-            document.querySelector(
-              "#globalPopUp > #Layer_2 > .theText"
-            ).innerHTML = data[1].popup2;
-            wrapSVGsText();
-            monsterlightOn.play();
-            monsterAnimation.play();
-          }
-          if (light === selected[3].firstlampsLightbulb) {
-            selected[3].firstlampsPopup.classList.toggle("hide");
-            document.querySelector(
-              "#globalPopUp > #Layer_2 > .theText"
-            ).innerHTML = data[1].popup4;
-            wrapSVGsText();
-            firstlamplightOn.play();
-            lampAnimation.play();
+            ).innerHTML = "";
+            selected[0].firesPopup.classList.add("hide");
+            selected[1].edisonsPopup.classList.add("hide");
+            selected[2].monstersPopup.classList.add("hide");
+            selected[3].firstlampsPopup.classList.add("hide");
+            blinking.play();
+
+            lampAnimation.pause();
+            monsterAnimation.pause();
+            edisonAnimation.pause();
+
+            firelightOn.pause();
+            edisonlightOn.pause();
+            monsterlightOn.pause();
+            firstlamplightOn.pause();
           }
         });
       });
