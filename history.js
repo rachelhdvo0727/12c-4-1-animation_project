@@ -270,16 +270,12 @@ export function historyGlobalSVGs() {
 
   function edisonSvg() {
     let figure = document.createElementNS("http://www.w3.org/2000/svg", "use");
-    figure.setAttributeNS(
-      "http://www.w3.org/1999/xlink",
-      "xlink:href",
-      "svg/edison-ny.svg#edison"
-    );
+    figure.setAttribute("href", "#edisonsvg");
 
-    figure.setAttributeNS(null, "x", "150px");
-    figure.setAttributeNS(null, "y", "1400px");
-    figure.setAttributeNS(null, "height", "500px");
-    figure.setAttributeNS(null, "width", "500px");
+    figure.setAttribute("x", "150px");
+    figure.setAttribute("y", "1400px");
+    figure.setAttribute("height", "500px");
+    figure.setAttribute("width", "500px");
 
     document.querySelector("#history-svg-bg").appendChild(figure);
     console.log(figure);
