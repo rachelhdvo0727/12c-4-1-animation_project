@@ -140,7 +140,7 @@ export function historyGlobalSVGs() {
           if (light === selected[0].firesLightbulb) {
             if (allClikedLights.indexOf(selected[0].firesLightbulb) == -1) {
               allClikedLights.push(selected[0].firesLightbulb);
-              selected[0].firesPopup.classList.remove("hide");
+              selected[0].firesPopup.classList.toggle("hide");
 
               document.querySelector("#globalPopUp > g > text").innerHTML =
                 data[1].popup1;
