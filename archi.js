@@ -9,39 +9,32 @@ export function page4(svg, jsonData) {
     document.querySelector("#page4_background").innerHTML = svg;
 
     useLightbulb();
-    usePopup();
+    // usePopup();
     clickLightbulb();
 
-    document.querySelector("#popUp").classList.add("hide");
+    document.querySelector("#archi-popup").classList.add("hide");
   }
 
   function useLightbulb() {
-    let lightbulb = document.createElementNS("http://www.w3.org/2000/svg", "use");
     const svg = document.createElementNS("http://www.w3.org/2000/svg", "svg");
     svg.setAttribute("viewBox", "0 0 350 200");
-    svg.id = "lightbulb2929";
+    svg.id = "lightbulb_svg_container";
     svg.classList.add("lightbulb-archi");
-    document.querySelector("#lightbulb-archi").appendChild(svg);
+    document.querySelector("#archi-lightbulb").appendChild(svg);
+
+    let lightbulb = document.createElementNS("http://www.w3.org/2000/svg", "use");
     lightbulb.setAttribute("href", "#globalLightBulb");
-    lightbulb.setAttribute("height", "130px");
-    lightbulb.setAttribute("width", "130px");
-    lightbulb.setAttribute("x", "0");
-    lightbulb.setAttribute("y", "0");
     lightbulb.setAttribute("id", "lightBulb");
-    document.querySelector("#lightbulb2929").appendChild(lightbulb);
+    document.querySelector("#lightbulb_svg_container").appendChild(lightbulb);
   }
 
-  function usePopup() {
-    let popup = document.createElementNS("http://www.w3.org/2000/svg", "use");
-    popup.setAttribute("href", "#globalPopUp");
-    popup.setAttribute("height", "200px");
-    popup.setAttribute("width", "2000px");
-    popup.setAttribute("x", "0");
-    popup.setAttribute("y", "0");
-    popup.setAttribute("id", "popUp");
-    document.querySelector("#archiPopup").appendChild(popup);
-    console.log("er du der?");
-  }
+  // function usePopup() {
+  //   let popup = document.createElementNS("http://www.w3.org/2000/svg", "use");
+  //   popup.setAttribute("href", "#globalPopUp");
+  //   popup.setAttribute("id", "popUp");
+  //   document.querySelector("#popup_svg_container").appendChild(popup);
+  //   console.log("er du der?");
+  // }
 
   //animation
   let elevatorAnimation = gsap.timeline({ duration: 8, delay: -8, repeat: -1, paused: true, yoyo: true });
@@ -52,7 +45,7 @@ export function page4(svg, jsonData) {
 
   function clickLightbulb() {
     let lightbulb = document.querySelector("#lightBulb");
-    let popup = document.querySelector("#popUp");
+    let popup = document.querySelector("#archi-popup");
 
     lightbulb.addEventListener("click", function() {
       console.log("clicked");
@@ -64,7 +57,7 @@ export function page4(svg, jsonData) {
         elevatorAnimation.play();
         lightbulb.classList.add("light");
         popup.classList.remove("hide");
-        document.querySelector("#globalPopUp > g > text").textContent = jsonData[2].popup1;
+        document.querySelector("#archi-popup").textContent = jsonData[4].popup1;
       } else {
         clicked = false;
         elevatorAnimation.pause();
