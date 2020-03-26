@@ -6,17 +6,35 @@ export function page3(svg, jsonData) {
   placeSvg3(svg);
 
   document.querySelector("#koleskabdor").classList.add("hide");
+  document.querySelectorAll(".hh_popup").forEach(popup => {
+    popup.classList.add("hide");
+  });
+
+  document.querySelector("#hh_popup1").textContent = jsonData[3].popup1;
+  document.querySelector("#hh_popup2").textContent = jsonData[3].popup1;
+  document.querySelector("#hh_popup3").textContent = jsonData[3].popup1;
 
   function placeSvg3(svg) {
     document.querySelector("#page3_background").innerHTML = svg;
 
-    for (let i = 0; i < 3; i++) {
-      createLightbulbs();
-      createPopups();
-    }
+    createLightbulbs("hh_lightbulb", "hh_container1", "hh_lightbulb1", "#globalLightBulb");
+    createLightbulbs("hh_lightbulb", "hh_container2", "hh_lightbulb2", "#globalLightBulb");
+    createLightbulbs("hh_lightbulb", "hh_container3", "hh_lightbulb3", "#globalLightBulb");
 
-    setPositions();
     clickLightBulbs();
+  }
+
+  function createLightbulbs(classes, id, id2, href) {
+    let svg = document.createElementNS("http://www.w3.org/2000/svg", "svg");
+    svg.setAttribute("viewBox", "0 0 1500 1000");
+    svg.id = id;
+    svg.classList.add(classes);
+    document.querySelector("#household_lightbulbs").appendChild(svg);
+
+    let use = document.createElementNS("http://www.w3.org/2000/svg", "use");
+    use.setAttribute("href", href);
+    use.id = id2;
+    document.querySelector("#" + id).appendChild(use);
   }
 
   // ANIMATIONER
@@ -28,230 +46,104 @@ export function page3(svg, jsonData) {
     duration: 2,
     repeat: -1,
     transformOrigin: "50% 50%",
-    ease: "linear"
+    ease: "linear",
+    paused: true
   });
   let vaske = gsap.to("#vaskemaskine", {
     y: 2,
     x: 2,
     duration: 0.3,
-    repeat: -1
+    repeat: -1,
+    paused: true
   });
-  trumle.pause();
-  vaske.pause();
 
   // stovsuger
-  let stovsugerAnimation = gsap.timeline({ repeat: -1, duration: 2 });
+  let stovsugerAnimation = gsap.timeline({ repeat: -1, duration: 2, delay: -2, paused: true });
   stovsugerAnimation.to("#stovsuger", { duration: 1, x: 100 });
   stovsugerAnimation.to("#stovsuger", { duration: 1, x: 0 });
-  stovsugerAnimation.pause();
 
   //koleskab
 
-  let koleskabAnimation = gsap.timeline({ repeat: -1, duration: 1 });
+  let koleskabAnimation = gsap.timeline({ repeat: -1, duration: 1, delay: -1, paused: true });
   koleskabAnimation.to("#koleskabdor", { display: "block", duration: 0.5 });
   koleskabAnimation.to("#koleskabdor", { display: "none", duration: 0.5 });
-  koleskabAnimation.pause();
-
-  function createLightbulbs() {
-    let lightbulb = document.createElementNS(
-      "http://www.w3.org/2000/svg",
-      "use"
-    );
-    lightbulb.setAttribute("href", "#globalLightBulb");
-    lightbulb.setAttribute("height", "130px");
-    lightbulb.setAttribute("width", "130px");
-    document.querySelector("#page3_background").appendChild(lightbulb);
-  }
-
-  function createPopups() {
-    let popup = document.createElementNS("http://www.w3.org/2000/svg", "use");
-    popup.setAttribute("href", "#globalPopUp");
-    popup.setAttribute("height", "5000px");
-    popup.setAttribute("width", "5000px");
-    document.querySelector("#page3_background").appendChild(popup);
-  }
-
-  function setPositions() {
-    //pære 1
-    document
-      .querySelector("#page3_background > use:nth-child(2)")
-      .setAttribute("x", "6000px");
-    document
-      .querySelector("#page3_background > use:nth-child(2)")
-      .setAttribute("y", "500px");
-    console.log("her");
-
-    //popup 1
-    document
-      .querySelector("#page3_background > use:nth-child(3)")
-      .setAttribute("x", "4000px");
-    document
-      .querySelector("#page3_background > use:nth-child(3)")
-      .setAttribute("y", "1000px");
-    document
-      .querySelector("#page3_background > use:nth-child(3)")
-      .classList.add("hide");
-    console.log("her nu");
-
-    //pære 2
-    document
-      .querySelector("#page3_background > use:nth-child(4)")
-      .setAttribute("x", "4000px");
-    document
-      .querySelector("#page3_background > use:nth-child(4)")
-      .setAttribute("y", "5500px");
-    console.log("her nu nu");
-
-    //popup 2
-    document
-      .querySelector("#page3_background > use:nth-child(5)")
-      .setAttribute("x", "4000px");
-    document
-      .querySelector("#page3_background > use:nth-child(5)")
-      .setAttribute("y", "1000px");
-    document
-      .querySelector("#page3_background > use:nth-child(5)")
-      .classList.add("hide");
-    console.log("her nu nu");
-
-    //pære 3
-    document
-      .querySelector("#page3_background > use:nth-child(6)")
-      .setAttribute("x", "11800px");
-    document
-      .querySelector("#page3_background > use:nth-child(6)")
-      .setAttribute("y", "3500px");
-    console.log("her nu nu");
-
-    // popup3
-    document
-      .querySelector("#page3_background > use:nth-child(7)")
-      .setAttribute("x", "4000px");
-    document
-      .querySelector("#page3_background > use:nth-child(7)")
-      .setAttribute("y", "1000px");
-    document
-      .querySelector("#page3_background > use:nth-child(7)")
-      .classList.add("hide");
-    console.log("her nu nu");
-  }
 
   function clickLightBulbs() {
-    document
-      .querySelectorAll(
-        "#page3_background> use:nth-child(2), #page3_background> use:nth-child(4), #page3_background> use:nth-child(6)"
-      )
-      .forEach(light => {
-        let scaling = gsap.timeline({ repeat: -1 });
-        scaling.to(light, { scale: 1.03, duration: 1 });
-        scaling.to(light, { scale: 1, duration: 1 });
+    document.querySelectorAll(".hh_lightbulb").forEach(light => {
+      let scaling = gsap.timeline({ repeat: -1 });
+      scaling.to(light, { scale: 1.03, duration: 1 });
+      scaling.to(light, { scale: 1, duration: 1 });
 
-        light.addEventListener("click", function() {
-          light.classList.toggle("light");
+      light.addEventListener("click", function() {
+        light.classList.toggle("light");
 
-          let light1 = document.querySelector("use:nth-child(2)");
-          let light2 = document.querySelector("use:nth-child(4)");
-          let light3 = document.querySelector("use:nth-child(6)");
+        let light1 = document.querySelector("#hh_container1");
+        let light2 = document.querySelector("#hh_container2");
+        let light3 = document.querySelector("#hh_container3");
 
-          if (light == light1) {
-            if (allClickedLights.indexOf(light1) == -1) {
-              allClickedLights.push(light1);
+        if (light == light1) {
+          if (allClickedLights.indexOf(light1) == -1) {
+            allClickedLights.push(light1);
+            console.log(light1);
 
-              document
-                .querySelector("#page3_background > use:nth-child(3)")
-                .classList.remove("hide");
-              document.querySelector("#globalPopUp > g > text").textContent =
-                jsonData[2].popup1;
-            } else {
-              let index = allClickedLights.indexOf(light1);
-              allClickedLights.splice(index, 1);
+            document.querySelector("#hh_popup1").classList.remove("hide");
+          } else {
+            let index = allClickedLights.indexOf(light1);
+            allClickedLights.splice(index, 1);
 
-              document
-                .querySelector("#page3_background > use:nth-child(3)")
-                .classList.add("hide");
-              document
-                .querySelector("#page3_background > use:nth-child(5)")
-                .classList.add("hide");
-              document
-                .querySelector("#page3_background > use:nth-child(7)")
-                .classList.add("hide");
-            }
+            document.querySelector("#hh_popup1").classList.add("hide");
           }
+        }
 
-          if (light == light2) {
-            if (allClickedLights.indexOf(light2) == -1) {
-              allClickedLights.push(light2);
+        if (light == light2) {
+          if (allClickedLights.indexOf(light2) == -1) {
+            allClickedLights.push(light2);
 
-              trumle.play();
-              vaske.play();
-              stovsugerAnimation.play();
+            trumle.play();
+            vaske.play();
+            stovsugerAnimation.play();
 
-              document
-                .querySelector("#page3_background > use:nth-child(5)")
-                .classList.remove("hide");
-              document.querySelector("#globalPopUp > g > text").textContent =
-                jsonData[2].popup2;
-            } else {
-              let index = allClickedLights.indexOf(light2);
-              allClickedLights.splice(index, 1);
+            document.querySelector("#hh_popup2").classList.remove("hide");
+          } else {
+            let index = allClickedLights.indexOf(light2);
+            allClickedLights.splice(index, 1);
 
-              trumle.pause();
-              vaske.pause();
-              stovsugerAnimation.pause();
+            trumle.pause();
+            vaske.pause();
+            stovsugerAnimation.pause();
 
-              document
-                .querySelector("#page3_background > use:nth-child(5)")
-                .classList.add("hide");
-              document
-                .querySelector("#page3_background > use:nth-child(3)")
-                .classList.add("hide");
-              document
-                .querySelector("#page3_background > use:nth-child(7)")
-                .classList.add("hide");
-            }
+            document.querySelector("#hh_popup2").classList.add("hide");
           }
+        }
 
-          if (light == light3) {
-            if (allClickedLights.indexOf(light3) == -1) {
-              allClickedLights.push(light3);
+        if (light == light3) {
+          if (allClickedLights.indexOf(light3) == -1) {
+            allClickedLights.push(light3);
 
-              koleskabAnimation.play();
+            koleskabAnimation.play();
+            document.querySelector("#hh_popup3").classList.remove("hide");
+          } else {
+            let index = allClickedLights.indexOf(light3);
+            allClickedLights.splice(index, 1);
+            koleskabAnimation.pause();
 
-              document
-                .querySelector("#page3_background > use:nth-child(7)")
-                .classList.remove("hide");
-              document.querySelector("#globalPopUp > g > text").textContent =
-                jsonData[2].popup3;
-            } else {
-              let index = allClickedLights.indexOf(light3);
-              allClickedLights.splice(index, 1);
-              koleskabAnimation.pause();
-
-              document
-                .querySelector("#page3_background > use:nth-child(7)")
-                .classList.add("hide");
-              document
-                .querySelector("#page3_background > use:nth-child(3)")
-                .classList.add("hide");
-              document
-                .querySelector("#page3_background > use:nth-child(5)")
-                .classList.add("hide");
-            }
+            document.querySelector("#hh_popup3").classList.add("hide");
           }
+        }
 
-          console.log(allClickedLights);
+        console.log(allClickedLights);
 
-          d3plus
-            .textwrap()
-            .container(d3.select("#globalPopUp > g > text"))
-            .draw();
+        d3plus
+          .textwrap()
+          .container(d3.select("#globalPopUp > g > text"))
+          .draw();
 
-          d3plus
-            .textwrap()
-            .container(d3.select("#globalPopUp > g > text"))
-            .resize(true)
-            .draw();
-        });
+        d3plus
+          .textwrap()
+          .container(d3.select("#globalPopUp > g > text"))
+          .resize(true)
+          .draw();
       });
+    });
   }
 }
