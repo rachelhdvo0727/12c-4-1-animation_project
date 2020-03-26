@@ -30,7 +30,13 @@ export function sleepPatterns(svg, globalJson) {
     document.querySelector(".sleep_bg").innerHTML = svg;
     // const dest = document.querySelector(".lightbulb");
 
-    getLightBulb("-500px", "300px", "lightbulb1", "lightbulb", "#dark-theme-light");
+    getLightBulb(
+      "-500px",
+      "300px",
+      "lightbulb1",
+      "lightbulb",
+      "#dark-theme-light"
+    );
     getLightBulb("-50px", "0", "lightbulb2", "lightbulb", "#dark-theme-light");
     // getLightBulb("100px", "200px", "popup1", "popupClass", "#pop-up");
   }
@@ -106,11 +112,16 @@ export function sleepPatterns(svg, globalJson) {
     console.log(light.id);
     let num = light.id[[light.id.length - 1]];
     console.log(num);
-    let contains = document.querySelector("#sleep-popup" + num).classList.contains("pop-up-show");
+    let contains = document
+      .querySelector("#sleep-popup" + num)
+      .classList.contains("pop-up-show");
     let popupnum = "popup" + num;
-    document.querySelector("#sleep-popup" + num).classList.toggle("pop-up-show");
+    document
+      .querySelector("#sleep-popup" + num)
+      .classList.toggle("pop-up-show");
     if (contains == false) {
-      document.querySelector("#sleep-popup" + num).innerHTML = globalJson[2].text[num - 1].popup;
+      document.querySelector("#sleep-popup" + num).innerHTML =
+        globalJson[2].text[num - 1].popup;
     } else if (contains == true) {
       document.querySelector("#sleep-popup" + num).innerHTML = "";
     }

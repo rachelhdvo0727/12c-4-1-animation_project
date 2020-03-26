@@ -13,6 +13,7 @@ export function historyGlobalSVGs() {
   firstlampSvg();
 
   //ANIMATIONS TO ALL LIGHT BULBS
+  
   const allTheLights = [
     selected[0].firesLightbulb,
     selected[1].edisonsLightbulb,
@@ -209,7 +210,7 @@ export function historyGlobalSVGs() {
       "text"
     );
     textSvg.setAttribute("x", "100px");
-    textSvg.setAttribute("y", "70px");
+    textSvg.setAttribute("y", "50px");
     textSvg.classList.add("theText");
 
     document.querySelector("#globalPopUp > #Layer_2").appendChild(textSvg);
@@ -261,10 +262,10 @@ export function historyGlobalSVGs() {
     selected[0].firesPopup.setAttribute("width", "650px");
 
     //edison
-    selected[1].edisonsLightbulb.setAttribute("x", "568px");
+    selected[1].edisonsLightbulb.setAttribute("x", "600px");
     selected[1].edisonsLightbulb.setAttribute("y", "1810px");
-    selected[1].edisonsPopup.setAttribute("x", "600px");
-    selected[1].edisonsPopup.setAttribute("y", "1350px");
+    selected[1].edisonsPopup.setAttribute("x", "670px");
+    selected[1].edisonsPopup.setAttribute("y", "1380px");
     selected[1].edisonsPopup.setAttribute("height", "700px");
     selected[1].edisonsPopup.setAttribute("width", "750px");
 
@@ -281,7 +282,7 @@ export function historyGlobalSVGs() {
     selected[3].firstlampsLightbulb.setAttribute("y", "1490px");
     selected[3].firstlampsPopup.setAttribute("x", "1940px");
     selected[3].firstlampsPopup.setAttribute("y", "1000px");
-    selected[3].firstlampsPopup.setAttribute("height", "790px");
+    selected[3].firstlampsPopup.setAttribute("height", "800px");
     selected[3].firstlampsPopup.setAttribute("width", "750px");
   }
   function wrapSVGsText() {

@@ -27,9 +27,16 @@ export function frontpage() {
   // getSvg("svg/arrow.svg", createArrows);
 
   function clickLightBulb() {
-    document.querySelector("#mainlightBulb").addEventListener("click", function() {
+    let theBigBulb = document.querySelector("#mainlightBulb");
+
+    theBigBulb.addEventListener("click", function() {
       console.log("clicked");
-      document.querySelector("#mainlightBulb").classList.toggle("clone");
+      theBigBulb.classList.toggle("clone");
+      gsap.to(theBigBulb, {
+        filter: "drop-shadow(10px 10px 100px #f2d94a)",
+        opacity: 1,
+        duration: 0.5
+      });
       // showPopUp(light);
 
       // if (light === light1) {
@@ -65,10 +72,34 @@ export function frontpage() {
 
   function arrowAnimation() {
     console.log("animation fired");
-    gsap.to("#arrow1", { duration: 1, y: "10px", ease: "circ.out", repeat: -1, yoyo: true });
-    gsap.to("#arrow3", { duration: 1, y: "-10px", ease: "sine.out", repeat: -1, yoyo: true });
-    gsap.to("#arrow2", { duration: 1, x: "10px", ease: "sine.out", repeat: -1, yoyo: true });
-    gsap.to("#arrow4", { duration: 1, x: "-10px", ease: "sine.out", repeat: -1, yoyo: true });
+    gsap.to("#arrow1", {
+      duration: 1,
+      y: "10px",
+      ease: "circ.out",
+      repeat: -1,
+      yoyo: true
+    });
+    gsap.to("#arrow3", {
+      duration: 1,
+      y: "-10px",
+      ease: "sine.out",
+      repeat: -1,
+      yoyo: true
+    });
+    gsap.to("#arrow2", {
+      duration: 1,
+      x: "10px",
+      ease: "sine.out",
+      repeat: -1,
+      yoyo: true
+    });
+    gsap.to("#arrow4", {
+      duration: 1,
+      x: "-10px",
+      ease: "sine.out",
+      repeat: -1,
+      yoyo: true
+    });
   }
 
   async function getSvg(filename, callback) {
