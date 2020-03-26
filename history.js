@@ -11,7 +11,7 @@ export function historyGlobalSVGs() {
   edisonSvg();
   demonSvg();
   firstlampSvg();
-  animations();
+  animateAllLightBulbs();
 
   function createModalsandLights() {
     for (let i = 0; i < 4; i++) {
@@ -120,7 +120,7 @@ export function historyGlobalSVGs() {
     //the first lamp
     selected[3].firstlampsLightbulb.setAttribute("x", "1900px");
     selected[3].firstlampsLightbulb.setAttribute("y", "1350px");
-    selected[3].firstlampsPopup.setAttribute("x", "2000px");
+    selected[3].firstlampsPopup.setAttribute("x", "1940px");
     selected[3].firstlampsPopup.setAttribute("y", "1000px");
   }
 
@@ -135,35 +135,69 @@ export function historyGlobalSVGs() {
         light.addEventListener("click", function() {
           console.log("clicked");
           light.classList.toggle("clone");
-
           if (light === selected[0].firesLightbulb) {
             selected[0].firesPopup.classList.toggle("hide");
             document.querySelector("#globalPopUp > g > text").innerHTML =
               data[1].popup1;
             wrapSVGsText();
-            on.pause();
-          }
-          if (light === selected[1].edisonsLightbulb) {
+          } else if (light === selected[1].edisonsLightbulb) {
             selected[1].edisonsPopup.classList.toggle("hide");
             document.querySelector("#globalPopUp > g > text").innerHTML =
               data[1].popup3;
             wrapSVGsText();
-            on.pause();
+            animateEdison();
           } else if (light === selected[2].monstersLightbulb) {
             selected[2].monstersPopup.classList.toggle("hide");
             document.querySelector("#globalPopUp > g > text").innerHTML =
               data[1].popup2;
             wrapSVGsText();
-            on.pause();
+            animateMonster();
           } else if (light === selected[3].firstlampsLightbulb) {
             selected[3].firstlampsPopup.classList.toggle("hide");
             document.querySelector("#globalPopUp > g > text").innerHTML =
               data[1].popup4;
             wrapSVGsText();
-            on.pause();
+            animateFirstLamp();
           }
         });
       });
+  }
+  function animateFirstLamp() {
+    const lamp = document.querySelector("#history-svg-bg > use:nth-child(14)");
+    gsap.to(lamp, {
+      filter: "drop-shadow(15px 15px 50px #f2d94a)",
+      duration: 2,
+      yoyo: true
+    });
+  }
+
+  function animateEdison() {
+    const edison = document.querySelector(
+      "#history-svg-bg > use:nth-child(12)"
+    );
+    gsap.to(edison, {
+      transform: "translateX(50px)",
+      duration: 1.5
+    });
+  }
+
+  function animateMonster() {
+    const monster = document.querySelector(
+      "#history-svg-bg > use:nth-child(13)"
+    );
+    gsap.to(
+      monster,
+      {
+        stagger: {
+          from: "random",
+          ease: "power3.inOut"
+        },
+        y: 50,
+        yoyo: true,
+        repeat: -1
+      },
+      "+=1"
+    );
   }
   function wrapSVGsText() {
     d3plus
@@ -224,33 +258,21 @@ export function historyGlobalSVGs() {
 
     document.querySelector("#history-svg-bg").appendChild(lamp);
   }
-  function animations() {
-    const lamp = document.querySelector("#history-svg-bg > use:nth-child(14)");
+  function animateAllLightBulbs() {
     const allTheLights = [
       selected[0].firesLightbulb,
       selected[1].edisonsLightbulb,
       selected[2].monstersLightbulb,
       selected[3].firstlampsLightbulb
     ];
-    gsap.to(lamp, {
-      filter: "drop-shadow(15px 15px 50px #f2d94a)",
-      duration: 2,
-      repeat: -1,
-      yoyo: true
-    });
-
-    gsap.to(allTheLights, {
+    let blinking;
+    blinking = gsap.to(allTheLights, {
       opacity: 0.3,
       duration: 2,
       repeat: -1,
-      yoyoEase: true
+      yoyoEase: true,
+      paused: true
     });
-    //   // const edisonsLight = document.querySelector(".edison-cls-7:nth-child(77)");
-
-    //   // gsap.to(edisonsLight, {
-    //   //   opacity: 0,
-    //   //   duration: 0.5,
-    //   //   repeat: -1
-    //   // });
+    blinking.play();
   }
 }
