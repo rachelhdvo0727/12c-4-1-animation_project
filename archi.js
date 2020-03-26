@@ -17,29 +17,34 @@ export function page4(svg, jsonData) {
 
   function useLightbulb() {
     let lightbulb = document.createElementNS("http://www.w3.org/2000/svg", "use");
+    const svg = document.createElementNS("http://www.w3.org/2000/svg", "svg");
+    svg.setAttribute("viewBox", "0 0 350 200");
+    svg.id = "lightbulb2929";
+    svg.classList.add("lightbulb-archi");
+    document.querySelector("#lightbulb-archi").appendChild(svg);
     lightbulb.setAttribute("href", "#globalLightBulb");
     lightbulb.setAttribute("height", "130px");
     lightbulb.setAttribute("width", "130px");
-    lightbulb.setAttribute("x", "3000px");
-    lightbulb.setAttribute("y", "2000px");
+    lightbulb.setAttribute("x", "0");
+    lightbulb.setAttribute("y", "0");
     lightbulb.setAttribute("id", "lightBulb");
-    document.querySelector("#page4_background").appendChild(lightbulb);
+    document.querySelector("#lightbulb2929").appendChild(lightbulb);
   }
 
   function usePopup() {
     let popup = document.createElementNS("http://www.w3.org/2000/svg", "use");
     popup.setAttribute("href", "#globalPopUp");
-    popup.setAttribute("height", "5000px");
-    popup.setAttribute("width", "5000px");
-    popup.setAttribute("x", "1000px");
-    popup.setAttribute("y", "2500px");
+    popup.setAttribute("height", "200px");
+    popup.setAttribute("width", "2000px");
+    popup.setAttribute("x", "0");
+    popup.setAttribute("y", "0");
     popup.setAttribute("id", "popUp");
-    document.querySelector("#page4_background").appendChild(popup);
+    document.querySelector("#archiPopup").appendChild(popup);
     console.log("er du der?");
   }
 
   //animation
-  let elevatorAnimation = gsap.timeline({ duration: 8, repeat: -1, delay: -8, paused: true });
+  let elevatorAnimation = gsap.timeline({ duration: 8, delay: -8, repeat: -1, paused: true, yoyo: true });
   elevatorAnimation.to("#elevator", { y: -1200, duration: 4 });
   elevatorAnimation.to("#elevator #light", { fill: "yellow", duration: 0.2 });
   elevatorAnimation.to("#elevator", { y: 0, duration: 3 });

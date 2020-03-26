@@ -14,3 +14,50 @@
 .light {
   --turn-on: rgb(255, 255, 0);
 }
+
+#page4_background {
+  width: 90vw;
+  display: flex;
+  justify-content: center;
+  position: relative;
+}
+
+#page4 {
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: purple;
+  position: relative;
+}
+
+#page4_background svg {
+  align-self: center;
+  height: 100vh;
+  max-width: 100vw;
+
+  // background-size: contain;
+}
+
+.lightbulb {
+}
+
+#lightbulb-archi {
+  width: 50vw;
+  position: absolute;
+  z-index: 2000;
+  left: 20vw;
+}
+
+#lightbulb2929 {
+  width: 20vw;
+}
+
+#archi-popup {
+  width: 10vw;
+  position: absolute;
+  left: 30vw;
+}
+
+#archiPopup {
+}
