@@ -6,13 +6,56 @@ export function historyGlobalSVGs() {
   //save data fra script.js
   let data = sendData();
   let selected = [];
-  let allClikedLights = [];
 
   createModalsandLights();
   edisonSvg();
   demonSvg();
   firstlampSvg();
-  //animateAllLightBulbs();
+
+  //ANIMATIONS TO ALL LIGHT BULBS
+  const allTheLights = [
+    selected[0].firesLightbulb,
+    selected[1].edisonsLightbulb,
+    selected[2].monstersLightbulb,
+    selected[3].firstlampsLightbulb
+  ];
+  let blinking;
+  blinking = gsap.to(allTheLights, {
+    opacity: 0.3,
+    duration: 2,
+    repeat: -1,
+    yoyoEase: true,
+    paused: true
+  });
+  let firelightOn = gsap.to(allTheLights[0], {
+    filter: "drop-shadow(5px 5px 20px #f2d94a)",
+    opacity: 1,
+    duration: 0.5,
+    paused: true
+  });
+  let edisonlightOn = gsap.to(allTheLights[1], {
+    filter: "drop-shadow(5px 5px 20px #f2d94a)",
+    opacity: 1,
+    duration: 0.5,
+    paused: true
+  });
+  let monsterlightOn = gsap.to(allTheLights[2], {
+    filter: "drop-shadow(5px 5px 20px #f2d94a)",
+    opacity: 1,
+    duration: 0.5,
+    paused: true
+  });
+  let firstlamplightOn = gsap.to(allTheLights[3], {
+    filter: "drop-shadow(5px 5px 20px #f2d94a)",
+    opacity: 1,
+    duration: 0.5,
+    paused: true
+  });
+  firelightOn.pause();
+  edisonlightOn.pause();
+  monsterlightOn.pause();
+  firstlamplightOn.pause();
+  blinking.play();
 
   function createModalsandLights() {
     for (let i = 0; i < 4; i++) {
@@ -136,6 +179,7 @@ export function historyGlobalSVGs() {
         light.addEventListener("click", function() {
           console.log("clicked");
           light.classList.toggle("clone");
+          blinking.pause();
 
           if (light === selected[0].firesLightbulb) {
             selected[0].firesPopup.classList.toggle("hide");
@@ -143,6 +187,7 @@ export function historyGlobalSVGs() {
               "#globalPopUp > #Layer_2 > .theText"
             ).innerHTML = data[1].popup1;
             wrapSVGsText();
+            firelightOn.play();
           }
           if (light === selected[1].edisonsLightbulb) {
             selected[1].edisonsPopup.classList.toggle("hide");
@@ -150,7 +195,8 @@ export function historyGlobalSVGs() {
               "#globalPopUp > #Layer_2 > .theText"
             ).innerHTML = data[1].popup3;
             wrapSVGsText();
-            animateEdison();
+            edisonlightOn.play();
+            // animateEdison();
           }
           if (light === selected[2].monstersLightbulb) {
             selected[2].monstersPopup.classList.toggle("hide");
@@ -158,7 +204,8 @@ export function historyGlobalSVGs() {
               "#globalPopUp > #Layer_2 > .theText"
             ).innerHTML = data[1].popup2;
             wrapSVGsText();
-            animateMonster();
+            monsterlightOn.play();
+            //   animateMonster();
           }
           if (light === selected[3].firstlampsLightbulb) {
             selected[3].firstlampsPopup.classList.toggle("hide");
@@ -166,7 +213,8 @@ export function historyGlobalSVGs() {
               "#globalPopUp > #Layer_2 > .theText"
             ).innerHTML = data[1].popup4;
             wrapSVGsText();
-            animateFirstLamp();
+            firstlamplightOn.play();
+            //  animateFirstLamp();
           }
         });
       });
@@ -270,21 +318,4 @@ export function historyGlobalSVGs() {
 
     document.querySelector("#history-svg-bg").appendChild(lamp);
   }
-  // function animateAllLightBulbs() {
-  //   const allTheLights = [
-  //     selected[0].firesLightbulb,
-  //     selected[1].edisonsLightbulb,
-  //     selected[2].monstersLightbulb,
-  //     selected[3].firstlampsLightbulb
-  //   ];
-  //   let blinking;
-  //   blinking = gsap.to(allTheLights, {
-  //     opacity: 0.3,
-  //     duration: 2,
-  //     repeat: -1,
-  //     yoyoEase: true,
-  //     paused: true
-  //   });
-  //   blinking.play();
-  // }
 }
