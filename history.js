@@ -12,7 +12,7 @@ export function historyGlobalSVGs() {
   edisonSvg();
   demonSvg();
   firstlampSvg();
-  animateAllLightBulbs();
+  //animateAllLightBulbs();
 
   function createModalsandLights() {
     for (let i = 0; i < 4; i++) {
@@ -55,7 +55,7 @@ export function historyGlobalSVGs() {
       "text"
     );
     textSvg.setAttribute("x", "80px");
-    textSvg.setAttribute("y", "100px");
+    textSvg.setAttribute("y", "80px");
     textSvg.setAttribute("transform", "translate(88.6 111.65)");
     textSvg.setAttribute("font-size", "24px");
     textSvg.classList.add("theText");
@@ -135,124 +135,81 @@ export function historyGlobalSVGs() {
       .forEach(light => {
         light.addEventListener("click", function() {
           console.log("clicked");
-          light.classList.add("clone");
+          light.classList.toggle("clone");
 
           if (light === selected[0].firesLightbulb) {
-            if (allClikedLights.indexOf(selected[0].firesLightbulb) == -1) {
-              allClikedLights.push(selected[0].firesLightbulb);
-              selected[0].firesPopup.classList.toggle("hide");
-
-              document.querySelector("#globalPopUp > g > text").innerHTML =
-                data[1].popup1;
-              wrapSVGsText();
-            } else {
-              let i = allClikedLights.indexOf(selected[0].firesLightbulb);
-              allClikedLights.splice(i, 1);
-
-              selected[1].edisonsPopup.classList.add("hide");
-              selected[2].monstersPopup.classList.add("hide");
-              selected[3].firstlampsPopup.classList.add("hide");
-            }
+            selected[0].firesPopup.classList.toggle("hide");
+            document.querySelector(
+              "#globalPopUp > #Layer_2 > .theText"
+            ).innerHTML = data[1].popup1;
+            wrapSVGsText();
           }
-
           if (light === selected[1].edisonsLightbulb) {
-            if (allClikedLights.indexOf(selected[1].edisonsLightbulb) == -1) {
-              allClikedLights.push(selected[1].edisonsLightbulb);
-
-              selected[1].edisonsPopup.classList.toggle("hide");
-              document.querySelector("#globalPopUp > g > text").innerHTML =
-                data[1].popup3;
-              wrapSVGsText();
-              animateEdison();
-            } else {
-              let i = allClikedLights.indexOf(selected[1].firesLightbulb);
-              allClikedLights.splice(i, 1);
-
-              selected[0].firesPopup.classList.add("hide");
-              selected[2].monstersPopup.classList.add("hide");
-              selected[3].firstlampsPopup.classList.add("hide");
-            }
+            selected[1].edisonsPopup.classList.toggle("hide");
+            document.querySelector(
+              "#globalPopUp > #Layer_2 > .theText"
+            ).innerHTML = data[1].popup3;
+            wrapSVGsText();
+            animateEdison();
           }
-
           if (light === selected[2].monstersLightbulb) {
-            if (allClikedLights.indexOf(selected[2].monstersLightbulb) == -1) {
-              allClikedLights.push(selected[2].monstersLightbulb);
-
-              selected[2].monstersPopup.classList.toggle("hide");
-              document.querySelector("#globalPopUp > g > text").innerHTML =
-                data[1].popup2;
-              wrapSVGsText();
-              animateMonster();
-            } else {
-              let i = allClikedLights.indexOf(selected[2].firesLightbulb);
-              allClikedLights.splice(i, 1);
-
-              selected[0].firesPopup.classList.add("hide");
-              selected[1].edisonsPopup.classList.add("hide");
-              selected[3].firstlampsPopup.classList.add("hide");
-            }
+            selected[2].monstersPopup.classList.toggle("hide");
+            document.querySelector(
+              "#globalPopUp > #Layer_2 > .theText"
+            ).innerHTML = data[1].popup2;
+            wrapSVGsText();
+            animateMonster();
           }
           if (light === selected[3].firstlampsLightbulb) {
-            if (
-              allClikedLights.indexOf(selected[3].firstlampsLightbulb) == -1
-            ) {
-              allClikedLights.push(selected[3].firstlampsLightbulb);
-
-              selected[3].firstlampsPopup.classList.toggle("hide");
-              document.querySelector("#globalPopUp > g > text").innerHTML =
-                data[1].popup4;
-              wrapSVGsText();
-              animateFirstLamp();
-            } else {
-              let i = allClikedLights.indexOf(selected[3].firesLightbulb);
-              allClikedLights.splice(i, 1);
-
-              selected[0].firesPopup.classList.add("hide");
-              selected[1].edisonsPopup.classList.add("hide");
-              selected[2].monstersPopup.classList.add("hide");
-            }
+            selected[3].firstlampsPopup.classList.toggle("hide");
+            document.querySelector(
+              "#globalPopUp > #Layer_2 > .theText"
+            ).innerHTML = data[1].popup4;
+            wrapSVGsText();
+            animateFirstLamp();
           }
         });
       });
   }
-  function animateFirstLamp() {
-    const lamp = document.querySelector("#history-svg-bg > use:nth-child(14)");
-    gsap.to(lamp, {
-      filter: "drop-shadow(15px 15px 50px #f2d94a)",
-      duration: 2,
-      yoyo: true
-    });
-  }
 
-  function animateEdison() {
-    const edison = document.querySelector(
-      "#history-svg-bg > use:nth-child(12)"
-    );
-    gsap.to(edison, {
-      transform: "translateX(50px)",
-      duration: 1.5,
-      ease: "elastic"
-    });
-  }
+  // function animateFirstLamp() {
+  //   const lamp = document.querySelector("#history-svg-bg > use:nth-child(14)");
+  //   gsap.to(lamp, {
+  //     filter: "drop-shadow(15px 15px 50px #f2d94a)",
+  //     duration: 2,
+  //     yoyo: true
+  //   });
+  // }
 
-  function animateMonster() {
-    const monster = document.querySelector(
-      "#history-svg-bg > use:nth-child(13)"
-    );
-    gsap.to(
-      monster,
-      {
-        stagger: {
-          from: "random",
-          ease: "power3.inOut"
-        },
-        y: 50,
-        yoyo: true,
-        repeat: -1
-      },
-      "+=1"
-    );
-  }
+  // function animateEdison() {
+  //   const edison = document.querySelector(
+  //     "#history-svg-bg > use:nth-child(12)"
+  //   );
+  //   gsap.to(edison, {
+  //     transform: "translateX(50px)",
+  //     duration: 1.5,
+  //     ease: "elastic"
+  //   });
+  // }
+
+  // function animateMonster() {
+  //   const monster = document.querySelector(
+  //     "#history-svg-bg > use:nth-child(13)"
+  //   );
+  //   gsap.to(
+  //     monster,
+  //     {
+  //       stagger: {
+  //         from: "random",
+  //         ease: "power3.inOut"
+  //       },
+  //       y: 50,
+  //       yoyo: true,
+  //       repeat: -1
+  //     },
+  //     "+=1"
+  //   );
+  // }
   function wrapSVGsText() {
     d3plus
       .textwrap()
@@ -313,21 +270,21 @@ export function historyGlobalSVGs() {
 
     document.querySelector("#history-svg-bg").appendChild(lamp);
   }
-  function animateAllLightBulbs() {
-    const allTheLights = [
-      selected[0].firesLightbulb,
-      selected[1].edisonsLightbulb,
-      selected[2].monstersLightbulb,
-      selected[3].firstlampsLightbulb
-    ];
-    let blinking;
-    blinking = gsap.to(allTheLights, {
-      opacity: 0.3,
-      duration: 2,
-      repeat: -1,
-      yoyoEase: true,
-      paused: true
-    });
-    blinking.play();
-  }
+  // function animateAllLightBulbs() {
+  //   const allTheLights = [
+  //     selected[0].firesLightbulb,
+  //     selected[1].edisonsLightbulb,
+  //     selected[2].monstersLightbulb,
+  //     selected[3].firstlampsLightbulb
+  //   ];
+  //   let blinking;
+  //   blinking = gsap.to(allTheLights, {
+  //     opacity: 0.3,
+  //     duration: 2,
+  //     repeat: -1,
+  //     yoyoEase: true,
+  //     paused: true
+  //   });
+  //   blinking.play();
+  // }
 }
