@@ -57,6 +57,95 @@ export function historyGlobalSVGs() {
   firstlamplightOn.pause();
   blinking.play();
 
+  //ANIMATIONS TO MAIN ELEMENTS
+  const lamp = document.querySelector("#history-svg-bg > use:nth-child(14)");
+  let lampAnimation = gsap.to(lamp, {
+    filter: "drop-shadow(15px 15px 50px #f2d94a)",
+    duration: 2,
+    yoyo: true,
+    paused: true
+  });
+
+  const edison = document.querySelector("#history-svg-bg > use:nth-child(12)");
+  let edisonAnimation = gsap.to(edison, {
+    transform: "translateX(50px)",
+    duration: 1.5,
+    ease: "elastic",
+    paused: true
+  });
+
+  const monster = document.querySelector("#history-svg-bg > use:nth-child(13)");
+  let monsterAnimation = gsap.to(
+    monster,
+    {
+      stagger: {
+        from: "random",
+        ease: "power3.inOut"
+      },
+      y: 50,
+      yoyo: true,
+      repeat: -1,
+      paused: true
+    },
+    "+=1"
+  );
+  lampAnimation.pause();
+  monsterAnimation.pause();
+  edisonAnimation.pause();
+
+  function clickLightBulb() {
+    console.log("clickLightBulb");
+    createTexttags();
+    document
+      .querySelectorAll(
+        "use:nth-child(5), use:nth-child(7), use:nth-child(9), use:nth-child(11)"
+      )
+      .forEach(light => {
+        light.addEventListener("click", function() {
+          console.log("clicked");
+          light.classList.toggle("clone");
+          blinking.pause();
+          lampAnimation.pause();
+          monsterAnimation.pause();
+          edisonAnimation.pause();
+          if (light === selected[0].firesLightbulb) {
+            selected[0].firesPopup.classList.toggle("hide");
+            document.querySelector(
+              "#globalPopUp > #Layer_2 > .theText"
+            ).innerHTML = data[1].popup1;
+            wrapSVGsText();
+            firelightOn.play();
+          }
+          if (light === selected[1].edisonsLightbulb) {
+            selected[1].edisonsPopup.classList.toggle("hide");
+            document.querySelector(
+              "#globalPopUp > #Layer_2 > .theText"
+            ).innerHTML = data[1].popup3;
+            wrapSVGsText();
+            edisonlightOn.play();
+            edisonAnimation.play();
+          }
+          if (light === selected[2].monstersLightbulb) {
+            selected[2].monstersPopup.classList.toggle("hide");
+            document.querySelector(
+              "#globalPopUp > #Layer_2 > .theText"
+            ).innerHTML = data[1].popup2;
+            wrapSVGsText();
+            monsterlightOn.play();
+            monsterAnimation.play();
+          }
+          if (light === selected[3].firstlampsLightbulb) {
+            selected[3].firstlampsPopup.classList.toggle("hide");
+            document.querySelector(
+              "#globalPopUp > #Layer_2 > .theText"
+            ).innerHTML = data[1].popup4;
+            wrapSVGsText();
+            firstlamplightOn.play();
+            lampAnimation.play();
+          }
+        });
+      });
+  }
   function createModalsandLights() {
     for (let i = 0; i < 4; i++) {
       console.log("create Modals and Lights");
@@ -114,7 +203,7 @@ export function historyGlobalSVGs() {
           "#history-svg-bg > use:nth-child(4)"
         ),
         firesLightbulb: document.querySelector(
-          "#history-svg-bg>use:nth-child(5)"
+          "#history-svg-bg> use:nth-child(5)"
         )
       },
       {
@@ -167,97 +256,6 @@ export function historyGlobalSVGs() {
     selected[3].firstlampsPopup.setAttribute("x", "1940px");
     selected[3].firstlampsPopup.setAttribute("y", "1000px");
   }
-
-  function clickLightBulb() {
-    console.log("clickLightBulb");
-    createTexttags();
-    document
-      .querySelectorAll(
-        "use:nth-child(5), use:nth-child(7), use:nth-child(9), use:nth-child(11)"
-      )
-      .forEach(light => {
-        light.addEventListener("click", function() {
-          console.log("clicked");
-          light.classList.toggle("clone");
-          blinking.pause();
-
-          if (light === selected[0].firesLightbulb) {
-            selected[0].firesPopup.classList.toggle("hide");
-            document.querySelector(
-              "#globalPopUp > #Layer_2 > .theText"
-            ).innerHTML = data[1].popup1;
-            wrapSVGsText();
-            firelightOn.play();
-          }
-          if (light === selected[1].edisonsLightbulb) {
-            selected[1].edisonsPopup.classList.toggle("hide");
-            document.querySelector(
-              "#globalPopUp > #Layer_2 > .theText"
-            ).innerHTML = data[1].popup3;
-            wrapSVGsText();
-            edisonlightOn.play();
-            // animateEdison();
-          }
-          if (light === selected[2].monstersLightbulb) {
-            selected[2].monstersPopup.classList.toggle("hide");
-            document.querySelector(
-              "#globalPopUp > #Layer_2 > .theText"
-            ).innerHTML = data[1].popup2;
-            wrapSVGsText();
-            monsterlightOn.play();
-            //   animateMonster();
-          }
-          if (light === selected[3].firstlampsLightbulb) {
-            selected[3].firstlampsPopup.classList.toggle("hide");
-            document.querySelector(
-              "#globalPopUp > #Layer_2 > .theText"
-            ).innerHTML = data[1].popup4;
-            wrapSVGsText();
-            firstlamplightOn.play();
-            //  animateFirstLamp();
-          }
-        });
-      });
-  }
-
-  // function animateFirstLamp() {
-  //   const lamp = document.querySelector("#history-svg-bg > use:nth-child(14)");
-  //   gsap.to(lamp, {
-  //     filter: "drop-shadow(15px 15px 50px #f2d94a)",
-  //     duration: 2,
-  //     yoyo: true
-  //   });
-  // }
-
-  // function animateEdison() {
-  //   const edison = document.querySelector(
-  //     "#history-svg-bg > use:nth-child(12)"
-  //   );
-  //   gsap.to(edison, {
-  //     transform: "translateX(50px)",
-  //     duration: 1.5,
-  //     ease: "elastic"
-  //   });
-  // }
-
-  // function animateMonster() {
-  //   const monster = document.querySelector(
-  //     "#history-svg-bg > use:nth-child(13)"
-  //   );
-  //   gsap.to(
-  //     monster,
-  //     {
-  //       stagger: {
-  //         from: "random",
-  //         ease: "power3.inOut"
-  //       },
-  //       y: 50,
-  //       yoyo: true,
-  //       repeat: -1
-  //     },
-  //     "+=1"
-  //   );
-  // }
   function wrapSVGsText() {
     d3plus
       .textwrap()
