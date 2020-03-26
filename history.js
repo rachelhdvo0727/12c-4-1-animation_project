@@ -6,6 +6,7 @@ export function historyGlobalSVGs() {
   //save data fra script.js
   let data = sendData();
   let selected = [];
+  let allClikedLights = [];
 
   createModalsandLights();
   edisonSvg();
@@ -134,30 +135,82 @@ export function historyGlobalSVGs() {
       .forEach(light => {
         light.addEventListener("click", function() {
           console.log("clicked");
-          light.classList.toggle("clone");
+          light.classList.add("clone");
+
           if (light === selected[0].firesLightbulb) {
-            selected[0].firesPopup.classList.toggle("hide");
-            document.querySelector("#globalPopUp > g > text").innerHTML =
-              data[1].popup1;
-            wrapSVGsText();
-          } else if (light === selected[1].edisonsLightbulb) {
-            selected[1].edisonsPopup.classList.toggle("hide");
-            document.querySelector("#globalPopUp > g > text").innerHTML =
-              data[1].popup3;
-            wrapSVGsText();
-            animateEdison();
-          } else if (light === selected[2].monstersLightbulb) {
-            selected[2].monstersPopup.classList.toggle("hide");
-            document.querySelector("#globalPopUp > g > text").innerHTML =
-              data[1].popup2;
-            wrapSVGsText();
-            animateMonster();
-          } else if (light === selected[3].firstlampsLightbulb) {
-            selected[3].firstlampsPopup.classList.toggle("hide");
-            document.querySelector("#globalPopUp > g > text").innerHTML =
-              data[1].popup4;
-            wrapSVGsText();
-            animateFirstLamp();
+            if (allClikedLights.indexOf(selected[0].firesLightbulb) == -1) {
+              allClikedLights.push(selected[0].firesLightbulb);
+              selected[0].firesPopup.classList.remove("hide");
+
+              document.querySelector("#globalPopUp > g > text").innerHTML =
+                data[1].popup1;
+              wrapSVGsText();
+            } else {
+              let i = allClikedLights.indexOf(selected[0].firesLightbulb);
+              allClikedLights.splice(i, 1);
+
+              selected[1].edisonsPopup.classList.add("hide");
+              selected[2].monstersPopup.classList.add("hide");
+              selected[3].firstlampsPopup.classList.add("hide");
+            }
+          }
+
+          if (light === selected[1].edisonsLightbulb) {
+            if (allClikedLights.indexOf(selected[1].edisonsLightbulb) == -1) {
+              allClikedLights.push(selected[1].edisonsLightbulb);
+
+              selected[1].edisonsPopup.classList.toggle("hide");
+              document.querySelector("#globalPopUp > g > text").innerHTML =
+                data[1].popup3;
+              wrapSVGsText();
+              animateEdison();
+            } else {
+              let i = allClikedLights.indexOf(selected[1].firesLightbulb);
+              allClikedLights.splice(i, 1);
+
+              selected[0].firesPopup.classList.add("hide");
+              selected[2].monstersPopup.classList.add("hide");
+              selected[3].firstlampsPopup.classList.add("hide");
+            }
+          }
+
+          if (light === selected[2].monstersLightbulb) {
+            if (allClikedLights.indexOf(selected[2].monstersLightbulb) == -1) {
+              allClikedLights.push(selected[2].monstersLightbulb);
+
+              selected[2].monstersPopup.classList.toggle("hide");
+              document.querySelector("#globalPopUp > g > text").innerHTML =
+                data[1].popup2;
+              wrapSVGsText();
+              animateMonster();
+            } else {
+              let i = allClikedLights.indexOf(selected[2].firesLightbulb);
+              allClikedLights.splice(i, 1);
+
+              selected[0].firesPopup.classList.add("hide");
+              selected[1].edisonsPopup.classList.add("hide");
+              selected[3].firstlampsPopup.classList.add("hide");
+            }
+          }
+          if (light === selected[3].firstlampsLightbulb) {
+            if (
+              allClikedLights.indexOf(selected[3].firstlampsLightbulb) == -1
+            ) {
+              allClikedLights.push(selected[3].firstlampsLightbulb);
+
+              selected[3].firstlampsPopup.classList.toggle("hide");
+              document.querySelector("#globalPopUp > g > text").innerHTML =
+                data[1].popup4;
+              wrapSVGsText();
+              animateFirstLamp();
+            } else {
+              let i = allClikedLights.indexOf(selected[3].firesLightbulb);
+              allClikedLights.splice(i, 1);
+
+              selected[0].firesPopup.classList.add("hide");
+              selected[1].edisonsPopup.classList.add("hide");
+              selected[2].monstersPopup.classList.add("hide");
+            }
           }
         });
       });
