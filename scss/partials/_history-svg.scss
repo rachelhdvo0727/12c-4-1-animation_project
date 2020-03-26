@@ -1,0 +1,24 @@
+#lightbulb,
+#popup,
+#edison-hide,
+#demon-hide,
+#firstlight-hide {
+  visibility: hidden;
+  width: 0;
+  height: 0;
+}
+#globalLightBulb > .lightbulb-cls2 {
+  cursor: pointer;
+}
+.clone {
+  --turn-on: #f2d94a;
+  filter: drop-shadow(6px 6px 30px #f2d94a);
+}
+.theText {
+  letter-spacing: 0.01em;
+  fill: #e2d7c4;
+  font-family: MyriadPro-Regular, Myriad Pro;
+}
+.hide {
+  display: none;
+}
