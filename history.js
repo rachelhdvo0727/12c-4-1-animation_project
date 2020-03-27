@@ -299,15 +299,14 @@ export function historyGlobalSVGs() {
 
   function edisonSvg() {
     let figure = document.createElementNS("http://www.w3.org/2000/svg", "use");
-    figure.setAttributeNS(
-      "http://www.w3.org/1999/xlink",
-      "xlink:href",
-      "svg/edison-ny.svg#edison"
+    figure.setAttribute(
+      "href",
+      "#edison"
     );
-    figure.setAttributeNS(null, "x", "150px");
-    figure.setAttributeNS(null, "y", "1400px");
-    figure.setAttributeNS(null, "height", "500px");
-    figure.setAttributeNS(null, "width", "500px");
+    figure.setAttribute( "x", "150px");
+    figure.setAttribute( "y", "1400px");
+    figure.setAttribute("height", "500px");
+    figure.setAttribute("width", "500px");
     document.querySelector("#history-svg-bg").appendChild(figure);
   }
 
@@ -335,10 +334,10 @@ export function historyGlobalSVGs() {
       "svg/paere-ny-2.svg#firstlamp"
     );
 
-    lamp.setAttributeNS(null, "x", "1500px");
+    lamp.setAttributeNS(null, "x", "1300px");
     lamp.setAttributeNS(null, "y", "1000px");
-    lamp.setAttributeNS(null, "height", "500px");
-    lamp.setAttributeNS(null, "width", "500px");
+    lamp.setAttributeNS(null, "height", "900px");
+    lamp.setAttributeNS(null, "width", "900px");
 
     document.querySelector("#history-svg-bg").appendChild(lamp);
   }
