@@ -9,11 +9,11 @@ export function historyGlobalSVGs() {
 
   createModalsandLights();
   edisonSvg();
-  demonSvg();
-  firstlampSvg();
+  // demonSvg();
+  // firstlampSvg();
 
   //ANIMATIONS TO ALL LIGHT BULBS
-  
+
   const allTheLights = [
     selected[0].firesLightbulb,
     selected[1].edisonsLightbulb,
