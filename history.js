@@ -10,7 +10,7 @@ export function historyGlobalSVGs() {
   createModalsandLights();
   edisonSvg();
   // demonSvg();
-  // firstlampSvg();
+  //firstlampSvg();
 
   //ANIMATIONS TO ALL LIGHT BULBS
 
