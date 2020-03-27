@@ -10,7 +10,7 @@ export function historyGlobalSVGs() {
   createModalsandLights();
   edisonSvg();
   // demonSvg();
-  //firstlampSvg();
+  firstlampSvg();
 
   //ANIMATIONS TO ALL LIGHT BULBS
 
@@ -332,7 +332,7 @@ export function historyGlobalSVGs() {
     lamp.setAttributeNS(
       "http://www.w3.org/1999/xlink",
       "xlink:href",
-      "svg/paere-ny.svg#firstlamp"
+      "svg/paere-ny-2.svg#firstlamp"
     );
 
     lamp.setAttributeNS(null, "x", "1500px");
