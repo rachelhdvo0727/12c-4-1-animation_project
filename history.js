@@ -299,14 +299,15 @@ export function historyGlobalSVGs() {
 
   function edisonSvg() {
     let figure = document.createElementNS("http://www.w3.org/2000/svg", "use");
-    figure.setAttribute(
-      "href",
-      "#edison"
+    figure.setAttributeNS(
+      "http://www.w3.org/1999/xlink",
+      "xlink:href",
+      "svg/edison-ny.svg#edison"
     );
-    figure.setAttribute( "x", "150px");
-    figure.setAttribute( "y", "1400px");
-    figure.setAttribute("height", "500px");
-    figure.setAttribute("width", "500px");
+    figure.setAttributeNS(null, "x", "150px");
+    figure.setAttributeNS(null, "y", "1400px");
+    figure.setAttributeNS(null, "height", "500px");
+    figure.setAttributeNS(null, "width", "500px");
     document.querySelector("#history-svg-bg").appendChild(figure);
   }
 
@@ -315,25 +316,26 @@ export function historyGlobalSVGs() {
     demon.setAttributeNS(
       "http://www.w3.org/1999/xlink",
       "xlink:href",
-      "svg/uhyre-ny.svg#demon"
+      "svg/uhyre-ny-2.svg#demon"
     );
 
-    demon.setAttributeNS(null, "x", "300px");
-    demon.setAttributeNS(null, "y", "400px");
+    demon.setAttributeNS(null, "x", "500px");
+    demon.setAttributeNS(null, "y", "600px");
     demon.setAttributeNS(null, "height", "500px");
     demon.setAttributeNS(null, "width", "500px");
 
     document.querySelector("#history-svg-bg").appendChild(demon);
   }
 
+
   function firstlampSvg() {
     let lamp = document.createElementNS("http://www.w3.org/2000/svg", "use");
+
     lamp.setAttributeNS(
       "http://www.w3.org/1999/xlink",
       "xlink:href",
       "svg/paere-ny-2.svg#firstlamp"
     );
-
     lamp.setAttributeNS(null, "x", "1300px");
     lamp.setAttributeNS(null, "y", "1000px");
     lamp.setAttributeNS(null, "height", "900px");

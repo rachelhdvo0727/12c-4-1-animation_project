@@ -31,7 +31,7 @@ async function getJson() {
   // historie
   getSvg("svg/history-bg.svg", historyBgSVG);
   getSvg("svg/edison-ny.svg", edisonSVG);
-  //getSvg("svg/uhyre-ny.svg", monsterSVG);
+  getSvg("svg/uhyre-ny-2.svg", monsterSVG);
   getSvg("svg/paere-ny-2.svg", firstlampSVG);
   sendData();
   getSvg("svg/household.svg", page3, globalJson);
