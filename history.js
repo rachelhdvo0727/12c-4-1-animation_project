@@ -9,7 +9,7 @@ export function historyGlobalSVGs() {
 
   createModalsandLights();
   edisonSvg();
-  // demonSvg();
+  demonSvg();
   firstlampSvg();
 
   //ANIMATIONS TO ALL LIGHT BULBS
@@ -326,7 +326,6 @@ export function historyGlobalSVGs() {
 
     document.querySelector("#history-svg-bg").appendChild(demon);
   }
-
 
   function firstlampSvg() {
     let lamp = document.createElementNS("http://www.w3.org/2000/svg", "use");
