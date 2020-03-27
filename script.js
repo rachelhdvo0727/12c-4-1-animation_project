@@ -80,6 +80,7 @@ function historyBgSVG(svg) {
 function edisonSVG(svg) {
   document.querySelector("#edison-hide").innerHTML = svg;
 }
+
 function monsterSVG(svg) {
   document.querySelector("#demon-hide").innerHTML = svg;
 }
