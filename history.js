@@ -270,7 +270,7 @@ export function historyGlobalSVGs() {
     selected[1].edisonsPopup.setAttribute("width", "750px");
 
     //monster
-    selected[2].monstersLightbulb.setAttribute("x", "750px");
+    selected[2].monstersLightbulb.setAttribute("x", "800px");
     selected[2].monstersLightbulb.setAttribute("y", "900px");
     selected[2].monstersPopup.setAttribute("x", "800px");
     selected[2].monstersPopup.setAttribute("y", "380px");
@@ -280,7 +280,7 @@ export function historyGlobalSVGs() {
     //the first lamp
     selected[3].firstlampsLightbulb.setAttribute("x", "1900px");
     selected[3].firstlampsLightbulb.setAttribute("y", "1490px");
-    selected[3].firstlampsPopup.setAttribute("x", "1940px");
+    selected[3].firstlampsPopup.setAttribute("x", "1250px");
     selected[3].firstlampsPopup.setAttribute("y", "1000px");
     selected[3].firstlampsPopup.setAttribute("height", "800px");
     selected[3].firstlampsPopup.setAttribute("width", "750px");
@@ -302,12 +302,12 @@ export function historyGlobalSVGs() {
     figure.setAttributeNS(
       "http://www.w3.org/1999/xlink",
       "xlink:href",
-      "svg/edison-ny.svg#edison"
+      "svg/edison-ny-use.svg#edison_1_"
     );
     figure.setAttributeNS(null, "x", "150px");
     figure.setAttributeNS(null, "y", "1400px");
-    figure.setAttributeNS(null, "height", "500px");
-    figure.setAttributeNS(null, "width", "500px");
+    figure.setAttributeNS(null, "height", "600px");
+    figure.setAttributeNS(null, "width", "600px");
     document.querySelector("#history-svg-bg").appendChild(figure);
   }
 
@@ -316,13 +316,13 @@ export function historyGlobalSVGs() {
     demon.setAttributeNS(
       "http://www.w3.org/1999/xlink",
       "xlink:href",
-      "svg/uhyre-ny-2.svg#demon"
+      "svg/uhyre-ny-use.svg#demon_1_"
     );
 
-    demon.setAttributeNS(null, "x", "500px");
-    demon.setAttributeNS(null, "y", "600px");
-    demon.setAttributeNS(null, "height", "500px");
-    demon.setAttributeNS(null, "width", "500px");
+    demon.setAttributeNS(null, "x", "300px");
+    demon.setAttributeNS(null, "y", "500px");
+    demon.setAttributeNS(null, "height", "600px");
+    demon.setAttributeNS(null, "width", "600px");
 
     document.querySelector("#history-svg-bg").appendChild(demon);
   }
@@ -333,12 +333,12 @@ export function historyGlobalSVGs() {
     lamp.setAttributeNS(
       "http://www.w3.org/1999/xlink",
       "xlink:href",
-      "svg/paere-ny-2.svg#firstlamp"
+      "svg/paere-ny-use.svg#firstlamp_1_"
     );
-    lamp.setAttributeNS(null, "x", "1300px");
+    lamp.setAttributeNS(null, "x", "2000px");
     lamp.setAttributeNS(null, "y", "1000px");
-    lamp.setAttributeNS(null, "height", "900px");
-    lamp.setAttributeNS(null, "width", "900px");
+    lamp.setAttributeNS(null, "height", "700px");
+    lamp.setAttributeNS(null, "width", "700px");
 
     document.querySelector("#history-svg-bg").appendChild(lamp);
   }
