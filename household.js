@@ -6,6 +6,7 @@ export function page3(svg, jsonData) {
   placeSvg3(svg);
 
   document.querySelector("#koleskabdor").classList.add("hide");
+  document.querySelector("#lysfralampe").classList.add("hide");
   document.querySelectorAll(".hh_popup").forEach(popup => {
     popup.classList.add("hide");
   });
@@ -87,11 +88,13 @@ export function page3(svg, jsonData) {
             console.log(light1);
 
             document.querySelector("#hh_popup1").classList.remove("hide");
+            document.querySelector("#lysfralampe").classList.remove("hide");
           } else {
             let index = allClickedLights.indexOf(light1);
             allClickedLights.splice(index, 1);
 
             document.querySelector("#hh_popup1").classList.add("hide");
+            document.querySelector("#lysfralampe").classList.add("hide");
           }
         }
 
