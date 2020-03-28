@@ -5,10 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
     <link rel="stylesheet" href="scss/style.scss" />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@100;400;700&family=Lato:wght@100;400&display=swap"
-      rel="stylesheet"
-    />
+    <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@100;400;700&family=Lato:wght@100;400&display=swap" rel="stylesheet" />
   </head>
   <body>
     <div id="lightbulb"></div>
@@ -23,51 +20,55 @@
         <div id="arrow4" class="arrow"></div>
       </div>
     </section>
-    <section id="frontpage">
-      <svg
-        id="mainlightBulb"
-        viewBox="0 0 7900
+    <div class="wrapper-horizontal">
+      <div class="wrapper-vertical">
+        <section id="frontpage">
+          <svg
+            id="mainlightBulb"
+            viewBox="0 0 7900
        12900"
-      ></svg>
-    </section>
+          ></svg>
+        </section>
 
-    <section id="page1">
-      <svg id="history-bg" viewBox="0 0 2629.02 2082.03"></svg>
-
-      <div id="edison-hide"></div>
-      <div id="demon-hide"></div>
-      <div id="firstlight-hide"></div>
-      <div id="lightbulb"></div>
-      <div id="popup"></div>
-    </section>
-
-    <section id="page2">
-      <div class="lightbulbs">
-        <div id="lightbulbDark"></div>
-        <div id="sleep-popup1"></div>
-        <div id="sleep-popup2"></div>
+        <section id="page3" class="pages">
+          <div id="household_lightbulbs"></div>
+          <div id="household_popups">
+            <div id="hh_popup1" class="hh_popup"></div>
+            <div id="hh_popup2" class="hh_popup"></div>
+            <div id="hh_popup3" class="hh_popup"></div>
+          </div>
+          <div id="page3_background"></div>
+          <!-- <svg id="page3_background" viewBox="0 0 13660 10240"></svg> -->
+        </section>
+        <section id="page4" class="pages">
+          <div id="archi-lightbulb"></div>
+          <div id="archi-popup"></div>
+          <div id="page4_background"></div>
+          <!-- <svg id="page4_background" viewBox="0 0 13660 10240"></svg> -->
+        </section>
       </div>
-      <!-- <div id="lightbulb2" class="lightbulbs"></div> -->
 
-      <div class="sleep_bg"></div>
-    </section>
-    <section id="page3">
-      <div id="household_lightbulbs"></div>
-      <div id="household_popups">
-        <div id="hh_popup1" class="hh_popup"></div>
-        <div id="hh_popup2" class="hh_popup"></div>
-        <div id="hh_popup3" class="hh_popup"></div>
-      </div>
-      <div id="page3_background"></div>
-      <!-- <svg id="page3_background" viewBox="0 0 13660 10240"></svg> -->
-    </section>
-    <section id="page4">
-      <div id="archi-lightbulb"></div>
-      <div id="archi-popup"></div>
-      <div id="page4_background"></div>
-      <!-- <svg id="page4_background" viewBox="0 0 13660 10240"></svg> -->
-    </section>
+      <section id="page1">
+        <svg id="history-bg" viewBox="0 0 2629.02 2082.03"></svg>
 
+        <div id="edison-hide"></div>
+        <div id="demon-hide"></div>
+        <div id="firstlight-hide"></div>
+        <div id="lightbulb"></div>
+        <div id="popup"></div>
+      </section>
+
+      <section id="page2" class="pages">
+        <div class="lightbulbs">
+          <div id="lightbulbDark"></div>
+          <div id="sleep-popup1"></div>
+          <div id="sleep-popup2"></div>
+        </div>
+        <!-- <div id="lightbulb2" class="lightbulbs"></div> -->
+
+        <div class="sleep_bg"></div>
+      </section>
+    </div>
     <script src="script.js"></script>
     <script src="//d3plus.org/js/d3.js"></script>
     <script src="//d3plus.org/js/d3plus.js"></script>

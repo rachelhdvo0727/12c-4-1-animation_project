@@ -1,6 +1,6 @@
 import gsap from "gsap";
 
-export function page3(svg, jsonData) {
+export function page3Handler(svg, jsonData) {
   let allClickedLights = [];
 
   placeSvg3(svg);
