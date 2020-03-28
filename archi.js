@@ -1,6 +1,6 @@
 import { gsap } from "gsap";
 
-export function page4(svg, jsonData) {
+export function page4Handler(svg, jsonData) {
   placeSvg4(svg);
 
   let clicked = false;

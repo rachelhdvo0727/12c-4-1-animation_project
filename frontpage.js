@@ -1,12 +1,9 @@
 import gsap from "gsap";
 
-export function frontpage() {
+export function frontpageHandler() {
   mainLightBulb();
   clickLightBulb();
-  getArrows("0", "0", "useArrow1", "arrow1");
-  getArrows("0", "0", "useArrow2", "arrow2");
-  getArrows("0", "0", "useArrow3", "arrow3");
-  getArrows("0", "0", "useArrow4", "arrow4");
+
   function mainLightBulb() {
     // create a single balloon, using the #yellow_balloon
     let use = document.createElementNS("http://www.w3.org/2000/svg", "use");
@@ -52,54 +49,6 @@ export function frontpage() {
     //     let light2 = document.querySelector("#lightbulb2");
     //   });
     // }
-  }
-
-  function getArrows(x, y, id, container) {
-    const svg = document.createElementNS("http://www.w3.org/2000/svg", "svg");
-    svg.setAttribute("viewBox", "0 0 755 456");
-    svg.id = id;
-    document.querySelector("#" + container).appendChild(svg);
-    let use = document.createElementNS("http://www.w3.org/2000/svg", "use");
-    use.setAttribute("href", "#arrow");
-    use.setAttribute("x", x);
-    use.setAttribute("y", y);
-    use.id = id;
-    document.querySelector("#" + id).appendChild(use);
-    arrowAnimation();
-    // let compStyle = window.getComputedStyle(document.querySelector(".lightbulb"));
-    // compStyle.fill = "red";
-  }
-
-  function arrowAnimation() {
-    console.log("animation fired");
-    // gsap.to("#arrow1", {
-    //   duration: 1,
-    //   y: "10px",
-    //   ease: "circ.out",
-    //   repeat: -1,
-    //   yoyo: true
-    // });
-    gsap.to("#arrow3", {
-      duration: 1,
-      y: "-10px",
-      ease: "sine.out",
-      repeat: -1,
-      yoyo: true
-    });
-    // gsap.to("#arrow2", {
-    //   duration: 1,
-    //   x: "10px",
-    //   ease: "sine.out",
-    //   repeat: -1,
-    //   yoyo: true
-    // });
-    // gsap.to("#arrow4", {
-    //   duration: 1,
-    //   x: "-10px",
-    //   ease: "sine.out",
-    //   repeat: -1,
-    //   yoyo: true
-    // });
   }
 
   async function getSvg(filename, callback) {
