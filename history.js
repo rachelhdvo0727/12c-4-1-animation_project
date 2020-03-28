@@ -302,7 +302,7 @@ export function historyGlobalSVGs() {
     figure.setAttributeNS(
       "http://www.w3.org/1999/xlink",
       "xlink:href",
-      "svg/edison-ny-use.svg#edison"
+      "svg/edison-ny-use.svg#edison_1_"
     );
     figure.setAttributeNS(null, "x", "150px");
     figure.setAttributeNS(null, "y", "1400px");
@@ -316,7 +316,7 @@ export function historyGlobalSVGs() {
     demon.setAttributeNS(
       "http://www.w3.org/1999/xlink",
       "xlink:href",
-      "svg/uhyre-ny-use.svg#demon"
+      "svg/uhyre-ny-use.svg#demon_1_"
     );
 
     demon.setAttributeNS(null, "x", "500px");
@@ -333,7 +333,7 @@ export function historyGlobalSVGs() {
     lamp.setAttributeNS(
       "http://www.w3.org/1999/xlink",
       "xlink:href",
-      "svg/paere-ny-use.svg#firstlamp"
+      "svg/paere-ny-use.svg#firstlamp_1_"
     );
     lamp.setAttributeNS(null, "x", "1300px");
     lamp.setAttributeNS(null, "y", "1000px");
