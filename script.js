@@ -21,8 +21,12 @@ function start() {
   getArrows("0", "0", "useArrow3", "arrow3");
   getArrows("0", "0", "useArrow4", "arrow4");
 
-  document.querySelector(".wrapper-vertical").addEventListener("scroll", scrollingVertical);
-  document.querySelector(".wrapper-horizontal").addEventListener("scroll", scrollingHorizontal);
+  document
+    .querySelector(".wrapper-vertical")
+    .addEventListener("scroll", scrollingVertical);
+  document
+    .querySelector(".wrapper-horizontal")
+    .addEventListener("scroll", scrollingHorizontal);
 }
 
 function clickedArrow() {
@@ -67,9 +71,15 @@ function scrollingHorizontal() {
   document.querySelectorAll(".arrow").forEach(elm => {
     elm.removeEventListener("click", clickedArrow);
   });
-  const frontpageHorizontal = document.querySelector("#frontpage").getBoundingClientRect();
-  const page1Horizontal = document.querySelector("#page1").getBoundingClientRect();
-  const page2Horizontal = document.querySelector("#page2").getBoundingClientRect();
+  const frontpageHorizontal = document
+    .querySelector("#frontpage")
+    .getBoundingClientRect();
+  const page1Horizontal = document
+    .querySelector("#page1")
+    .getBoundingClientRect();
+  const page2Horizontal = document
+    .querySelector("#page2")
+    .getBoundingClientRect();
 
   if (inView(frontpageHorizontal)) {
     document.querySelectorAll(".arrow").forEach(elm => {
@@ -89,8 +99,12 @@ function scrollingHorizontal() {
     document.querySelector("#arrow2").addEventListener("click", arrow2Click);
     function arrow2Click() {
       console.log("frontpage scroll");
-      document.querySelector(".wrapper-horizontal").scrollBy(frontpageHorizontal.x, frontpageHorizontal.y);
-      document.querySelector("#arrow2").removeEventListener("click", arrow2Click);
+      document
+        .querySelector(".wrapper-horizontal")
+        .scrollBy(frontpageHorizontal.x, frontpageHorizontal.y);
+      document
+        .querySelector("#arrow2")
+        .removeEventListener("click", arrow2Click);
     }
     document.querySelectorAll(".arrow").forEach(elm => {
       elm.style.zIndex = "-100";
@@ -106,8 +120,12 @@ function scrollingHorizontal() {
     document.querySelector("#arrow4").addEventListener("click", arrow4Click);
     function arrow4Click() {
       console.log("frontpage scroll");
-      document.querySelector(".wrapper-horizontal").scrollBy(frontpageHorizontal.x, frontpageHorizontal.y);
-      document.querySelector("#arrow4").removeEventListener("click", arrow4Click);
+      document
+        .querySelector(".wrapper-horizontal")
+        .scrollBy(frontpageHorizontal.x, frontpageHorizontal.y);
+      document
+        .querySelector("#arrow4")
+        .removeEventListener("click", arrow4Click);
     }
     document.querySelectorAll(".arrow").forEach(elm => {
       elm.style.zIndex = "-100";
@@ -122,9 +140,15 @@ function scrollingVertical() {
   document.querySelectorAll(".arrow").forEach(elm => {
     elm.removeEventListener("click", clickedArrow);
   });
-  const frontpageVertical = document.querySelector("#frontpage").getBoundingClientRect();
-  const page3Vertical = document.querySelector("#page3").getBoundingClientRect();
-  const page4Vertical = document.querySelector("#page4").getBoundingClientRect();
+  const frontpageVertical = document
+    .querySelector("#frontpage")
+    .getBoundingClientRect();
+  const page3Vertical = document
+    .querySelector("#page3")
+    .getBoundingClientRect();
+  const page4Vertical = document
+    .querySelector("#page4")
+    .getBoundingClientRect();
 
   if (inView(frontpageVertical)) {
     document.querySelectorAll(".arrow").forEach(elm => {
@@ -142,8 +166,12 @@ function scrollingVertical() {
     document.querySelector("#arrow1").addEventListener("click", arrow1Click);
     function arrow1Click() {
       console.log("frontpage scroll");
-      document.querySelector(".wrapper-vertical").scrollBy(frontpageVertical.x, frontpageVertical.y);
-      document.querySelector("#arrow1").removeEventListener("click", arrow1Click);
+      document
+        .querySelector(".wrapper-vertical")
+        .scrollBy(frontpageVertical.x, frontpageVertical.y);
+      document
+        .querySelector("#arrow1")
+        .removeEventListener("click", arrow1Click);
     }
 
     console.log("in view!");
@@ -158,8 +186,12 @@ function scrollingVertical() {
     document.querySelector("#arrow3").addEventListener("click", arrow3Click);
     function arrow3Click() {
       console.log("frontpage scroll");
-      document.querySelector(".wrapper-vertical").scrollBy(frontpageVertical.x, frontpageVertical.y);
-      document.querySelector("#arrow3").removeEventListener("click", arrow3Click);
+      document
+        .querySelector(".wrapper-vertical")
+        .scrollBy(frontpageVertical.x, frontpageVertical.y);
+      document
+        .querySelector("#arrow3")
+        .removeEventListener("click", arrow3Click);
     }
     console.log("in view!");
     document.querySelector(".wrapper-horizontal").style.overflow = "hidden";
@@ -174,7 +206,13 @@ function inView(rect) {
   // FROM https://gist.github.com/davidtheclark/5515733
   console.log("inView");
   console.log(rect);
-  return rect.top >= 0 && rect.left >= 0 && rect.bottom <= (window.innerHeight || document.documentElement.clientHeight) && rect.right <= (window.innerWidth || document.documentElement.clientWidth);
+  return (
+    rect.top >= 0 &&
+    rect.left >= 0 &&
+    rect.bottom <=
+      (window.innerHeight || document.documentElement.clientHeight) &&
+    rect.right <= (window.innerWidth || document.documentElement.clientWidth)
+  );
   // FROM https://gist.github.com/davidtheclark/5515733
 }
 
@@ -194,9 +232,9 @@ async function getJson() {
 
   // historie
   getSvg("svg/history-bg.svg", historyBgSVG);
-  getSvg("svg/edison-ny-use.svg", edisonSVG);
-  getSvg("svg/uhyre-ny-use.svg", monsterSVG);
-  getSvg("svg/paere-ny-use.svg", firstlampSVG);
+  getSvg("svg/edison-ny-use1.svg", edisonSVG);
+  getSvg("svg/uhyre-ny-use1.svg", monsterSVG);
+  getSvg("svg/paere-ny-use1.svg", firstlampSVG);
   sendData();
   getSvg("svg/household.svg", page3Handler, globalJson);
   getSvg("svg/arrow.svg", arrow);
