@@ -28,3 +28,9 @@
 #page1 {
   background-color: #e2d7c4;
 }
+#history-svg-bg > use:nth-child(5),
+#history-svg-bg > use:nth-child(7),
+#history-svg-bg > use:nth-child(9),
+#history-svg-bg > use:nth-child(11) {
+  fill: none;
+}

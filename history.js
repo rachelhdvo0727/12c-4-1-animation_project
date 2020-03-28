@@ -187,7 +187,6 @@ export function historyGlobalSVGs() {
 
     lightbulb.setAttribute("height", "150px");
     lightbulb.setAttribute("width", "150px");
-    lightbulb.style.fill = "none";
 
     document.querySelector("#history-svg-bg").appendChild(lightbulb);
   }
