@@ -24,7 +24,7 @@ export function page4(svg, jsonData) {
 
     let lightbulb = document.createElementNS("http://www.w3.org/2000/svg", "use");
     lightbulb.setAttribute("href", "#globalLightBulb");
-    lightbulb.setAttribute("id", "lightBulb");
+    lightbulb.setAttribute("id", "archi_lightbulb");
     document.querySelector("#lightbulb_svg_container").appendChild(lightbulb);
   }
 
@@ -45,8 +45,16 @@ export function page4(svg, jsonData) {
 
   let skyscaperAnimation = gsap.to(".archi-cls-2", { fill: "yellow", stagger: 0.2, duration: 5, paused: true });
 
+  let lightBulbAnimation = gsap.to("#lightbulb_svg_container", {
+    filter: "drop-shadow(30px 30px 200px #f2d94a)",
+    opacity: 1,
+    duration: 2,
+    repeat: -1,
+    paused: true
+  });
+
   function clickLightbulb() {
-    let lightbulb = document.querySelector("#lightBulb");
+    let lightbulb = document.querySelector("#archi_lightbulb");
     let popup = document.querySelector("#archi-popup");
 
     lightbulb.addEventListener("click", function() {
@@ -58,6 +66,7 @@ export function page4(svg, jsonData) {
         clicked = true;
         elevatorAnimation.play();
         skyscaperAnimation.play();
+        lightBulbAnimation.play();
         lightbulb.classList.add("light");
         popup.classList.remove("hide");
         document.querySelector("#archi-popup").textContent = jsonData[4].popup1;
