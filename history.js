@@ -258,8 +258,8 @@ export function historyGlobalSVGs() {
     selected[0].firesLightbulb.setAttribute("y", "160px");
     selected[0].firesPopup.setAttribute("x", "1945px");
     selected[0].firesPopup.setAttribute("y", "20px");
-    selected[0].firesPopup.setAttribute("height", "700px");
-    selected[0].firesPopup.setAttribute("width", "650px");
+    selected[0].firesPopup.setAttribute("height", "750px");
+    selected[0].firesPopup.setAttribute("width", "750px");
 
     //edison
     selected[1].edisonsLightbulb.setAttribute("x", "600px");
