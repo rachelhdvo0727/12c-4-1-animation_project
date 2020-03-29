@@ -3,10 +3,10 @@
     "pageID": "frontpage",
     "title": "The invention of the light bulb",
     "popuptext": "Hi and welcome! This page is about the invention of the light bulb, and how this particular invention has changed the way we live. Explore the pages by scrolling and try click on the light bulbs that look like this one!",
-    "page1": "History",
+    "page1": "Household",
     "page2": "Sleep patterns",
-    "page3": "Household",
-    "page4": "Architechture"
+    "page3": "Architecture",
+    "page4": "History"
   },
   {
     "pageID": "history",
