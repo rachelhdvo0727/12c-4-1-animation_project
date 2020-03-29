@@ -20,14 +20,19 @@ export function historyGlobalSVGs() {
     selected[2].monstersLightbulb,
     selected[3].firstlampsLightbulb
   ];
-  let blinking;
-  blinking = gsap.to(allTheLights, {
-    opacity: 0.3,
-    duration: 2,
-    repeat: -1,
-    yoyoEase: true,
-    paused: true
-  });
+  // let blinking;
+  // blinking = gsap.to(allTheLights, {
+  //   opacity: 0.3,
+  //   duration: 2,
+  //   repeat: -1,
+  //   yoyoEase: true,
+  //   paused: true
+  // });
+
+  let scaling = gsap.timeline({ repeat: -1 });
+  scaling.to(allTheLights, { scale: 1.03, duration: 1 });
+  scaling.to(allTheLights, { scale: 1, duration: 1 });
+
   let firelightOn = gsap.to(allTheLights[0], {
     filter: "drop-shadow(5px 5px 20px #f2d94a)",
     opacity: 1,
@@ -53,7 +58,6 @@ export function historyGlobalSVGs() {
     paused: true
   });
 
-  blinking.play();
   firelightOn.pause();
   edisonlightOn.pause();
   monsterlightOn.pause();
@@ -108,7 +112,7 @@ export function historyGlobalSVGs() {
           light.classList.toggle("clone");
 
           if (light.classList.contains("clone")) {
-            blinking.pause();
+            scaling.pause();
             if (light === selected[0].firesLightbulb) {
               selected[0].firesPopup.classList.toggle("hide");
               document.querySelector(
@@ -155,7 +159,7 @@ export function historyGlobalSVGs() {
             selected[1].edisonsPopup.classList.add("hide");
             selected[2].monstersPopup.classList.add("hide");
             selected[3].firstlampsPopup.classList.add("hide");
-            blinking.play();
+            scaling.play();
 
             lampAnimation.pause();
             monsterAnimation.pause();
