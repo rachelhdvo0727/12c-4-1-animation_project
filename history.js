@@ -52,14 +52,6 @@ export function historyGlobalSVGs() {
     duration: 0.5,
     paused: true
   });
-  let paere = document.querySelector(".glow");
-  let glowP = gsap.to(paere, {
-    filter: "drop-shadow(5px 5px 20px #f2d94a)",
-    opacity: 1,
-    duration: 0.5,
-    paused: true
-  });
-  console.log(glowP);
 
   blinking.play();
   firelightOn.pause();

@@ -18,9 +18,24 @@ export function page3Handler(svg, jsonData) {
   function placeSvg3(svg) {
     document.querySelector("#page3_background").innerHTML = svg;
 
-    createLightbulbs("hh_lightbulb", "hh_container1", "hh_lightbulb1", "#globalLightBulb");
-    createLightbulbs("hh_lightbulb", "hh_container2", "hh_lightbulb2", "#globalLightBulb");
-    createLightbulbs("hh_lightbulb", "hh_container3", "hh_lightbulb3", "#globalLightBulb");
+    createLightbulbs(
+      "hh_lightbulb",
+      "hh_container1",
+      "hh_lightbulb1",
+      "#globalLightBulb"
+    );
+    createLightbulbs(
+      "hh_lightbulb",
+      "hh_container2",
+      "hh_lightbulb2",
+      "#globalLightBulb"
+    );
+    createLightbulbs(
+      "hh_lightbulb",
+      "hh_container3",
+      "hh_lightbulb3",
+      "#globalLightBulb"
+    );
 
     clickLightBulbs();
   }
@@ -59,13 +74,23 @@ export function page3Handler(svg, jsonData) {
   });
 
   // stovsuger
-  let stovsugerAnimation = gsap.timeline({ repeat: -1, duration: 2, delay: -2, paused: true });
+  let stovsugerAnimation = gsap.timeline({
+    repeat: -1,
+    duration: 2,
+    delay: -2,
+    paused: true
+  });
   stovsugerAnimation.to("#stovsuger", { duration: 1, x: 100 });
   stovsugerAnimation.to("#stovsuger", { duration: 1, x: 0 });
 
   //koleskab
 
-  let koleskabAnimation = gsap.timeline({ repeat: -1, duration: 1, delay: -1, paused: true });
+  let koleskabAnimation = gsap.timeline({
+    repeat: -1,
+    duration: 1,
+    delay: -1,
+    paused: true
+  });
   koleskabAnimation.to("#koleskabdor", { display: "block", duration: 0.5 });
   koleskabAnimation.to("#koleskabdor", { display: "none", duration: 0.5 });
 
@@ -81,17 +106,40 @@ export function page3Handler(svg, jsonData) {
         let light1 = document.querySelector("#hh_container1");
         let light2 = document.querySelector("#hh_container2");
         let light3 = document.querySelector("#hh_container3");
+        //Glow
+        let glow1 = gsap.to(light1, {
+          filter: "drop-shadow(5px 5px 20px #f2d94a)",
+          opacity: 1,
+          duration: 0.5,
+          paused: true
+        });
+        let glow2 = gsap.to(light2, {
+          filter: "drop-shadow(5px 5px 20px #f2d94a)",
+          opacity: 1,
+          duration: 0.5,
+          paused: true
+        });
+        let glow3 = gsap.to(light3, {
+          filter: "drop-shadow(5px 5px 20px #f2d94a)",
+          opacity: 1,
+          duration: 0.5,
+          paused: true
+        });
 
         if (light == light1) {
           if (allClickedLights.indexOf(light1) == -1) {
             allClickedLights.push(light1);
             console.log(light1);
 
+            glow1.play();
+
             document.querySelector("#hh_popup1").classList.remove("hide");
             document.querySelector("#lysfralampe").classList.remove("hide");
           } else {
             let index = allClickedLights.indexOf(light1);
             allClickedLights.splice(index, 1);
+
+            glow1.pause();
 
             document.querySelector("#hh_popup1").classList.add("hide");
             document.querySelector("#lysfralampe").classList.add("hide");
@@ -104,6 +152,7 @@ export function page3Handler(svg, jsonData) {
 
             trumle.play();
             vaske.play();
+            glow2.play();
             stovsugerAnimation.play();
 
             document.querySelector("#hh_popup2").classList.remove("hide");
@@ -113,6 +162,7 @@ export function page3Handler(svg, jsonData) {
 
             trumle.pause();
             vaske.pause();
+            glow2.pause();
             stovsugerAnimation.pause();
 
             document.querySelector("#hh_popup2").classList.add("hide");
@@ -124,11 +174,15 @@ export function page3Handler(svg, jsonData) {
             allClickedLights.push(light3);
 
             koleskabAnimation.play();
+            glow3.play();
+
             document.querySelector("#hh_popup3").classList.remove("hide");
           } else {
             let index = allClickedLights.indexOf(light3);
             allClickedLights.splice(index, 1);
+
             koleskabAnimation.pause();
+            glow3.pause();
 
             document.querySelector("#hh_popup3").classList.add("hide");
           }
