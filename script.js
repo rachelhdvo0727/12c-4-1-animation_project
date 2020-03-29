@@ -1,7 +1,7 @@
 require("@babel/polyfill");
 import { gsap } from "gsap";
 import { frontpageHandler } from "./frontpage";
-import { historyGlobalSVGs } from "./history";
+import { historyHandler } from "./history";
 import { page3Handler } from "./household";
 import { page4Handler } from "./archi";
 import { sleepPatterns } from "./sleep_patterns";
@@ -64,8 +64,6 @@ function clickedArrow() {
     console.log(page1.x);
     document.querySelector(".wrapper-horizontal").scrollBy(page1.x, page1.y);
   }
-
-  // document.querySelectorAll(".pages")
 }
 function scrollingHorizontal() {
   document.querySelectorAll(".arrow").forEach(elm => {
@@ -219,26 +217,23 @@ async function getJson() {
   let jsonData = await fetch("data.json");
   globalJson = await jsonData.json();
 
-  //global svgs
   getSvg("svg/lightbulb.svg", lightBulbSVG);
   getSvg("svg/dark-themed-lightbulb.svg", lightBulbDarkSVG);
-
+  // getSvg("svg/info_popup.svg", popupSVG);
   frontpageHandler(globalJson);
-
-  //sleep patterns page
+  // historie  getSvg(svg1, placeSvg1);
   getSvg("svg/sleep_patterns.svg", sleep);
   getSvg("svg/popup.svg", popupSVG);
   getSvg("svg/popup2.svg", popupSVG);
   getSvg("svg/frontpagearrow.svg", frontpageSVG);
+  // getSvg(svg0, placeSvg0);
 
-  // history page
+  // historie
   getSvg("svg/history-bg.svg", historyBgSVG);
   getSvg("svg/edison-ny-use1.svg", edisonSVG);
   getSvg("svg/uhyre-ny-use1.svg", monsterSVG);
   getSvg("svg/paere-ny-use1.svg", firstlampSVG);
   sendData();
-
-  // household page
   getSvg("svg/household.svg", page3Handler, globalJson);
   getSvg("svg/arrow.svg", arrow);
   getSvg("svg/archi.svg", page4Handler, globalJson);
@@ -276,7 +271,7 @@ function arrow(svg) {
 
 function historyBgSVG(svg) {
   document.querySelector("#page1 > #history-bg").innerHTML = svg;
-  historyGlobalSVGs();
+  historyHandler();
 }
 
 function edisonSVG(svg) {
@@ -294,7 +289,6 @@ function firstlampSVG(svg) {
 function frontpageSVG(svg) {
   document.querySelector("#frontpagearrow").innerHTML = svg;
 }
-
 function getArrows(x, y, id, container) {
   const svg = document.createElementNS("http://www.w3.org/2000/svg", "svg");
   svg.setAttribute("viewBox", "0 0 755 456");
@@ -311,9 +305,30 @@ function getArrows(x, y, id, container) {
 
 function arrowAnimation() {
   console.log("animation fired");
+  gsap.to("#arrow1", {
+    duration: 1,
+    y: "10px",
+    ease: "circ.out",
+    repeat: -1,
+    yoyo: true
+  });
   gsap.to("#arrow3", {
     duration: 1,
     y: "-10px",
+    ease: "sine.out",
+    repeat: -1,
+    yoyo: true
+  });
+  gsap.to("#arrow2", {
+    duration: 1,
+    x: "10px",
+    ease: "sine.out",
+    repeat: -1,
+    yoyo: true
+  });
+  gsap.to("#arrow4", {
+    duration: 1,
+    x: "-10px",
     ease: "sine.out",
     repeat: -1,
     yoyo: true

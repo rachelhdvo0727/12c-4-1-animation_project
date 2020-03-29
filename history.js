@@ -2,7 +2,7 @@
 import { sendData } from "./script";
 import { gsap } from "gsap";
 
-export function historyGlobalSVGs() {
+export function historyHandler() {
   //save data fra script.js
   let data = sendData();
   let selected = [];
@@ -20,14 +20,6 @@ export function historyGlobalSVGs() {
     selected[2].monstersLightbulb,
     selected[3].firstlampsLightbulb
   ];
-  // let blinking;
-  // blinking = gsap.to(allTheLights, {
-  //   opacity: 0.3,
-  //   duration: 2,
-  //   repeat: -1,
-  //   yoyoEase: true,
-  //   paused: true
-  // });
 
   let scaling = gsap.timeline({ repeat: -1 });
   scaling.to(allTheLights, { scale: 1.03, duration: 1 });
