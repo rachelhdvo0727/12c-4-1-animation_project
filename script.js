@@ -294,6 +294,7 @@ function firstlampSVG(svg) {
 function frontpageSVG(svg) {
   document.querySelector("#frontpagearrow").innerHTML = svg;
 }
+
 function getArrows(x, y, id, container) {
   const svg = document.createElementNS("http://www.w3.org/2000/svg", "svg");
   svg.setAttribute("viewBox", "0 0 755 456");
@@ -306,19 +307,10 @@ function getArrows(x, y, id, container) {
   use.id = id;
   document.querySelector("#" + id).appendChild(use);
   arrowAnimation();
-  // let compStyle = window.getComputedStyle(document.querySelector(".lightbulb"));
-  // compStyle.fill = "red";
 }
 
 function arrowAnimation() {
   console.log("animation fired");
-  // gsap.to("#arrow1", {
-  //   duration: 1,
-  //   y: "10px",
-  //   ease: "circ.out",
-  //   repeat: -1,
-  //   yoyo: true
-  // });
   gsap.to("#arrow3", {
     duration: 1,
     y: "-10px",
@@ -326,18 +318,4 @@ function arrowAnimation() {
     repeat: -1,
     yoyo: true
   });
-  // gsap.to("#arrow2", {
-  //   duration: 1,
-  //   x: "10px",
-  //   ease: "sine.out",
-  //   repeat: -1,
-  //   yoyo: true
-  // });
-  // gsap.to("#arrow4", {
-  //   duration: 1,
-  //   x: "-10px",
-  //   ease: "sine.out",
-  //   repeat: -1,
-  //   yoyo: true
-  // });
 }
