@@ -14,12 +14,7 @@ export function historyHandler() {
 
   //ANIMATIONS TO ALL LIGHT BULBS
 
-  const allTheLights = [
-    selected[0].firesLightbulb,
-    selected[1].edisonsLightbulb,
-    selected[2].monstersLightbulb,
-    selected[3].firstlampsLightbulb
-  ];
+  const allTheLights = [selected[0].firesLightbulb, selected[1].edisonsLightbulb, selected[2].monstersLightbulb, selected[3].firstlampsLightbulb];
 
   let scaling = gsap.timeline({ repeat: -1 });
   scaling.to(allTheLights, { scale: 1.03, duration: 1 });
@@ -94,89 +89,77 @@ export function historyHandler() {
   function clickLightBulb() {
     console.log("clickLightBulb");
     createTexttags();
-    document
-      .querySelectorAll(
-        "use:nth-child(5), use:nth-child(7), use:nth-child(9), use:nth-child(11)"
-      )
-      .forEach(light => {
-        light.addEventListener("click", function() {
-          console.log("clicked");
-          light.classList.toggle("clone");
+    document.querySelectorAll("use:nth-child(5), use:nth-child(7), use:nth-child(9), use:nth-child(11)").forEach(light => {
+      light.addEventListener("click", function() {
+        console.log("clicked");
+        light.classList.toggle("clone");
 
-          if (light.classList.contains("clone")) {
-            scaling.pause();
-            if (light === selected[0].firesLightbulb) {
-              selected[0].firesPopup.classList.remove("hide");
-              document.querySelector(
-                "#globalPopUp > #Layer_2 > .theText"
-              ).innerHTML = data[1].popup1;
-              wrapSVGsText();
-              firelightOn.play();
-            } else {
-              selected[0].firesPopup.classList.add("hide");
-              firelightOn.pause();
-            }
-
-            if (light === selected[1].edisonsLightbulb) {
-              selected[1].edisonsPopup.classList.remove("hide");
-              document.querySelector(
-                "#globalPopUp > #Layer_2 > .theText"
-              ).innerHTML = data[1].popup3;
-              wrapSVGsText();
-              edisonlightOn.play();
-              edisonAnimation.play();
-            } else {
-              selected[1].edisonsPopup.classList.add("hide");
-              edisonlightOn.pause();
-              edisonAnimation.pause();
-            }
-
-            if (light === selected[2].monstersLightbulb) {
-              selected[2].monstersPopup.classList.remove("hide");
-              document.querySelector(
-                "#globalPopUp > #Layer_2 > .theText"
-              ).innerHTML = data[1].popup2;
-              wrapSVGsText();
-              monsterlightOn.play();
-              monsterAnimation.play();
-            } else {
-              selected[2].monstersPopup.classList.add("hide");
-              monsterlightOn.pause();
-              monsterAnimation.pause();
-            }
-
-            if (light === selected[3].firstlampsLightbulb) {
-              selected[3].firstlampsPopup.classList.remove("hide");
-              document.querySelector(
-                "#globalPopUp > #Layer_2 > .theText"
-              ).innerHTML = data[1].popup4;
-              wrapSVGsText();
-              firstlamplightOn.play();
-              lampAnimation.play();
-            } else {
-              selected[3].firstlampsPopup.classList.add("hide");
-              firstlamplightOn.pause();
-              lampAnimation.pause();
-            }
+        if (light.classList.contains("clone")) {
+          scaling.pause();
+          if (light === selected[0].firesLightbulb) {
+            selected[0].firesPopup.classList.remove("hide");
+            document.querySelector("#globalPopUp > #Layer_2 > .theText").innerHTML = data[1].popup1;
+            wrapSVGsText();
+            firelightOn.play();
           } else {
             selected[0].firesPopup.classList.add("hide");
-            selected[1].edisonsPopup.classList.add("hide");
-            selected[2].monstersPopup.classList.add("hide");
-            selected[3].firstlampsPopup.classList.add("hide");
-            lampAnimation.pause();
-            monsterAnimation.pause();
-            edisonAnimation.pause();
-
-            scaling.play();
-            firstlamplightOn.pause();
-            monsterlightOn.pause();
-            edisonAnimation.pause();
             firelightOn.pause();
           }
 
-          light.removeEventListener("click", clickLightBulb);
-        });
+          if (light === selected[1].edisonsLightbulb) {
+            selected[1].edisonsPopup.classList.remove("hide");
+            document.querySelector("#globalPopUp > #Layer_2 > .theText").innerHTML = data[1].popup3;
+            wrapSVGsText();
+            edisonlightOn.play();
+            edisonAnimation.play();
+          } else {
+            selected[1].edisonsPopup.classList.add("hide");
+            edisonlightOn.pause();
+            edisonAnimation.pause();
+          }
+
+          if (light === selected[2].monstersLightbulb) {
+            selected[2].monstersPopup.classList.remove("hide");
+            document.querySelector("#globalPopUp > #Layer_2 > .theText").innerHTML = data[1].popup2;
+            wrapSVGsText();
+            monsterlightOn.play();
+            monsterAnimation.play();
+          } else {
+            selected[2].monstersPopup.classList.add("hide");
+            monsterlightOn.pause();
+            monsterAnimation.pause();
+          }
+
+          if (light === selected[3].firstlampsLightbulb) {
+            selected[3].firstlampsPopup.classList.remove("hide");
+            document.querySelector("#globalPopUp > #Layer_2 > .theText").innerHTML = data[1].popup4;
+            wrapSVGsText();
+            firstlamplightOn.play();
+            lampAnimation.play();
+          } else {
+            selected[3].firstlampsPopup.classList.add("hide");
+            firstlamplightOn.pause();
+            lampAnimation.pause();
+          }
+        } else {
+          selected[0].firesPopup.classList.add("hide");
+          selected[1].edisonsPopup.classList.add("hide");
+          selected[2].monstersPopup.classList.add("hide");
+          selected[3].firstlampsPopup.classList.add("hide");
+          lampAnimation.pause();
+          monsterAnimation.pause();
+          edisonAnimation.pause();
+
+          scaling.play();
+          firstlamplightOn.pause();
+          monsterlightOn.pause();
+          edisonAnimation.pause();
+          firelightOn.pause();
+        }
+
+        light.removeEventListener("click", clickLightBulb);
       });
+    });
   }
   function createModalsandLights() {
     for (let i = 0; i < 4; i++) {
@@ -188,10 +171,7 @@ export function historyHandler() {
     clickLightBulb();
   }
   function lightbulbSVGs() {
-    let lightbulb = document.createElementNS(
-      "http://www.w3.org/2000/svg",
-      "use"
-    );
+    let lightbulb = document.createElementNS("http://www.w3.org/2000/svg", "use");
     lightbulb.setAttribute("href", "#globalLightBulb");
 
     lightbulb.setAttribute("height", "150px");
@@ -213,10 +193,7 @@ export function historyHandler() {
 
   function createTexttags() {
     console.log("showModalsText");
-    let textSvg = document.createElementNS(
-      "http://www.w3.org/2000/svg",
-      "text"
-    );
+    let textSvg = document.createElementNS("http://www.w3.org/2000/svg", "text");
     textSvg.setAttribute("x", "100px");
     textSvg.setAttribute("y", "50px");
     textSvg.classList.add("theText");
@@ -228,36 +205,20 @@ export function historyHandler() {
     console.log("placing modals and lights");
     selected = [
       {
-        firesPopup: document.querySelector(
-          "#history-svg-bg > use:nth-child(4)"
-        ),
-        firesLightbulb: document.querySelector(
-          "#history-svg-bg> use:nth-child(5)"
-        )
+        firesPopup: document.querySelector("#history-svg-bg > use:nth-child(4)"),
+        firesLightbulb: document.querySelector("#history-svg-bg> use:nth-child(5)")
       },
       {
-        edisonsPopup: document.querySelector(
-          "#history-svg-bg > use:nth-child(6)"
-        ),
-        edisonsLightbulb: document.querySelector(
-          "#history-svg-bg > use:nth-child(7)"
-        )
+        edisonsPopup: document.querySelector("#history-svg-bg > use:nth-child(6)"),
+        edisonsLightbulb: document.querySelector("#history-svg-bg > use:nth-child(7)")
       },
       {
-        monstersPopup: document.querySelector(
-          "#history-svg-bg > use:nth-child(8)"
-        ),
-        monstersLightbulb: document.querySelector(
-          "#history-svg-bg > use:nth-child(9)"
-        )
+        monstersPopup: document.querySelector("#history-svg-bg > use:nth-child(8)"),
+        monstersLightbulb: document.querySelector("#history-svg-bg > use:nth-child(9)")
       },
       {
-        firstlampsPopup: document.querySelector(
-          "#history-svg-bg > use:nth-child(10)"
-        ),
-        firstlampsLightbulb: document.querySelector(
-          "#history-svg-bg>use:nth-child(11)"
-        )
+        firstlampsPopup: document.querySelector("#history-svg-bg > use:nth-child(10)"),
+        firstlampsLightbulb: document.querySelector("#history-svg-bg>use:nth-child(11)")
       }
     ];
 
@@ -307,11 +268,7 @@ export function historyHandler() {
 
   function edisonSvg() {
     let figure = document.createElementNS("http://www.w3.org/2000/svg", "use");
-    figure.setAttributeNS(
-      "http://www.w3.org/1999/xlink",
-      "xlink:href",
-      "svg/edison-ny-use1.svg#edison_1_"
-    );
+    figure.setAttributeNS("http://www.w3.org/1999/xlink", "xlink:href", "svg/edison-ny-use1.svg#edison_1_");
     figure.setAttributeNS(null, "x", "150px");
     figure.setAttributeNS(null, "y", "1400px");
     figure.setAttributeNS(null, "height", "600px");
@@ -321,11 +278,7 @@ export function historyHandler() {
 
   function demonSvg() {
     let demon = document.createElementNS("http://www.w3.org/2000/svg", "use");
-    demon.setAttributeNS(
-      "http://www.w3.org/1999/xlink",
-      "xlink:href",
-      "svg/uhyre-ny-use1.svg#demon_1_"
-    );
+    demon.setAttributeNS("http://www.w3.org/1999/xlink", "xlink:href", "svg/uhyre-ny-use1.svg#demon_1_");
 
     demon.setAttributeNS(null, "x", "300px");
     demon.setAttributeNS(null, "y", "500px");
@@ -338,11 +291,7 @@ export function historyHandler() {
   function firstlampSvg() {
     let lamp = document.createElementNS("http://www.w3.org/2000/svg", "use");
 
-    lamp.setAttributeNS(
-      "http://www.w3.org/1999/xlink",
-      "xlink:href",
-      "svg/paere-ny-use1.svg#firstlamp_1_"
-    );
+    lamp.setAttributeNS("http://www.w3.org/1999/xlink", "xlink:href", "svg/paere-ny-use1.svg#firstlamp_1_");
     lamp.setAttributeNS(null, "x", "2000px");
     lamp.setAttributeNS(null, "y", "1000px");
     lamp.setAttributeNS(null, "height", "700px");
