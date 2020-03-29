@@ -4,6 +4,7 @@ $headline-color: #3a8990;
 $body-text: #333a4d;
 $title: "Josefin Sans", sans-serif;
 $p-text: "Lato", sans-serif;
+$p-size: 1em;
 
 h1 {
   font-family: $title;
@@ -11,7 +12,10 @@ h1 {
   color: $headline-color;
 }
 
-p {
+p,
+text,
+.hh_popup,
+#archi-popup {
   font-family: $p-text;
+  font-size: $p-size;
 }
-
