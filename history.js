@@ -307,30 +307,22 @@ export function historyHandler() {
 
   function edisonSvg() {
     let figure = document.createElementNS("http://www.w3.org/2000/svg", "use");
-    figure.setAttributeNS(
-      "http://www.w3.org/1999/xlink",
-      "xlink:href",
-      "svg/edison-ny-use1.svg#edison_1_"
-    );
-    figure.setAttributeNS(null, "x", "150px");
-    figure.setAttributeNS(null, "y", "1400px");
-    figure.setAttributeNS(null, "height", "600px");
-    figure.setAttributeNS(null, "width", "600px");
+    figure.setAttribute("href", "#edison");
+    figure.setAttribute("x", "150px");
+    figure.setAttribute("y", "1400px");
+    figure.setAttribute("height", "600px");
+    figure.setAttribute("width", "600px");
     document.querySelector("#history-svg-bg").appendChild(figure);
   }
 
   function demonSvg() {
     let demon = document.createElementNS("http://www.w3.org/2000/svg", "use");
-    demon.setAttributeNS(
-      "http://www.w3.org/1999/xlink",
-      "xlink:href",
-      "svg/uhyre-ny-use1.svg#demon_1_"
-    );
+    demon.setAttribute("href", "#monster");
 
-    demon.setAttributeNS(null, "x", "300px");
-    demon.setAttributeNS(null, "y", "500px");
-    demon.setAttributeNS(null, "height", "600px");
-    demon.setAttributeNS(null, "width", "600px");
+    demon.setAttribute("x", "300px");
+    demon.setAttribute("y", "500px");
+    demon.setAttribute("height", "600px");
+    demon.setAttribute("width", "600px");
 
     document.querySelector("#history-svg-bg").appendChild(demon);
   }
@@ -338,15 +330,11 @@ export function historyHandler() {
   function firstlampSvg() {
     let lamp = document.createElementNS("http://www.w3.org/2000/svg", "use");
 
-    lamp.setAttributeNS(
-      "http://www.w3.org/1999/xlink",
-      "xlink:href",
-      "svg/paere-ny-use1.svg#firstlamp_1_"
-    );
-    lamp.setAttributeNS(null, "x", "2000px");
-    lamp.setAttributeNS(null, "y", "1000px");
-    lamp.setAttributeNS(null, "height", "700px");
-    lamp.setAttributeNS(null, "width", "700px");
+    lamp.setAttribute("href", "#firstlamp");
+    lamp.setAttribute("x", "2000px");
+    lamp.setAttribute("y", "1000px");
+    lamp.setAttribute("height", "700px");
+    lamp.setAttribute("width", "700px");
 
     document.querySelector("#history-svg-bg").appendChild(lamp);
   }
