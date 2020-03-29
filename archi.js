@@ -45,8 +45,8 @@ export function page4Handler(svg, jsonData) {
 
   let skyscaperAnimation = gsap.to(".archi-cls-2", { fill: "yellow", stagger: 0.2, duration: 5, paused: true });
 
-  let lightBulbAnimation = gsap.to("#lightbulb_svg_container", {
-    filter: "drop-shadow(30px 30px 200px #f2d94a)",
+  let lightBulbAnimation = gsap.to("#archi_lightbulb", {
+    filter: "drop-shadow(10px 10px 100px #f2d94a)",
     opacity: 1,
     duration: 2,
     repeat: -1,
