@@ -196,7 +196,6 @@ export function historyHandler() {
 
     lightbulb.setAttribute("height", "150px");
     lightbulb.setAttribute("width", "150px");
-    lightbulb.classList.add("glow");
 
     document.querySelector("#history-svg-bg").appendChild(lightbulb);
   }
