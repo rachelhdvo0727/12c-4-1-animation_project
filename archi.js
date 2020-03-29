@@ -22,7 +22,10 @@ export function page4Handler(svg, jsonData) {
     svg.classList.add("lightbulb-archi");
     document.querySelector("#archi-lightbulb").appendChild(svg);
 
-    let lightbulb = document.createElementNS("http://www.w3.org/2000/svg", "use");
+    let lightbulb = document.createElementNS(
+      "http://www.w3.org/2000/svg",
+      "use"
+    );
     lightbulb.setAttribute("href", "#globalLightBulb");
     lightbulb.setAttribute("id", "archi_lightbulb");
     document.querySelector("#lightbulb_svg_container").appendChild(lightbulb);
@@ -37,21 +40,36 @@ export function page4Handler(svg, jsonData) {
   // }
 
   //animation
-  let elevatorAnimation = gsap.timeline({ duration: 8, delay: -8, repeat: -1, paused: true, yoyo: true });
+  let elevatorAnimation = gsap.timeline({
+    duration: 8,
+    delay: -8,
+    repeat: -1,
+    paused: true,
+    yoyo: true
+  });
   elevatorAnimation.to("#elevator", { y: -1200, duration: 4 });
   elevatorAnimation.to("#elevator #light", { fill: "yellow", duration: 0.2 });
   elevatorAnimation.to("#elevator", { y: 0, duration: 3 });
-  elevatorAnimation.to("#elevator #light", { fill: "none", duration: 0.8, ease: "easeIn" });
+  elevatorAnimation.to("#elevator #light", {
+    fill: "none",
+    duration: 0.8,
+    ease: "easeIn"
+  });
 
-  let skyscaperAnimation = gsap.to(".archi-cls-2", { fill: "yellow", stagger: 0.2, duration: 5, paused: true });
-
-  let lightBulbAnimation = gsap.to("#archi_lightbulb", {
-    filter: "drop-shadow(10px 10px 100px #f2d94a)",
-    opacity: 1,
-    duration: 2,
-    repeat: -1,
+  let skyscaperAnimation = gsap.to(".archi-cls-2", {
+    fill: "yellow",
+    stagger: 0.2,
+    duration: 5,
     paused: true
   });
+
+  let lightBulbAnimation = gsap.to("#lightbulb_svg_container", {
+    filter: "drop-shadow(5px 5px 20px #f2d94a)",
+    opacity: 1,
+    duration: 0.5,
+    paused: true
+  });
+  lightBulbAnimation.pause();
 
   function clickLightbulb() {
     let lightbulb = document.querySelector("#archi_lightbulb");
@@ -74,6 +92,7 @@ export function page4Handler(svg, jsonData) {
         clicked = false;
         elevatorAnimation.pause();
         skyscaperAnimation.pause();
+        lightBulbAnimation.pause();
         lightbulb.classList.remove("light");
         popup.classList.add("hide");
       }
