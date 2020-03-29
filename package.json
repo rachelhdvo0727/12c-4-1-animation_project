@@ -8,6 +8,7 @@
     "gsap": "^3.2.6",
     "household": "^0.1.1",
     "parcel-bundler": "^1.12.4",
+    "script": "^0.1.4",
     "scss": "^0.2.4"
   },
   "devDependencies": {
