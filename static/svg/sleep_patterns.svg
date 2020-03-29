@@ -79,7 +79,7 @@
     <clipPath id="sleep-clip-path" transform="translate(-263.33)">
       <rect class="sleep-1" x="1902.05" y="1328" width="840" height="549.79"/>
     </clipPath>
-    <clipPath id="sleep-clip-path-2" transform="translate(-263.33)">
+    <clipPath id="sleep-clip-path" transform="translate(-263.33)">
       <polygon class="sleep-2" points="2322.55 968.82 1844.05 1323.39 2801.05 1323.39 2322.55 968.82"/>
     </clipPath>
   </defs>
