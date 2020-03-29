@@ -14,8 +14,8 @@
   --turn-on: #f2d94a;
 }
 .theText {
-  transform: translate(88.6 111.65);
-  width: 10vw;
+  // transform: translate(88.6 111.65);
+  // width: 20vw;
   display: inline-block;
   letter-spacing: 0.01em;
   fill: #e2d7c4;
@@ -31,10 +31,4 @@
 #history-svg-bg > use:nth-child(9),
 #history-svg-bg > use:nth-child(11) {
   fill: none;
-}
-
-#edison_1_,
-#edison_1_:link,
-#edison_1_:visited {
-  fill: inherit;
 }
