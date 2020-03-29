@@ -170,6 +170,7 @@ export function historyGlobalSVGs() {
             monsterlightOn.pause();
             firstlamplightOn.pause();
           }
+          light.removeEventListener("click", clickLightBulb);
         });
       });
   }

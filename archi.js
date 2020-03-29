@@ -69,7 +69,12 @@ export function page4Handler(svg, jsonData) {
     duration: 0.5,
     paused: true
   });
+
   lightBulbAnimation.pause();
+
+  let scaling = gsap.timeline({ repeat: -1 });
+  scaling.to("#lightbulb_svg_container", { scale: 1.03, duration: 1 });
+  scaling.to("#lightbulb_svg_container", { scale: 1, duration: 1 });
 
   function clickLightbulb() {
     let lightbulb = document.querySelector("#archi_lightbulb");
