@@ -219,20 +219,19 @@ async function getJson() {
 
   getSvg("svg/lightbulb.svg", lightBulbSVG);
   getSvg("svg/dark-themed-lightbulb.svg", lightBulbDarkSVG);
-  // getSvg("svg/info_popup.svg", popupSVG);
+
   frontpageHandler(globalJson);
-  // historie  getSvg(svg1, placeSvg1);
+
   getSvg("svg/sleep_patterns.svg", sleep);
   getSvg("svg/popup.svg", popupSVG);
   getSvg("svg/popup2.svg", popupSVG);
   getSvg("svg/frontpagearrow.svg", frontpageSVG);
-  // getSvg(svg0, placeSvg0);
 
   // historie
   getSvg("svg/history-bg.svg", historyBgSVG);
-  getSvg("svg/edison-ny-use1.svg", edisonSVG);
-  getSvg("svg/uhyre-ny-use1.svg", monsterSVG);
-  getSvg("svg/paere-ny-use1.svg", firstlampSVG);
+  getSvg("svg/edison.svg", edisonSVG);
+  getSvg("svg/monster.svg", monsterSVG);
+  getSvg("svg/firstlamp.svg", firstlampSVG);
   sendData();
   getSvg("svg/household.svg", page3Handler, globalJson);
   getSvg("svg/arrow.svg", arrow);
