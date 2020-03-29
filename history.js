@@ -114,62 +114,74 @@ export function historyGlobalSVGs() {
           if (light.classList.contains("clone")) {
             scaling.pause();
             if (light === selected[0].firesLightbulb) {
-              selected[0].firesPopup.classList.toggle("hide");
+              selected[0].firesPopup.classList.remove("hide");
               document.querySelector(
                 "#globalPopUp > #Layer_2 > .theText"
               ).innerHTML = data[1].popup1;
               wrapSVGsText();
               firelightOn.play();
+            } else {
+              selected[0].firesPopup.classList.add("hide");
+              firelightOn.pause();
             }
 
             if (light === selected[1].edisonsLightbulb) {
-              selected[1].edisonsPopup.classList.toggle("hide");
+              selected[1].edisonsPopup.classList.remove("hide");
               document.querySelector(
                 "#globalPopUp > #Layer_2 > .theText"
               ).innerHTML = data[1].popup3;
               wrapSVGsText();
               edisonlightOn.play();
               edisonAnimation.play();
+            } else {
+              selected[1].edisonsPopup.classList.add("hide");
+              edisonlightOn.pause();
+              edisonAnimation.pause();
             }
 
             if (light === selected[2].monstersLightbulb) {
-              selected[2].monstersPopup.classList.toggle("hide");
+              selected[2].monstersPopup.classList.remove("hide");
               document.querySelector(
                 "#globalPopUp > #Layer_2 > .theText"
               ).innerHTML = data[1].popup2;
               wrapSVGsText();
               monsterlightOn.play();
               monsterAnimation.play();
+            } else {
+              selected[2].monstersPopup.classList.add("hide");
+              monsterlightOn.pause();
+              monsterAnimation.pause();
             }
 
             if (light === selected[3].firstlampsLightbulb) {
-              selected[3].firstlampsPopup.classList.toggle("hide");
+              selected[3].firstlampsPopup.classList.remove("hide");
               document.querySelector(
                 "#globalPopUp > #Layer_2 > .theText"
               ).innerHTML = data[1].popup4;
               wrapSVGsText();
               firstlamplightOn.play();
               lampAnimation.play();
+            } else {
+              selected[3].firstlampsPopup.classList.add("hide");
+              firstlamplightOn.pause();
+              lampAnimation.pause();
             }
           } else {
-            document.querySelector(
-              "#globalPopUp > #Layer_2 > .theText"
-            ).innerHTML = "";
             selected[0].firesPopup.classList.add("hide");
             selected[1].edisonsPopup.classList.add("hide");
             selected[2].monstersPopup.classList.add("hide");
             selected[3].firstlampsPopup.classList.add("hide");
-            scaling.play();
-
             lampAnimation.pause();
             monsterAnimation.pause();
             edisonAnimation.pause();
 
-            firelightOn.pause();
-            edisonlightOn.pause();
-            monsterlightOn.pause();
+            scaling.play();
             firstlamplightOn.pause();
+            monsterlightOn.pause();
+            edisonAnimation.pause();
+            firelightOn.pause();
           }
+
           light.removeEventListener("click", clickLightBulb);
         });
       });

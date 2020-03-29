@@ -74,9 +74,7 @@ body {
 }
 
 #page2-title {
-  // transform: translateX(100vw - 7vw) translateY(50vh) rotate(90deg);
   transform: rotate(90deg);
-
   grid-column-start: 3;
   grid-row-start: 2;
   justify-self: flex-end;
@@ -88,11 +86,8 @@ body {
   grid-row-start: 3;
   align-self: flex-end;
   justify-self: center;
-
-  // transform: translateX(50vw) translateY(90vh) rotate(180deg);
 }
 #page4-title {
-  // transform: translateY(50vh) rotate(-90deg);
   transform: rotate(-90deg);
   grid-column-start: 1;
   justify-self: flex-start;
