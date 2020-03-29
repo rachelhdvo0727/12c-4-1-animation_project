@@ -4,10 +4,12 @@
 @use 'partials/history-svg';
 @use 'partials/household';
 @use 'partials/archi';
+@use 'partials/fonts';
 
 html,
 body {
   overflow: hidden;
+  font-family: "Lato", Fallback, sans-serif;
 }
 .wrapper-horizontal {
   display: grid;
