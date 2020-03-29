@@ -22,10 +22,7 @@ export function page4Handler(svg, jsonData) {
     svg.classList.add("lightbulb-archi");
     document.querySelector("#archi-lightbulb").appendChild(svg);
 
-    let lightbulb = document.createElementNS(
-      "http://www.w3.org/2000/svg",
-      "use"
-    );
+    let lightbulb = document.createElementNS("http://www.w3.org/2000/svg", "use");
     lightbulb.setAttribute("href", "#globalLightBulb");
     lightbulb.setAttribute("id", "archi_lightbulb");
     document.querySelector("#lightbulb_svg_container").appendChild(lightbulb);
