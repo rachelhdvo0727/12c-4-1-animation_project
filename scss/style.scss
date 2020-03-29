@@ -9,8 +9,8 @@
 html,
 body {
   overflow: hidden;
-  font-family: "Josefin Sans", "Lato", sans-serif;
 }
+
 .wrapper-horizontal {
   display: grid;
   grid-template-columns: 100vw 100vw 100vw;
@@ -28,10 +28,6 @@ body {
   scroll-snap-type: y mandatory;
   scroll-snap-align: start;
 }
-
-// .pages {
-//   scroll-behavior: smooth;
-// }
 
 #frontpage {
   grid-row-start: 2;
@@ -66,14 +62,6 @@ body {
   scroll-snap-align: start;
   z-index: 500;
 }
-
-// #arrows {
-//   height: 100vh;
-//   width: 100vw;
-//   position: relative;
-//   top: 0;
-//   left: 0;
-// }
 
 #arrows {
   height: 100vh;
@@ -142,18 +130,3 @@ body {
   // transform: translateY(50vh) rotate(-90deg);
   transform: rotate(-90deg);
 }
-
-// #arrow2 {
-//   position: absolute;
-//   // transform: translateX(100%) translateY(50vw) scale(0.3) rotate(90deg);
-//   // transform-origin: top left;
-//   top: 50%;
-// }
-
-// #arrow3 {
-//   transform: translateX(50%) translateY(100%) scale(0.3) rotate(180deg);
-// }
-
-// #arrowWrapper {
-//   display: flex;
-// }
