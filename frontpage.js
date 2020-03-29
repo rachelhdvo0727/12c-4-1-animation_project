@@ -1,6 +1,6 @@
 import gsap from "gsap";
 
-export function frontpageHandler() {
+export function frontpageHandler(json) {
   mainLightBulb();
   clickLightBulb();
 
@@ -16,6 +16,7 @@ export function frontpageHandler() {
     //   use.classList.add("rise");
     // before adding it to the #balloons
     document.querySelector("#mainlightBulb").appendChild(use);
+    displayText();
   }
 
   // document.querySelectorAll(".arrow").forEach(elm => {
@@ -55,6 +56,15 @@ export function frontpageHandler() {
     let response = await fetch(filename);
     let mySvgData = await response.text();
     callback(mySvgData);
+  }
+
+  function displayText() {
+    document.querySelector("#frontpage h1").textContent = json[0].title;
+    document.querySelector("#frontpage #frontpage-popup").textContent = json[0].popuptext;
+    document.querySelector("#frontpage #page1-title").textContent = json[0].page1;
+    document.querySelector("#frontpage #page2-title").textContent = json[0].page2;
+    document.querySelector("#frontpage #page3-title").textContent = json[0].page3;
+    document.querySelector("#frontpage #page4-title").textContent = json[0].page4;
   }
 
   // function createArrows(svg) {

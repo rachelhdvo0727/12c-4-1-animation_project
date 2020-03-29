@@ -5,13 +5,6 @@
 @use 'partials/household';
 @use 'partials/archi';
 
-:export {
-  $bg-color: #e2d7c4;
-  $stroke-color: #333a4d;
-  $headline-color: #3a8990;
-  $body-text: #333a4d;
-}
-
 html,
 body {
   overflow: hidden;
@@ -41,6 +34,7 @@ body {
   grid-row-start: 2;
   scroll-snap-align: start;
   z-index: 0;
+  overflow: hidden;
 }
 
 #page1 {
@@ -79,7 +73,11 @@ body {
 // }
 
 #arrows {
-  height: 100%;
+  height: 100vh;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-rows: 1fr 1fr 1fr;
+  margin: 0 auto;
 }
 .arrow {
   // display: grid;
@@ -88,39 +86,56 @@ body {
   background-size: contain;
   margin: 0;
   padding: 0;
-  position: absolute;
+  // position: absolute;
+  z-index: 10;
 }
 
 #arrowsContainer {
-  width: 90vw;
+  height: 100vh;
+  width: 100%;
   position: absolute;
   top: 0;
   left: 0;
+  padding: 1rem;
 }
 
 #arrow1 {
   margin: 0 auto;
-  left: 50vw - 2.5vw;
-  top: 2vh;
+  // left: 50vw - 2.5vw;
+  // top: 2vh;
+  grid-column-start: 2;
+  justify-self: center;
 }
 
 #arrow2 {
-  top: 50vh;
-  left: 100vw - 7vw;
+  // top: 50vh;
+  // left: 100vw - 7vw;
+  grid-column-start: 3;
+  grid-row-start: 2;
+  justify-self: flex-end;
+  align-self: center;
   // transform: translateX(100vw - 7vw) translateY(50vh) rotate(90deg);
   transform: rotate(90deg);
 }
 
 #arrow3 {
-  left: 50vw - 2.5vw;
-  top: 95vh;
+  // left: 50vw - 2.5vw;
+  // top: 95vh;
+  grid-column-start: 2;
+  grid-row-start: 3;
   transform: rotate(180deg);
   // transform: translateX(50vw) translateY(90vh) rotate(180deg);
-  margin: 0 auto;
+  align-self: flex-end;
+  justify-self: center;
+  margin-bottom: 1rem;
 }
+
 #arrow4 {
-  top: 50vh;
-  left: 2vw;
+  // top: 50vh;
+  // left: 2vw;
+  margin-left: 7rem;
+  grid-column-start: 1;
+  grid-row-start: 2;
   // transform: translateY(50vh) rotate(-90deg);
   transform: rotate(-90deg);
 }
