@@ -1,0 +1,27 @@
+{
+  "name": "animation_project",
+  "version": "1.0.0",
+  "description": "",
+  "main": "script.js",
+  "dependencies": {
+    "@babel/polyfill": "^7.8.7",
+    "archi": "^0.2.0",
+    "gsap": "^3.2.6",
+    "household": "^0.1.1",
+    "parcel-bundler": "^1.12.4",
+    "script": "^0.1.4",
+    "scss": "^0.2.4"
+  },
+  "devDependencies": {
+    "parcel-plugin-static-files-copy": "^2.3.1",
+    "pug": "^2.0.4",
+    "sass": "^1.26.3"
+  },
+  "scripts": {
+    "start": "parcel *.html --open",
+    "build": "parcel build *.html --public-url ./"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
+}

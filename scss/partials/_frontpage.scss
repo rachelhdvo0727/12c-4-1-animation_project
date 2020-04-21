@@ -1,0 +1,102 @@
+@use 'partials/vars';
+
+:root {
+  --turn-on: transparent;
+}
+html,
+body {
+  margin: 0;
+  padding: 0;
+  position: relative;
+}
+#popup,
+#lightbulb,
+#globalSVG,
+#template-arrow {
+  visibility: hidden;
+  width: 0;
+  height: 0;
+}
+
+#frontpage {
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column-reverse;
+  background-color: vars.$bg-color;
+  position: relative;
+}
+#mainlightBulb {
+  height: 40vh;
+  margin: 0 auto;
+  z-index: 1000;
+}
+
+#frontpage-popup {
+  width: 50vh;
+  background-color: vars.$stroke-color;
+  position: absolute;
+  border-radius: 25px;
+  padding: 2rem;
+  font-size: 1.3em;
+  color: vars.$bg-color;
+  transform: translateX(28vw) translateY(-30vh);
+}
+
+#frontpage h1 {
+  font-size: 2.5rem;
+  margin-top: 2rem;
+}
+
+#titleContainer {
+  display: grid;
+  height: 100vh;
+  width: 100%;
+  position: absolute;
+
+  padding: 3rem 1rem;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-rows: 1fr 1fr 1fr;
+}
+.title {
+  font-size: 1.3rem;
+  text-align: center;
+}
+
+#page1-title {
+  margin: 0 auto;
+  // left: 47vw;
+  // top: 7vh;
+  grid-column-start: 2;
+  grid-row-start: 1;
+  justify-self: center;
+}
+
+#page2-title {
+  transform: rotate(90deg);
+  grid-column-start: 3;
+  grid-row-start: 2;
+  justify-self: flex-end;
+  align-self: center;
+}
+
+#page3-title {
+  grid-column-start: 2;
+  grid-row-start: 3;
+  align-self: flex-end;
+  justify-self: center;
+}
+#page4-title {
+  transform: rotate(-90deg);
+  grid-column-start: 1;
+  justify-self: flex-start;
+  grid-row-start: 2;
+  margin-left: 10vw;
+}
+
+#frontpagearrow {
+  position: absolute;
+  height: 25vh;
+  transform: translateX(20vw);
+}
