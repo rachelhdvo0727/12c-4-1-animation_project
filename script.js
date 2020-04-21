@@ -39,7 +39,7 @@ function clickedArrow() {
     console.log(page4.y);
     console.log(page4.x);
     document.querySelector(".wrapper-vertical").scrollBy(page3.x, page3.y);
-    document.querySelectorAll(".arrow").forEach(elm => {
+    document.querySelectorAll(".arrow").forEach((elm) => {
       elm.removeEventListener("click", clickedArrow);
     });
   }
@@ -66,7 +66,7 @@ function clickedArrow() {
   }
 }
 function scrollingHorizontal() {
-  document.querySelectorAll(".arrow").forEach(elm => {
+  document.querySelectorAll(".arrow").forEach((elm) => {
     elm.removeEventListener("click", clickedArrow);
   });
   const frontpageHorizontal = document
@@ -80,15 +80,15 @@ function scrollingHorizontal() {
     .getBoundingClientRect();
 
   if (inView(frontpageHorizontal)) {
-    document.querySelectorAll(".arrow").forEach(elm => {
+    document.querySelectorAll(".arrow").forEach((elm) => {
       elm.addEventListener("click", clickedArrow);
     });
 
     console.log("in view!");
-    document.querySelectorAll(".arrow").forEach(elm => {
+    document.querySelectorAll(".arrow").forEach((elm) => {
       elm.style.zIndex = "100";
     });
-    document.querySelectorAll(".arrowline").forEach(elm => {
+    document.querySelectorAll(".arrowline").forEach((elm) => {
       elm.style.stroke = "#333a4d";
     });
   }
@@ -104,11 +104,11 @@ function scrollingHorizontal() {
         .querySelector("#arrow2")
         .removeEventListener("click", arrow2Click);
     }
-    document.querySelectorAll(".arrow").forEach(elm => {
+    document.querySelectorAll(".arrow").forEach((elm) => {
       elm.style.zIndex = "-100";
     });
     document.querySelector("#arrow2").style.zIndex = "1000";
-    document.querySelectorAll(".arrowline").forEach(elm => {
+    document.querySelectorAll(".arrowline").forEach((elm) => {
       elm.style.stroke = "#333a4d";
     });
   }
@@ -125,17 +125,17 @@ function scrollingHorizontal() {
         .querySelector("#arrow4")
         .removeEventListener("click", arrow4Click);
     }
-    document.querySelectorAll(".arrow").forEach(elm => {
+    document.querySelectorAll(".arrow").forEach((elm) => {
       elm.style.zIndex = "-100";
     });
     document.querySelector("#arrow4").style.zIndex = "8000";
-    document.querySelectorAll(".arrowline").forEach(elm => {
+    document.querySelectorAll(".arrowline").forEach((elm) => {
       elm.style.stroke = "#e2d7c4";
     });
   }
 }
 function scrollingVertical() {
-  document.querySelectorAll(".arrow").forEach(elm => {
+  document.querySelectorAll(".arrow").forEach((elm) => {
     elm.removeEventListener("click", clickedArrow);
   });
   const frontpageVertical = document
@@ -149,13 +149,13 @@ function scrollingVertical() {
     .getBoundingClientRect();
 
   if (inView(frontpageVertical)) {
-    document.querySelectorAll(".arrow").forEach(elm => {
+    document.querySelectorAll(".arrow").forEach((elm) => {
       elm.addEventListener("click", clickedArrow);
     });
 
     console.log("in view!");
     document.querySelector(".wrapper-horizontal").style.overflowX = "scroll";
-    document.querySelectorAll(".arrow").forEach(elm => {
+    document.querySelectorAll(".arrow").forEach((elm) => {
       elm.style.zIndex = "100";
     });
   }
@@ -174,7 +174,7 @@ function scrollingVertical() {
 
     console.log("in view!");
     document.querySelector(".wrapper-horizontal").style.overflow = "hidden";
-    document.querySelectorAll(".arrow").forEach(elm => {
+    document.querySelectorAll(".arrow").forEach((elm) => {
       elm.style.zIndex = "-100";
     });
     document.querySelector("#arrow1").style.zIndex = "1000";
@@ -193,7 +193,7 @@ function scrollingVertical() {
     }
     console.log("in view!");
     document.querySelector(".wrapper-horizontal").style.overflow = "hidden";
-    document.querySelectorAll(".arrow").forEach(elm => {
+    document.querySelectorAll(".arrow").forEach((elm) => {
       elm.style.zIndex = "-100";
     });
     document.querySelector("#arrow3").style.zIndex = "1000";
@@ -309,27 +309,27 @@ function arrowAnimation() {
     y: "10px",
     ease: "circ.out",
     repeat: -1,
-    yoyo: true
+    yoyo: true,
   });
   gsap.to("#arrow3", {
     duration: 1,
     y: "-10px",
     ease: "sine.out",
     repeat: -1,
-    yoyo: true
+    yoyo: true,
   });
   gsap.to("#arrow2", {
     duration: 1,
     x: "10px",
     ease: "sine.out",
     repeat: -1,
-    yoyo: true
+    yoyo: true,
   });
   gsap.to("#arrow4", {
     duration: 1,
     x: "-10px",
     ease: "sine.out",
     repeat: -1,
-    yoyo: true
+    yoyo: true,
   });
 }
