@@ -1,32 +1,66 @@
-require("@babel/polyfill");
-import { gsap } from "gsap";
-import { frontpageHandler } from "./frontpage";
-import { historyHandler } from "./history";
-import { page3Handler } from "./household";
-import { page4Handler } from "./archi";
-import { sleepPatterns } from "./sleep_patterns";
-document.addEventListener("DOMContentLoaded", start);
+window.addEventListener("DOMContentLoaded", start);
 
-let globalJson;
-const frontpage = document.querySelector("#frontpage").getBoundingClientRect();
+const HTML = {};
+let students = [];
+let expell = [];
+let arrHalf = [];
+let arrPure = [];
+let theSystemhasbeenHacked = false;
+
+let fileIterator = 0;
+const loadArray = [
+  "https://petlatkea.dk/2020/hogwarts/students.json",
+  "https://petlatkea.dk/2020/hogwarts/families.json"
+];
+
+//Prototype for all students
+const Student = {
+    firstname: "",
+    lastname: "",
+    middlename: "",
+    photo: null,
+    gender: "",
+    house: "",
+    blood: "",
+    expell: false,
+    squad: false,
+    prefect: false
+};
 
 function start() {
-  console.log(frontpage.x);
-  document.querySelector(".wrapper-horizontal").scrollTo(frontpage.x, 0);
-  document.querySelector(".wrapper-vertical").scrollTo(0, frontpage.y);
-  console.log("Hej");
-  getJson();
-  getArrows("0", "0", "useArrow1", "arrow1");
-  getArrows("0", "0", "useArrow2", "arrow2");
-  getArrows("0", "0", "useArrow3", "arrow3");
-  getArrows("0", "0", "useArrow4", "arrow4");
+    console.log("start");
+    HTML.filterhouse = document.querySelector("select#housefilter");
+    HTML.sortname = document.querySelectorAll("[data-action=sort]");
+    HTML.searchinput = document.querySelector("#searchelms > input");
 
-  document
-    .querySelector(".wrapper-vertical")
-    .addEventListener("scroll", scrollingVertical);
-  document
-    .querySelector(".wrapper-horizontal")
-    .addEventListener("scroll", scrollingHorizontal);
+    HTML.displaystudents = document.querySelector(".totalstudents");
+    HTML.displayexpelled = document.querySelector(".expelledstudents > .number");
+    HTML.displaySlytherin = document.querySelector(".slytherin");
+    HTML.displayHufflepuff = document.querySelector(".hufflepuff");
+    HTML.displayRavenclaw = document.querySelector(".ravenclaw");
+    HTML.displayGryffindor = document.querySelector(".gryffindor");
+    HTML.hack = document.querySelector("article .title");
+
+    HTML.thelist = document.querySelector("section#contentlist");
+    HTML.blurbg = document.querySelector("article");
+    HTML.theclone = document.querySelector("template");
+    HTML.clickOnestudent = document.querySelectorAll(".seestudent");
+
+    HTML.popup = document.querySelector(".popup");
+    HTML.closepopup = document.querySelector(".close");
+
+    //Click events for sorting and filtering
+    HTML.filterhouse.addEventListener("change", filteringhouse);
+    HTML.sortname.forEach(button => {
+        button.addEventListener("click", sortingname);
+    });
+
+    //Search event for search
+    HTML.searchinput.addEventListener("keyup", searching);
+
+    //Activate hacking
+    HTML.hack.addEventListener("click", hackTheSystem);
+    loadBlood();
 }
 
 function clickedArrow() {
@@ -200,106 +234,374 @@ function scrollingVertical() {
   }
 }
 
-function inView(rect) {
-  // FROM https://gist.github.com/davidtheclark/5515733
+    return student;
 
-  return (
-    rect.top >= 0 &&
-    rect.left >= 0 &&
-    rect.bottom <=
-      (window.innerHeight || document.documentElement.clientHeight) &&
-    rect.right <= (window.innerWidth || document.documentElement.clientWidth)
-  );
-  // FROM https://gist.github.com/davidtheclark/5515733
+//SEARCH BY FIRST AND LAST NAMES
+function searching(event) {
+    console.log("search names");
+    //Value from the search bar
+    let keywords = event.target.value;
+    const searchFirstname = event.target.dataset.firstname;
+    const searchLastname = event.target.dataset.lastname;
+    const searchHouse = event.target.dataset.house;
+
+    if (searchFirstname === "firstname") {
+        keywords = "firstname";
+    } else if (searchLastname === "lastname") {
+        keywords = "lastname";
+    } else if (searchHouse === "house") {
+        keywords = "house";
+    }
+    displayList(searchForStudents(keywords));
 }
 
-async function getJson() {
-  let jsonData = await fetch("data.json");
-  globalJson = await jsonData.json();
+function searchForStudents(keywords) {
+    console.log("searchForStudents");
+    const searchresult = students.filter(searchFunction);
+    keywords = keywords.toLowerCase();
 
-  getSvg("svg/lightbulb.svg", lightBulbSVG);
-  getSvg("svg/dark-themed-lightbulb.svg", lightBulbDarkSVG);
+    function searchFunction(student) {
+        let firstnameLower = student.firstname.toLowerCase();
+        let lastnameLower = student.lastname.toLowerCase();
+        let houseLower = student.house.toLowerCase();
 
-  frontpageHandler(globalJson);
-
-  getSvg("svg/sleep_patterns.svg", sleep);
-  getSvg("svg/popup.svg", popupSVG);
-  getSvg("svg/popup2.svg", popupSVG);
-  getSvg("svg/frontpagearrow.svg", frontpageSVG);
-
-  // historie
-  getSvg("svg/history-bg.svg", historyBgSVG);
-  getSvg("svg/edison.svg", edisonSVG);
-  getSvg("svg/monster.svg", monsterSVG);
-  getSvg("svg/firstlamp.svg", firstlampSVG);
-  sendData();
-  getSvg("svg/household.svg", page3Handler, globalJson);
-  getSvg("svg/arrow.svg", arrow);
-  getSvg("svg/archi.svg", page4Handler, globalJson);
+        if (firstnameLower.indexOf(keywords) > -1 || firstnameLower === keywords) {
+            return true;
+        } else if (lastnameLower.indexOf(keywords) > -1 || lastnameLower === keywords) {
+            return true;
+        } else if (houseLower.indexOf(keywords) > -1 || houseLower === keywords) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+    return searchresult;
+}
+//FILTERING BY HOUSE
+function filteringhouse(event) {
+    //HUSK: atribute 'value' skal have den samme navn som info i listen
+    const selectedHouse = event.target.value;
+    //løsningen virkede ikke før fordi value = "slytherrin", men student.house = "Slytherin"
+    if (selectedHouse === "*") {
+        displayList(students);
+    } else {
+        displayList(filterByHouse(selectedHouse));
+    }
 }
 
-function sleep(svg) {
-  sleepPatterns(svg, globalJson);
+function filterByHouse(selectedHouse) {
+    const result = students.filter(filterFunction);
+
+    function filterFunction(student) {
+        if (student.house === selectedHouse) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+    return result;
 }
 
-export function sendData() {
-  return globalJson;
+//SORTING BY NAME
+function sortingname(event) {
+    console.log("sorting name");
+    const sortDir = event.target.dataset.sortDirection;
+    const sortInfo = event.target.dataset.sort;
+
+    //The switch mellem ascending og descending
+    if (sortDir === "asc") {
+        event.target.dataset.sortDirection = "dsc";
+    } else if (sortDir === "dsc") {
+        event.target.dataset.sortDirection = "asc";
+    }
+
+    displayList(sortByName(sortInfo, sortDir));
 }
 
-async function getSvg(filename, callback, jsonData) {
-  let response = await fetch(filename);
-  let mySvgData = await response.text();
-  callback(mySvgData, jsonData);
+function sortByName(sortInfo, sortDir) {
+    console.log("sortByName");
+    let sortedlist;
+
+    if (sortDir === "asc") {
+        sortedlist = students.sort(compareAsc);
+        console.log("sortAsc");
+    } else if (sortDir === "dsc") {
+        sortedlist = students.sort(compareDsc);
+        console.log("sortDsc");
+    }
+
+    //Ascending (stigende)
+    function compareAsc(a, b) {
+        console.log("compareAsc");
+        if (a[sortInfo] < b[sortInfo]) {
+            return -1;
+        } else {
+            return 1;
+        }
+    }
+    //Descending (faldende)
+    function compareDsc(a, b) {
+        console.log("compareDsc");
+        if (a[sortInfo] > b[sortInfo]) {
+            return -1;
+        } else {
+            return 1;
+        }
+    }
+    return sortedlist;
 }
 
-function lightBulbSVG(svg) {
-  document.querySelector("#lightbulb").innerHTML = svg;
+function buildList() {
+    const currentList = students;
+    displayList(currentList);
 }
 
-function lightBulbDarkSVG(svg) {
-  document.querySelector("#lightbulbDark").innerHTML = svg;
+function displayList(students) {
+    // clear the list
+    HTML.thelist.innerHTML = "";
+    // build a new list
+    students.forEach(displayStudent);
 }
 
-function popupSVG(svg) {
-  document.querySelector("#popup").innerHTML = svg;
+function displayStudent(student) {
+    //Show the list's status
+    const displaySlytherin = students.filter(student => student.house === "Slytherin");
+    const displayHufflepuff = students.filter(student => student.house === "Hufflepuff");
+    const displayRavenclaw = students.filter(student => student.house === "Ravenclaw");
+    const displayGryffindor = students.filter(student => student.house === "Gryffindor");
+
+    HTML.displaySlytherin.textContent = "Slytherin: " + displaySlytherin.length + " students";
+    HTML.displayHufflepuff.textContent = "Hufflepuff: " + displayHufflepuff.length + " students";
+    HTML.displayRavenclaw.textContent = "Ravenclaw: " + displayRavenclaw.length + " students";
+    HTML.displayGryffindor.textContent = "Gryffindor: " + displayGryffindor.length + " students";
+
+    HTML.displaystudents.textContent = "Current total: " + students.length + " students";
+
+    // create clone
+    const clone = HTML.theclone.content.cloneNode(true);
+
+    // set clone data
+    clone.querySelector(".studentphoto").src = "images/" + student.photo;
+    clone.querySelector("[data-field=firstname]").textContent = student.firstname;
+    clone.querySelector("[data-field=lastname]").textContent = student.lastname;
+    clone.querySelector("[data-field=house]").textContent = student.house;
+
+    if (theSystemhasbeenHacked) {
+        hackTheSystem();
+    }
+    // append clone to list
+    HTML.thelist.appendChild(clone);
+
+
+    // click event for one student
+    HTML.thelist.lastElementChild.addEventListener("click", () => {
+        popUpOne(student);
+    });
 }
 
-function arrow(svg) {
-  document.querySelector("#template-arrow").innerHTML = svg;
+function popUpOne(student) {
+    //Show popup box & blur background
+    HTML.popup.style.display = "block";
+    HTML.blurbg.style.filter = "blur(3px)";
+
+    //show the theme according (dataset has the same value as json object)
+    HTML.popup.dataset.theme = student.house;
+    HTML.closepopup.addEventListener("click", closePopUp);
+
+    //remove all click events when closing popup
+    function closePopUp() {
+        HTML.popup.style.display = "none";
+        HTML.blurbg.style.filter = "none";
+
+        document
+            .querySelector("[data-action=expell]")
+            .removeEventListener("click", clickExpell);
+        document.querySelector("[data-field=expell]").textContent = "";
+        document
+            .querySelector("[data-field=squad]")
+            .removeEventListener("click", clickSquad);
+
+        document
+            .querySelector("[data-field=prefect]")
+            .removeEventListener("click", clickPrefect);
+    }
+
+    //show detailed info on popup
+    document.querySelector("[data-field=firstname]").textContent =
+        student.firstname;
+    document.querySelector("[data-field=middlename]").textContent =
+        student.middlename;
+    document.querySelector("[data-field=lastname]").textContent =
+        student.lastname;
+    document.querySelector("[data-field=photo]").src = "images/" + student.photo;
+    document.querySelector("[data-field=gender]").textContent =
+        "Gender: " + student.gender;
+    document.querySelector("[data-field=house]").textContent =
+        "House: " + student.house;
+    document.querySelector("[data-field=bloodstatus]").textContent =
+        "Blood status: " + student.blood;
+
+    //Display squad symbol
+    if (student.squad === true) {
+        document.querySelector("[data-field=squad]").style.filter = "none";
+    } else {
+        document.querySelector("[data-field=squad]").style.filter =
+            "grayscale(100%)";
+    }
+
+    //Display prefect
+    if (student.prefect === true) {
+        document.querySelector("[data-field=prefect]").style.filter = "none";
+    } else {
+        document.querySelector("[data-field=prefect]").style.filter =
+            "grayscale(100%)";
+    }
+    document.querySelector("[data-field=prefect]").dataset.prefect =
+        student.prefect;
+
+    //Toggle prefect symbol and squad
+    document
+        .querySelector("[data-field=squad]")
+        .addEventListener("click", clickSquad);
+    document
+        .querySelector("[data-field=prefect]")
+        .addEventListener("click", clickPrefect);
+
+    function clickSquad() {
+        console.log("clickSquad");
+        if (theSystemhasbeenHacked) {
+            setTimeout(() => toggleSquad(student), 1000);
+        } else {
+            toggleSquad(student);
+        }
+    }
+
+    function clickPrefect() {
+        console.log("clickPrefect");
+        togglePrefect(student);
+    }
+
+    //Expelling a student
+    document
+        .querySelector("[data-action=expell]")
+        .addEventListener("click", clickExpell);
+
+    function clickExpell() {
+        console.log("clickExpell");
+        expellStudent(student);
+    }
+
+    if (theSystemhasbeenHacked) {
+        student.blood = Math.floor(Math.random() * 30);
+    }
 }
 
-function historyBgSVG(svg) {
-  document.querySelector("#page1 > #history-bg").innerHTML = svg;
-  historyHandler();
+function toggleSquad(student) {
+    if (student.blood === "Pureblood" || student.house === "Slytherin") {
+        if (student.squad === true) {
+            student.squad = false;
+            document.querySelector("[data-field=squad]").style.filter =
+                "grayscale(100%)";
+            document.querySelector(".squadnote").textContent = "";
+        } else {
+            student.squad = true;
+            document.querySelector("[data-field=squad]").style.filter = "none";
+        }
+    }
 }
 
-function edisonSVG(svg) {
-  document.querySelector("#edison-hide").innerHTML = svg;
+function togglePrefect(thisStudent) {
+    console.log("toggle prefect");
+    //total prefects: check each house and each gender
+    const theOtherPrefect = students.filter(student => student.prefect && student.house === thisStudent.house && student.gender === thisStudent.gender ? true : false);
+
+    if (theOtherPrefect.length === 0 || thisStudent.prefect === true) {
+        thisStudent.prefect = thisStudent.prefect ? false : true;
+        document.querySelector("[data-field=prefect]").style.filter = "none";
+    } else {
+        alertChangePrefects(thisStudent, theOtherPrefect[0]);
+    }
+    displayList(students);
 }
 
-function monsterSVG(svg) {
-  document.querySelector("#demon-hide").innerHTML = svg;
+function alertChangePrefects(thisStudent, theOtherPrefect) {
+    console.log("alertChangePrefects");
+    document.querySelector("#onlytwostudents").classList.add("show");
+    document.querySelector("#onlytwostudents .student1").textContent = `${theOtherPrefect.firstname} ${theOtherPrefect.lastname} (${theOtherPrefect.gender}), from ${theOtherPrefect.house}`;
+    document.querySelector("#onlytwostudents .student2").textContent = `${thisStudent.firstname} ${thisStudent.lastname} (${thisStudent.gender}), from ${thisStudent.house}`;
+
+    removeButtons(theOtherPrefect, thisStudent);
 }
 
-function firstlampSVG(svg) {
-  document.querySelector("#firstlight-hide").innerHTML = svg;
+function removeButtons(theOtherPrefect, thisStudent) {
+    console.log("removeButtons");
+    document
+        .querySelector("[data-action=remove1]")
+        .addEventListener("click", remove1st);
+    document
+        .querySelector("[data-action=remove2]")
+        .addEventListener("click", remove2nd);
+
+    function remove1st() {
+        console.log("remove the 1st student");
+        theOtherPrefect[0].prefect = false;
+        document.querySelector("#onlytwostudents").classList.remove("show");
+
+        thisStudent.prefect = true;
+        displayList(students);
+
+        document
+            .querySelector("[data-action=remove1]")
+            .removeEventListener("click", remove1st);
+        document
+            .querySelector("[data-action=remove2]")
+            .removeEventListener("click", remove2nd);
+    }
+
+    function remove2nd() {
+        console.log("remove the 2nd student");
+        theOtherPrefect[1].prefect = false;
+        document.querySelector("#onlytwostudents").classList.remove("show");
+
+        thisStudent.prefect = true;
+        displayList(students);
+
+        document
+            .querySelector("[data-action=remove1]")
+            .removeEventListener("click", remove1st);
+        document
+            .querySelector("[data-action=remove2]")
+            .removeEventListener("click", remove2nd);
+    }
+
+    document.querySelector(".closebutton").addEventListener("click", () => {
+        document.querySelector("#onlytwostudents").classList.remove("show");
+        document
+            .querySelector("[data-action=remove1]")
+            .removeEventListener("click", remove1st);
+        document
+            .querySelector("[data-action=remove2]")
+            .removeEventListener("click", remove2nd);
+    });
+
 }
 
-function frontpageSVG(svg) {
-  document.querySelector("#frontpagearrow").innerHTML = svg;
-}
-function getArrows(x, y, id, container) {
-  const svg = document.createElementNS("http://www.w3.org/2000/svg", "svg");
-  svg.setAttribute("viewBox", "0 0 755 456");
-  svg.id = id;
-  document.querySelector("#" + container).appendChild(svg);
-  let use = document.createElementNS("http://www.w3.org/2000/svg", "use");
-  use.setAttribute("href", "#arrow");
-  use.setAttribute("x", x);
-  use.setAttribute("y", y);
-  use.id = id;
-  document.querySelector("#" + id).appendChild(use);
-  arrowAnimation();
+
+function expellStudent(student) {
+    console.log("expell this student");
+    //expell = students.indexOf(student);
+    // students.splice(expell, 1);
+    expell = expell.concat(
+        students.splice(students.indexOf(student), 1)
+    );
+
+    document.querySelector(
+        "[data-field=expell]"
+    ).textContent = `${student.firstname} ${student.lastname} has been expelled!`;
+    HTML.displayexpelled.textContent = expell.length;
+
+    buildList();
+    displayList(students);
 }
 
 function arrowAnimation() {
